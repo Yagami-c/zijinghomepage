@@ -46,12 +46,18 @@ export default function Index() {
     }
   ];
 
+  const galleryImages = [
+    "/lovable-uploads/7b9f11af-1a88-4363-826e-048aeedd0bfd.png",
+    "/lovable-uploads/0f827793-85bd-4294-95df-4f03307ba764.png",
+    "/lovable-uploads/27422a9a-d49d-4dc4-af56-0d861e09ce73.png",
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center bg-[url('/placeholder.svg')] bg-cover bg-center">
+      <section className="min-h-screen flex items-center justify-center bg-[url('/lovable-uploads/7b9f11af-1a88-4363-826e-048aeedd0bfd.png')] bg-cover bg-center">
         <div className="bg-black/50 w-full min-h-screen flex items-center">
           <div className="container mx-auto px-4 text-white text-center animate-fade-up">
             <h1 className="text-5xl md:text-7xl font-playfair mb-4">{t("hero.name")}</h1>
@@ -96,11 +102,11 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-playfair mb-8 text-center">{t("gallery.title")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
+            {galleryImages.map((image, index) => (
+              <div key={index} className="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden">
                 <img 
-                  src="/placeholder.svg" 
-                  alt="Performance"
+                  src={image}
+                  alt={`Performance ${index + 1}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
