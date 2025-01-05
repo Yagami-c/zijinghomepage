@@ -20,6 +20,13 @@ export function LanguageSwitcher() {
       >
         RU
       </Button>
+      <Button
+        variant={language === 'zh' ? "default" : "outline"}
+        size="sm"
+        onClick={() => setLanguage('zh')}
+      >
+        中
+      </Button>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 
-type Language = 'en' | 'ru';
+type Language = 'en' | 'ru' | 'zh';
 
 type LanguageContextType = {
   language: Language;
@@ -38,6 +38,21 @@ const translations = {
     "contact.email": "Эл. почта",
     "contact.phone": "Телефон",
     "contact.social": "Социальные сети",
+  },
+  zh: {
+    "nav.about": "关于我",
+    "nav.schedule": "演出日程",
+    "nav.gallery": "图片集",
+    "nav.contact": "联系方式",
+    "hero.title": "古典钢琴家",
+    "about.title": "个人简介",
+    "schedule.title": "演出安排",
+    "gallery.title": "演出照片",
+    "video.title": "演出视频",
+    "contact.title": "联系我",
+    "contact.email": "电子邮箱",
+    "contact.phone": "电话",
+    "contact.social": "社交媒体",
   },
 };
 
