@@ -42,8 +42,8 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-playfair mb-8 text-center">{t("about.title")}</h2>
           <div className="max-w-3xl mx-auto">
-            <p className="text-lg leading-relaxed mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            <p className="text-lg leading-relaxed mb-4 whitespace-pre-wrap">
+              {t("about.text")}
             </p>
           </div>
         </div>
