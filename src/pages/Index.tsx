@@ -1,6 +1,6 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Navbar } from "@/components/Navbar";
-import { Calendar, Mail, Phone, Instagram, Facebook, Youtube } from "lucide-react";
+import { Calendar, Mail, Phone, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
 
 const performances = [
   {
@@ -23,6 +23,29 @@ const performances = [
 export default function Index() {
   const { t } = useLanguage();
 
+  const videos = [
+    {
+      id: "ZfT6xoLs7QY",
+      title: "Performance 1"
+    },
+    {
+      id: "ySZBNtqPF0I",
+      title: "Performance 2"
+    },
+    {
+      id: "DjIpBxAQ13U",
+      title: "Performance 3"
+    },
+    {
+      id: "Yji4EdOKNQY",
+      title: "Performance 4"
+    },
+    {
+      id: "9DxPdf38Ji4",
+      title: "Performance 5"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -31,7 +54,7 @@ export default function Index() {
       <section className="min-h-screen flex items-center justify-center bg-[url('/placeholder.svg')] bg-cover bg-center">
         <div className="bg-black/50 w-full min-h-screen flex items-center">
           <div className="container mx-auto px-4 text-white text-center animate-fade-up">
-            <h1 className="text-5xl md:text-7xl font-playfair mb-4">Your Name</h1>
+            <h1 className="text-5xl md:text-7xl font-playfair mb-4">{t("hero.name")}</h1>
             <p className="text-xl md:text-2xl">{t("hero.title")}</p>
           </div>
         </div>
@@ -90,10 +113,16 @@ export default function Index() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-playfair mb-8 text-center">{t("video.title")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {[1, 2].map((item) => (
-              <div key={item} className="aspect-video bg-gray-200 rounded-lg">
-                {/* Placeholder for video embed */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {videos.map((video) => (
+              <div key={video.id} className="aspect-video">
+                <iframe
+                  className="w-full h-full rounded-lg"
+                  src={`https://www.youtube.com/embed/${video.id}`}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
             ))}
           </div>
@@ -107,33 +136,29 @@ export default function Index() {
           <div className="max-w-xl mx-auto">
             <div className="space-y-6">
               <div className="flex items-center gap-4">
-                <Mail className="text-gold" />
-                <div>
-                  <div className="font-semibold">{t("contact.email")}</div>
-                  <a href="mailto:contact@example.com" className="text-gold hover:underline">
-                    contact@example.com
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
                 <Phone className="text-gold" />
                 <div>
                   <div className="font-semibold">{t("contact.phone")}</div>
-                  <a href="tel:+1234567890" className="text-gold hover:underline">
-                    +1 (234) 567-890
+                  <a href="tel:+79267170585" className="text-gold hover:underline">
+                    +7 (926)-717-05-85
                   </a>
+                  <div className="text-sm text-gray-600 mt-1">WhatsApp, Telegram</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-4">
+                <MessageCircle className="text-gold" />
+                <div>
+                  <div className="font-semibold">WeChat</div>
+                  <span className="text-gold">zzjdoremi</span>
                 </div>
               </div>
               <div>
                 <div className="font-semibold mb-2">{t("contact.social")}</div>
                 <div className="flex gap-4">
-                  <a href="#" className="text-gold hover:text-gold/80 transition-colors">
+                  <a href="https://www.instagram.com/zijing_zeng" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold/80 transition-colors">
                     <Instagram size={24} />
                   </a>
-                  <a href="#" className="text-gold hover:text-gold/80 transition-colors">
-                    <Facebook size={24} />
-                  </a>
-                  <a href="#" className="text-gold hover:text-gold/80 transition-colors">
+                  <a href="https://youtube.com/@zijingzeng997" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold/80 transition-colors">
                     <Youtube size={24} />
                   </a>
                 </div>
