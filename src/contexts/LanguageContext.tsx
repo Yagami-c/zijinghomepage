@@ -27,8 +27,7 @@ const translations = {
     "performance2.venue": "Small Hall of the Conservatory, Sredniy Kislovsky Pereulok, 4, Moscow",
     "performance2.title": "To the 100th anniversary of the birth of Honored Artist of Russia, Professor Olga Mikhailovna Zhukova",
     "contact.title": "Contact",
-    "video.title": "Performance Videos",
-    "gallery.title": "Photo Gallery",
+    "video.title": "Performance Videos"
   },
   ru: {
     "nav.about": "О себе",
@@ -48,8 +47,7 @@ const translations = {
     "performance2.venue": "Малый зал консерватории, Средний Кисловский пер., 4, Москва",
     "performance2.title": "К 100-летию со дня рождения Заслуженной артистки России, профессора Ольги Михайловны Жуковой",
     "contact.title": "Контакты",
-    "video.title": "Видео выступлений",
-    "gallery.title": "Фотогалерея",
+    "video.title": "Видео выступлений"
   },
   zh: {
     "nav.about": "关于我",
@@ -61,6 +59,7 @@ const translations = {
     "about.title": "个人简介",
     "about.text": "曾子荆，五岁开始学习钢琴，九岁以第二名的成绩考入武汉音乐学院附小师从王健教授，随后进入武汉音乐学院附中师从王暹副教授。十八岁同时以优异的成绩考取了上海音乐学院钢琴系和世界顶尖音乐学府莫斯科国立柴科夫斯基音乐学院，2015年曾子荆选择赴俄深造，于2021年以全优成绩毕业，取得钢琴表演、室内乐、声乐艺术指导和教育学四个专业的硕士学位文凭，同时也是Alexander Goldenweiser学派传人Olga Zhukova教授的关门弟子。二十三岁前往莫斯科国立师范大学师从Alexey Yudin教授研修博士学位，同时以第一名的成绩考入莫斯科国立柴可夫斯基音乐学院成为俄罗斯钢琴大师、苏联功勋艺术家Eliso Virsaladze助教Dmitry Kaprin的第一位演奏博士。2022年11月，正式入职莫斯科国立大学艺术系任教，担任钢琴主科老师。\\n\\n获奖记录：\\n\\n2013年在第二届意大利伊莫拉卡索尼国际钢琴比赛中，作为青年A组年龄最小的选手，荣获中国区选拔赛北京总决赛第一名。同年受邀赴意大利参加伊莫拉夏季国际钢琴音乐节，在当地成功举行演出。2014年在纪念中国钢琴作品百年展\\\"大音\\\"杯全国邀请赛中荣获青年B组（专业）一等奖。同年在第七届上海青少年钢琴大赛中获专业青年组一等奖。2015年在\\\"长江钢琴杯\\\"青少年钢琴比赛中获奖。2019年参加德国慕尼黑\\\"Münchner Klavierpodium\\\"钢琴比赛，荣获肖邦奖，并受邀在颁奖典礼上演出。",
     "schedule.title": "演出安排",
+    "gallery.title": "演出记录",
     "performance1.date": "2025年1月17日 19:00",
     "performance1.venue": "音乐沙龙\"古典在附近\"，奇斯托伊 6 号街1号楼，莫斯科",
     "performance1.title": "独奏音乐会《一月幻想》",
@@ -68,8 +67,7 @@ const translations = {
     "performance2.venue": "音乐学院小厅，基斯洛夫斯基巷., 4, 莫斯科",
     "performance2.title": "纪念俄罗斯功勋艺术家教授诞辰100周年 奥尔加·米哈伊洛芙娜·朱科娃",
     "contact.title": "联系方式",
-    "video.title": "演出视频",
-    "gallery.title": "演出记录",
+    "video.title": "演出视频"
   },
 };
 
