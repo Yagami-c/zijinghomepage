@@ -4,19 +4,14 @@ import { Calendar, Mail, Phone, Instagram, Facebook, Youtube, MessageCircle } fr
 
 const performances = [
   {
-    date: "2024-04-15",
-    venue: "Carnegie Hall, New York",
-    program: "Tchaikovsky Piano Concerto No. 1",
+    date: "performance1.date",
+    venue: "performance1.venue",
+    program: "performance1.title",
   },
   {
-    date: "2024-05-20",
-    venue: "Royal Albert Hall, London",
-    program: "Rachmaninoff Piano Concerto No. 2",
-  },
-  {
-    date: "2024-06-10",
-    venue: "Mariinsky Theatre, St. Petersburg",
-    program: "Solo Recital - Chopin & Liszt",
+    date: "performance2.date",
+    venue: "performance2.venue",
+    program: "performance2.title",
   },
 ];
 
@@ -87,9 +82,9 @@ export default function Index() {
               <div key={index} className="bg-white p-6 rounded-lg shadow-md flex items-start gap-4">
                 <Calendar className="text-gold" />
                 <div>
-                  <div className="font-semibold">{new Date(performance.date).toLocaleDateString()}</div>
-                  <div className="text-lg">{performance.venue}</div>
-                  <div className="text-gray-600">{performance.program}</div>
+                  <div className="font-semibold">{t(performance.date)}</div>
+                  <div className="text-lg">{t(performance.venue)}</div>
+                  <div className="text-gray-600">{t(performance.program)}</div>
                 </div>
               </div>
             ))}
