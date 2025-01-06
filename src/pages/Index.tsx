@@ -6,6 +6,8 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { useEffect, useRef } from "react";
 
 const performances = [
   {
@@ -22,6 +24,9 @@ const performances = [
 
 export default function Index() {
   const { t } = useLanguage();
+  const autoplayRef = useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: false })
+  );
 
   const heroImages = [
     "/lovable-uploads/7b9f11af-1a88-4363-826e-048aeedd0bfd.png",
@@ -80,17 +85,21 @@ export default function Index() {
       
       {/* Hero Section */}
       <section className="min-h-screen relative overflow-hidden">
-        <Carousel className="w-full h-screen" opts={{
-          loop: true,
-          duration: 50,
-          watchDrag: false,
-          dragFree: true,
-        }}>
+        <Carousel 
+          className="w-full h-screen" 
+          opts={{
+            loop: true,
+            duration: 1000,
+            watchDrag: true,
+            dragFree: false,
+          }}
+          plugins={[autoplayRef.current]}
+        >
           <CarouselContent className="h-full">
             {heroImages.map((image, index) => (
               <CarouselItem key={index} className="h-full">
                 <div 
-                  className="w-full h-full bg-cover bg-center transition-all duration-1000 ease-in-out transform"
+                  className="w-full h-full bg-cover bg-center transition-all duration-1000 ease-in-out transform scale-105 hover:scale-110"
                   style={{ 
                     backgroundImage: `url(${image})`,
                     position: 'absolute',
@@ -104,7 +113,7 @@ export default function Index() {
             ))}
           </CarouselContent>
         </Carousel>
-        <div className="absolute inset-0 bg-black/50 flex items-center backdrop-blur-[2px]">
+        <div className="absolute inset-0 bg-black/40 flex items-center backdrop-blur-[1px]">
           <div className="container mx-auto px-4 text-white text-center animate-fade-up">
             <h1 className="text-5xl md:text-7xl font-playfair mb-4">{t("hero.name")}</h1>
             <p className="text-xl md:text-2xl">{t("hero.title")}</p>
