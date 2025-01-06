@@ -1,6 +1,11 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Navbar } from "@/components/Navbar";
 import { Calendar, Mail, Phone, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 const performances = [
   {
@@ -17,6 +22,15 @@ const performances = [
 
 export default function Index() {
   const { t } = useLanguage();
+
+  const heroImages = [
+    "/lovable-uploads/7b9f11af-1a88-4363-826e-048aeedd0bfd.png",
+    "/lovable-uploads/c3ca4664-83d8-44bd-bbcb-39dc4c8e888d.png",
+    "/lovable-uploads/93cdf5c0-2d0a-4778-8a85-ce1ee7f16a1b.png",
+    "/lovable-uploads/f058e047-9930-4641-881c-98909da1e377.png",
+    "/lovable-uploads/8f4e26d8-cab2-47c0-ac8e-b041fafb9bb9.png",
+    "/lovable-uploads/cadea1d2-3d4e-4c28-bd04-a074eef01524.png"
+  ];
 
   const videos = [
     {
@@ -60,8 +74,31 @@ export default function Index() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center bg-[url('/lovable-uploads/7b9f11af-1a88-4363-826e-048aeedd0bfd.png')] bg-cover bg-center">
-        <div className="bg-black/50 w-full min-h-screen flex items-center">
+      <section className="min-h-screen relative overflow-hidden">
+        <Carousel className="w-full h-screen" opts={{
+          loop: true,
+          duration: 50,
+          watchDrag: false,
+        }}>
+          <CarouselContent className="h-full">
+            {heroImages.map((image, index) => (
+              <CarouselItem key={index} className="h-full">
+                <div 
+                  className="w-full h-full bg-cover bg-center transition-opacity duration-1000"
+                  style={{ 
+                    backgroundImage: `url(${image})`,
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                  }}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+        <div className="absolute inset-0 bg-black/50 flex items-center">
           <div className="container mx-auto px-4 text-white text-center animate-fade-up">
             <h1 className="text-5xl md:text-7xl font-playfair mb-4">{t("hero.name")}</h1>
             <p className="text-xl md:text-2xl">{t("hero.title")}</p>
