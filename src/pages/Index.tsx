@@ -42,9 +42,17 @@ export default function Index() {
   ];
 
   const galleryImages = [
-    "/lovable-uploads/7b9f11af-1a88-4363-826e-048aeedd0bfd.png",
-    "/lovable-uploads/0f827793-85bd-4294-95df-4f03307ba764.png",
-    "/lovable-uploads/27422a9a-d49d-4dc4-af56-0d861e09ce73.png",
+    "/lovable-uploads/683074c7-a228-4ef4-ad70-98f8c1714f41.png",
+    "/lovable-uploads/68f603fe-d849-4139-b866-49f1855e65bb.png",
+    "/lovable-uploads/b5917c0d-ba60-41ba-80ea-e27527047d37.png",
+    "/lovable-uploads/e1bdb18f-0413-4526-8d79-89df46cf7324.png",
+    "/lovable-uploads/edac1f3a-3582-4009-986d-8f2fae0b122b.png",
+    "/lovable-uploads/37eaa083-ff23-4f40-a282-12a62b7324c6.png",
+    "/lovable-uploads/63e7d9f7-239d-4eca-8d13-c2193a349da1.png",
+    "/lovable-uploads/46024a5d-f559-4bdf-9cdb-2cb41a136575.png",
+    "/lovable-uploads/95569425-9a71-4642-b604-f990fdd5e3f3.png",
+    "/lovable-uploads/c620aa9e-12ff-42c9-a1f3-3af5a9be601f.png",
+    "/lovable-uploads/83fc3260-63e3-49e9-b4b9-741748acb556.png",
   ];
 
   return (

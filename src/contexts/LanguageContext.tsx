@@ -26,6 +26,9 @@ const translations = {
     "performance2.date": "January 18, 2025 19:00",
     "performance2.venue": "Small Hall of the Conservatory, Sredniy Kislovsky Pereulok, 4, Moscow",
     "performance2.title": "To the 100th anniversary of the birth of Honored Artist of Russia, Professor Olga Mikhailovna Zhukova",
+    "contact.title": "Contact",
+    "video.title": "Performance Videos",
+    "gallery.title": "Photo Gallery",
   },
   ru: {
     "nav.about": "О себе",
@@ -44,6 +47,9 @@ const translations = {
     "performance2.date": "18 января 2025 19:00",
     "performance2.venue": "Малый зал консерватории, Средний Кисловский пер., 4, Москва",
     "performance2.title": "К 100-летию со дня рождения Заслуженной артистки России, профессора Ольги Михайловны Жуковой",
+    "contact.title": "Контакты",
+    "video.title": "Видео выступлений",
+    "gallery.title": "Фотогалерея",
   },
   zh: {
     "nav.about": "关于我",
@@ -61,6 +67,9 @@ const translations = {
     "performance2.date": "2025年1月18日 19:00",
     "performance2.venue": "音乐学院小厅，基斯洛夫斯基巷., 4, 莫斯科",
     "performance2.title": "纪念俄罗斯功勋艺术家教授诞辰100周年 奥尔加·米哈伊洛芙娜·朱科娃",
+    "contact.title": "联系方式",
+    "video.title": "演出视频",
+    "gallery.title": "演出记录",
   },
 };
 
