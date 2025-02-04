@@ -110,12 +110,24 @@ export default function Index() {
           <div className="container mx-auto px-4 text-white text-center animate-fade-up">
             <h1 className="text-5xl md:text-7xl font-playfair mb-4">{t("hero.name")}</h1>
             <p className="text-xl md:text-2xl mb-8">{t("hero.title")}</p>
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl mx-auto space-y-8">
               <img 
                 src="/lovable-uploads/fe2afc67-b522-4a37-9703-501cc2d89804.png" 
                 alt="Zijing Zeng Piano Performance"
                 className="rounded-lg shadow-2xl animate-fade-up"
               />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <img 
+                  src="/lovable-uploads/731b0e02-c447-41be-93b8-60251da476d1.png"
+                  alt="Historical Statue"
+                  className="rounded-lg shadow-xl animate-fade-up w-full h-64 object-cover"
+                />
+                <img 
+                  src="/lovable-uploads/66557b7c-e360-45c5-9fa7-899ee46dde25.png"
+                  alt="Classical Architecture"
+                  className="rounded-lg shadow-xl animate-fade-up w-full h-64 object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
