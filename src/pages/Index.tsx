@@ -29,17 +29,10 @@ export default function Index() {
   );
 
   const heroImages = [
-    "/lovable-uploads/7b9f11af-1a88-4363-826e-048aeedd0bfd.png",
-    "/lovable-uploads/c3ca4664-83d8-44bd-bbcb-39dc4c8e888d.png",
-    "/lovable-uploads/93cdf5c0-2d0a-4778-8a85-ce1ee7f16a1b.png",
-    "/lovable-uploads/f058e047-9930-4641-881c-98909da1e377.png",
-    "/lovable-uploads/8f4e26d8-cab2-47c0-ac8e-b041fafb9bb9.png",
-    "/lovable-uploads/cadea1d2-3d4e-4c28-bd04-a074eef01524.png",
-    "/lovable-uploads/bf4c28a4-9c86-42a4-9c0d-6daa25d965f7.png",
-    "/lovable-uploads/4ee3a18c-be07-4709-a7a1-ccd5a76209cb.png",
-    "/lovable-uploads/172a0ffe-b230-435f-962c-1ddf6822f8d2.png",
-    "/lovable-uploads/bebf7b54-6bc7-4373-b99b-f0dfc3516255.png",
-    "/lovable-uploads/650506f4-e395-491c-8733-e3450e2bab1d.png"
+    "/lovable-uploads/f5249637-7b76-4f9f-843a-709c6a7b7555.png",
+    "/lovable-uploads/832dfd71-1ed4-4f9e-a5e5-e02a6028c015.png",
+    "/lovable-uploads/a716b21b-801b-44f1-8665-bb5dba860461.png",
+    "/lovable-uploads/9910e064-049f-46ab-9904-80cebf45ad4e.png"
   ];
 
   const videos = [
@@ -89,7 +82,7 @@ export default function Index() {
           className="w-full h-screen" 
           opts={{
             loop: true,
-            duration: 1000,
+            duration: 2000,
             watchDrag: true,
             dragFree: false,
           }}
@@ -99,7 +92,7 @@ export default function Index() {
             {heroImages.map((image, index) => (
               <CarouselItem key={index} className="h-full">
                 <div 
-                  className="w-full h-full bg-cover bg-center transition-all duration-1000 ease-in-out transform scale-105 hover:scale-110"
+                  className="w-full h-full bg-cover bg-center transition-all duration-2000 ease-in-out transform scale-105 hover:scale-110"
                   style={{ 
                     backgroundImage: `url(${image})`,
                     position: 'absolute',
@@ -113,7 +106,7 @@ export default function Index() {
             ))}
           </CarouselContent>
         </Carousel>
-        <div className="absolute inset-0 bg-black/40 flex items-center backdrop-blur-[1px]">
+        <div className="absolute inset-0 bg-black/30 flex items-center backdrop-blur-[1px]">
           <div className="container mx-auto px-4 text-white text-center animate-fade-up">
             <h1 className="text-5xl md:text-7xl font-playfair mb-4">{t("hero.name")}</h1>
             <p className="text-xl md:text-2xl">{t("hero.title")}</p>
