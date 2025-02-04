@@ -109,7 +109,14 @@ export default function Index() {
         <div className="absolute inset-0 bg-black/30 flex items-center backdrop-blur-[1px]">
           <div className="container mx-auto px-4 text-white text-center animate-fade-up">
             <h1 className="text-5xl md:text-7xl font-playfair mb-4">{t("hero.name")}</h1>
-            <p className="text-xl md:text-2xl">{t("hero.title")}</p>
+            <p className="text-xl md:text-2xl mb-8">{t("hero.title")}</p>
+            <div className="max-w-2xl mx-auto">
+              <img 
+                src="/lovable-uploads/fe2afc67-b522-4a37-9703-501cc2d89804.png" 
+                alt="Zijing Zeng Piano Performance"
+                className="rounded-lg shadow-2xl animate-fade-up"
+              />
+            </div>
           </div>
         </div>
       </section>
