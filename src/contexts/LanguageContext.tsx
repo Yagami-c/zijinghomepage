@@ -30,6 +30,12 @@ const translations = {
     "performance3.date": "November 5, 2025 19:00",
     "performance3.venue": "Rachmaninoff Hall of the Moscow Conservatory, Bol'shaya Nikitskaya Ulitsa, 11, Moscow",
     "performance3.title": "Beethoven Piano Concerto No.4",
+    "performance4.date": "November 2, 2025 15:00",
+    "performance4.venue": "Moscow Region, Chekhov Municipal District, Melikhovo Village, A.P. Chekhov Museum-Reserve, Building 1",
+    "performance4.title": "Beethoven Piano Sonata No.18, Beethoven Violin Sonata No.4",
+    "performance5.date": "November 15, 2025 17:00",
+    "performance5.venue": "Ulitsa Bol'shaya Ordynka, Building 6/2, 1, Dom Rachmaninoff, Moscow",
+    "performance5.title": "Bach Prelude and Fugue D major BWV 874",
     "contact.title": "Contact",
     "video.title": "Performance Videos"
   },
@@ -53,6 +59,12 @@ const translations = {
     "performance3.date": "5 ноября 2025 19:00",
     "performance3.venue": "Рахманиновский зал Московской консерватории, Большая Никитская улица, 11, Москва",
     "performance3.title": "Концерт №4 для фортепиано с оркестром Бетховена",
+    "performance4.date": "2 ноября 2025 15:00",
+    "performance4.venue": "Московская область, Чеховский муниципальный район, село Мелихово, Музей-заповедник А.П. Чехова, строение 1",
+    "performance4.title": "Бетховен - Соната для фортепиано №18, Бетховен - Соната для скрипки №4",
+    "performance5.date": "15 ноября 2025 17:00",
+    "performance5.venue": "Улица Большая Ордынка, дом 6/2, строение 1, Дом Рахманинова, Москва",
+    "performance5.title": "Бах - Прелюдия и фуга ре мажор BWV 874",
     "contact.title": "Контакты",
     "video.title": "Видео выступлений"
   },
@@ -76,6 +88,12 @@ const translations = {
     "performance3.date": "2025年11月5日 19:00",
     "performance3.venue": "莫斯科音乐学院拉赫马尼诺夫音乐厅，大尼基茨卡娅街，11号，莫斯科",
     "performance3.title": "贝多芬第四钢琴协奏曲",
+    "performance4.date": "2025年11月2日 15:00",
+    "performance4.venue": "莫斯科州契诃夫市梅利霍沃村，契诃夫博物馆保护区，1号楼",
+    "performance4.title": "贝多芬第18钢琴奏鸣曲，贝多芬第4小提琴奏鸣曲",
+    "performance5.date": "2025年11月15日 17:00",
+    "performance5.venue": "莫斯科大奥尔登卡街6/2号楼1，拉赫马尼诺夫故居",
+    "performance5.title": "巴赫D大调前奏曲与赋格 BWV 874",
     "contact.title": "联系方式",
     "video.title": "演出视频"
   }
