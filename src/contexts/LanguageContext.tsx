@@ -37,6 +37,8 @@ const translations = {
     "performance5.venue": "Ulitsa Bol'shaya Ordynka, Building 6/2, 1, Dom Rachmaninoff, Moscow",
     "performance5.title": "Bach Prelude and Fugue D major BWV 874",
     "contact.title": "Contact",
+    "contact.phone": "Phone",
+    "contact.social": "Social Media",
     "video.title": "Performance Videos"
   },
   ru: {
@@ -66,6 +68,8 @@ const translations = {
     "performance5.venue": "Улица Большая Ордынка, дом 6/2, строение 1, Дом Рахманинова, Москва",
     "performance5.title": "Бах - Прелюдия и фуга ре мажор BWV 874",
     "contact.title": "Контакты",
+    "contact.phone": "Телефон",
+    "contact.social": "Социальные сети",
     "video.title": "Видео выступлений"
   },
   zh: {
@@ -95,6 +99,8 @@ const translations = {
     "performance5.venue": "莫斯科大奥尔登卡街6/2号楼1，拉赫马尼诺夫故居",
     "performance5.title": "巴赫D大调前奏曲与赋格 BWV 874",
     "contact.title": "联系方式",
+    "contact.phone": "电话",
+    "contact.social": "社交媒体",
     "video.title": "演出视频"
   }
 };
