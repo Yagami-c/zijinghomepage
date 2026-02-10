@@ -11,21 +11,6 @@ import { useEffect, useRef } from "react";
 
 const performances = [
   {
-    date: "performance4.date",
-    venue: "performance4.venue",
-    program: "performance4.title",
-  },
-  {
-    date: "performance3.date",
-    venue: "performance3.venue",
-    program: "performance3.title",
-  },
-  {
-    date: "performance5.date",
-    venue: "performance5.venue",
-    program: "performance5.title",
-  },
-  {
     date: "performance6.date",
     venue: "performance6.venue",
     program: "performance6.title",
