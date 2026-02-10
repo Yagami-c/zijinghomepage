@@ -30,6 +30,16 @@ const performances = [
     venue: "performance6.venue",
     program: "performance6.title",
   },
+  {
+    date: "performance7.date",
+    venue: "performance7.venue",
+    program: "performance7.title",
+  },
+  {
+    date: "performance8.date",
+    venue: "performance8.venue",
+    program: "performance8.title",
+  },
 ];
 
 export default function Index() {
