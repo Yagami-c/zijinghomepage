@@ -3,7 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import pianoHandsImg from "@/assets/piano-hands.jpg";
 import concertHallImg from "@/assets/concert-hall.jpg";
 import pianistSilhouetteImg from "@/assets/pianist-silhouette.jpg";
-import { Calendar, Phone, Instagram, Youtube, MessageCircle } from "lucide-react";
+import { Calendar, Phone, Instagram, Youtube, MessageCircle, Music } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
