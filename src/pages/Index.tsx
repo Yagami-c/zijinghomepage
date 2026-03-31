@@ -1,13 +1,13 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Navbar } from "@/components/Navbar";
-import { Calendar, Mail, Phone, Instagram, Facebook, Youtube, MessageCircle } from "lucide-react";
+import { Calendar, Phone, Instagram, Youtube, MessageCircle } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 const performances = [
   {
@@ -27,6 +27,21 @@ const performances = [
   },
 ];
 
+const GothicDivider = () => (
+  <div className="flex items-center justify-center gap-4 py-2">
+    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+    <span className="text-primary/40 text-xs tracking-[0.5em]">✦ ✦ ✦</span>
+    <div className="h-px flex-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+  </div>
+);
+
+const SectionTitle = ({ children }: { children: React.ReactNode }) => (
+  <div className="text-center mb-12">
+    <h2 className="text-4xl md:text-5xl font-cinzel tracking-[0.1em] text-foreground gothic-glow mb-4">{children}</h2>
+    <GothicDivider />
+  </div>
+);
+
 export default function Index() {
   const { t } = useLanguage();
   const autoplayRef = useRef(
@@ -41,26 +56,11 @@ export default function Index() {
   ];
 
   const videos = [
-    {
-      id: "ZfT6xoLs7QY",
-      title: "Performance 1"
-    },
-    {
-      id: "ySZBNtqPF0I",
-      title: "Performance 2"
-    },
-    {
-      id: "DjIpBxAQ13U",
-      title: "Performance 3"
-    },
-    {
-      id: "Yji4EdOKNQY",
-      title: "Performance 4"
-    },
-    {
-      id: "9DxPdf38Ji4",
-      title: "Performance 5"
-    }
+    { id: "ZfT6xoLs7QY", title: "Performance 1" },
+    { id: "ySZBNtqPF0I", title: "Performance 2" },
+    { id: "DjIpBxAQ13U", title: "Performance 3" },
+    { id: "Yji4EdOKNQY", title: "Performance 4" },
+    { id: "9DxPdf38Ji4", title: "Performance 5" },
   ];
 
   const galleryImages = [
@@ -85,12 +85,7 @@ export default function Index() {
       <section className="min-h-screen relative overflow-hidden">
         <Carousel 
           className="w-full h-screen" 
-          opts={{
-            loop: true,
-            duration: 2000,
-            watchDrag: true,
-            dragFree: false,
-          }}
+          opts={{ loop: true, duration: 2000, watchDrag: true, dragFree: false }}
           plugins={[autoplayRef.current]}
         >
           <CarouselContent className="h-full">
@@ -101,69 +96,66 @@ export default function Index() {
                   style={{ 
                     backgroundImage: `url(${image})`,
                     position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
+                    top: 0, left: 0, right: 0, bottom: 0,
                   }}
                 />
               </CarouselItem>
             ))}
           </CarouselContent>
         </Carousel>
-        <div className="absolute inset-0 bg-black/30 flex items-center justify-center backdrop-blur-[1px]">
-          <div className="container mx-auto px-4 text-white text-center">
-            <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full">
-              <h1 className="text-5xl md:text-7xl font-playfair mb-4 text-white drop-shadow-lg">{t("hero.name")}</h1>
-              <p className="text-xl md:text-2xl mb-8 text-white drop-shadow-lg">{t("hero.title")}</p>
-            </div>
-            <div className="max-w-2xl mx-auto space-y-8 mt-32">
-              <img 
-                src="/lovable-uploads/fe2afc67-b522-4a37-9703-501cc2d89804.png" 
-                alt="Zijing Zeng Piano Performance"
-                className="rounded-lg shadow-2xl animate-fade-up"
-              />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <img 
-                  src="/lovable-uploads/731b0e02-c447-41be-93b8-60251da476d1.png"
-                  alt="Historical Statue"
-                  className="rounded-lg shadow-xl animate-fade-up w-full h-64 object-cover"
-                />
-                <img 
-                  src="/lovable-uploads/66557b7c-e360-45c5-9fa7-899ee46dde25.png"
-                  alt="Classical Architecture"
-                  className="rounded-lg shadow-xl animate-fade-up w-full h-64 object-cover"
-                />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background flex items-center justify-center">
+          <div className="container mx-auto px-4 text-center">
+            <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full px-4">
+              {/* Ornamental top */}
+              <div className="flex justify-center mb-6">
+                <span className="text-primary/50 text-2xl tracking-[1em]">— ✦ —</span>
+              </div>
+              <h1 className="text-5xl md:text-8xl font-cinzel-decorative tracking-[0.15em] text-foreground gothic-glow mb-4 drop-shadow-2xl">
+                {t("hero.name")}
+              </h1>
+              <p className="text-xl md:text-2xl font-cormorant italic tracking-[0.3em] text-primary/80 drop-shadow-lg">
+                {t("hero.title")}
+              </p>
+              {/* Ornamental bottom */}
+              <div className="flex justify-center mt-6">
+                <span className="text-primary/50 text-2xl tracking-[1em]">— ✦ —</span>
               </div>
             </div>
           </div>
         </div>
+        {/* Bottom fade gradient */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* Biography Section */}
-      <section id="about" className="py-20">
+      <section id="about" className="py-24 gothic-pattern">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-playfair mb-8 text-center">{t("about.title")}</h2>
+          <SectionTitle>{t("about.title")}</SectionTitle>
           <div className="max-w-3xl mx-auto">
-            <p className="text-lg leading-relaxed mb-4 whitespace-pre-wrap">
-              {t("about.text")}
-            </p>
+            <div className="gothic-card rounded-sm p-8 md:p-12">
+              <p className="text-lg md:text-xl leading-relaxed whitespace-pre-wrap text-foreground/85 font-cormorant">
+                {t("about.text")}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Schedule Section */}
-      <section id="schedule" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-playfair mb-8 text-center">{t("schedule.title")}</h2>
+      <section id="schedule" className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 to-background" />
+        <div className="container mx-auto px-4 relative z-10">
+          <SectionTitle>{t("schedule.title")}</SectionTitle>
           <div className="max-w-3xl mx-auto space-y-6">
             {performances.map((performance, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-md flex items-start gap-4">
-                <Calendar className="text-gold" />
-                <div>
-                  <div className="font-semibold">{t(performance.date)}</div>
-                  <div className="text-lg">{t(performance.venue)}</div>
-                  <div className="text-gray-600">{t(performance.program)}</div>
+              <div key={index} className="gothic-card rounded-sm p-6 flex items-start gap-5 group hover:border-primary/30 transition-all duration-500">
+                <div className="mt-1 p-2 rounded-sm bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300">
+                  <Calendar size={20} />
+                </div>
+                <div className="space-y-1.5">
+                  <div className="font-cinzel text-sm tracking-[0.1em] text-primary">{t(performance.date)}</div>
+                  <div className="text-lg font-cormorant text-foreground">{t(performance.venue)}</div>
+                  <div className="text-muted-foreground font-cormorant italic">{t(performance.program)}</div>
                 </div>
               </div>
             ))}
@@ -172,17 +164,19 @@ export default function Index() {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="py-20">
+      <section id="gallery" className="py-24 gothic-pattern">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-playfair mb-8 text-center">{t("gallery.title")}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <SectionTitle>{t("gallery.title")}</SectionTitle>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryImages.map((image, index) => (
-              <div key={index} className="aspect-[3/4] bg-gray-200 rounded-lg overflow-hidden">
+              <div key={index} className="aspect-[3/4] rounded-sm overflow-hidden relative group cursor-pointer">
                 <img 
                   src={image}
                   alt={`Performance ${index + 1}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 border border-primary/0 group-hover:border-primary/20 transition-colors duration-500 rounded-sm" />
               </div>
             ))}
           </div>
@@ -190,14 +184,15 @@ export default function Index() {
       </section>
 
       {/* Video Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-playfair mb-8 text-center">{t("video.title")}</h2>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 to-background" />
+        <div className="container mx-auto px-4 relative z-10">
+          <SectionTitle>{t("video.title")}</SectionTitle>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {videos.map((video) => (
-              <div key={video.id} className="aspect-video">
+              <div key={video.id} className="aspect-video gothic-card rounded-sm overflow-hidden p-1">
                 <iframe
-                  className="w-full h-full rounded-lg"
+                  className="w-full h-full rounded-sm"
                   src={`https://www.youtube.com/embed/${video.id}`}
                   title={video.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -210,36 +205,48 @@ export default function Index() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20">
+      <section id="contact" className="py-24 gothic-pattern">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-playfair mb-8 text-center">{t("contact.title")}</h2>
+          <SectionTitle>{t("contact.title")}</SectionTitle>
           <div className="max-w-xl mx-auto">
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <Phone className="text-gold" />
+            <div className="gothic-card rounded-sm p-8 md:p-10 space-y-8">
+              <div className="flex items-center gap-5">
+                <div className="p-2 rounded-sm bg-primary/10 text-primary">
+                  <Phone size={20} />
+                </div>
                 <div>
-                  <div className="font-semibold">{t("contact.phone")}</div>
-                  <a href="tel:+79267170585" className="text-gold hover:underline">
+                  <div className="font-cinzel text-sm tracking-[0.1em] text-primary mb-1">{t("contact.phone")}</div>
+                  <a href="tel:+79267170585" className="text-foreground hover:text-primary transition-colors font-cormorant text-lg">
                     +7 (926)-717-05-85
                   </a>
-                  <div className="text-sm text-gray-600 mt-1">WhatsApp, Telegram</div>
+                  <div className="text-sm text-muted-foreground mt-1 font-cormorant italic">WhatsApp, Telegram</div>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <MessageCircle className="text-gold" />
+
+              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+              <div className="flex items-center gap-5">
+                <div className="p-2 rounded-sm bg-primary/10 text-primary">
+                  <MessageCircle size={20} />
+                </div>
                 <div>
-                  <div className="font-semibold">WeChat</div>
-                  <span className="text-gold">zzjdoremi</span>
+                  <div className="font-cinzel text-sm tracking-[0.1em] text-primary mb-1">WeChat</div>
+                  <span className="text-foreground font-cormorant text-lg">zzjdoremi</span>
                 </div>
               </div>
+
+              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
               <div>
-                <div className="font-semibold mb-2">{t("contact.social")}</div>
+                <div className="font-cinzel text-sm tracking-[0.1em] text-primary mb-4">{t("contact.social")}</div>
                 <div className="flex gap-4">
-                  <a href="https://www.instagram.com/zijing_zeng" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold/80 transition-colors">
-                    <Instagram size={24} />
+                  <a href="https://www.instagram.com/zijing_zeng" target="_blank" rel="noopener noreferrer" 
+                     className="p-3 rounded-sm bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
+                    <Instagram size={20} />
                   </a>
-                  <a href="https://youtube.com/@zijingzeng997" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold/80 transition-colors">
-                    <Youtube size={24} />
+                  <a href="https://youtube.com/@zijingzeng997" target="_blank" rel="noopener noreferrer" 
+                     className="p-3 rounded-sm bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
+                    <Youtube size={20} />
                   </a>
                 </div>
               </div>
@@ -247,6 +254,15 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="py-8 border-t border-border">
+        <div className="container mx-auto px-4 text-center">
+          <span className="text-muted-foreground font-cormorant text-sm tracking-[0.2em]">
+            © {new Date().getFullYear()} Zijing Zeng · Classical Pianist
+          </span>
+        </div>
+      </footer>
     </div>
   );
 }
