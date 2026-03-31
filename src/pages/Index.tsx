@@ -123,6 +123,22 @@ export default function Index() {
               <div className="flex justify-center mt-6">
                 <span className="text-primary/50 text-2xl tracking-[1em]">— ✦ —</span>
               </div>
+
+              {/* Aspirational piano images */}
+              <div className="grid grid-cols-3 gap-3 md:gap-5 mt-10 max-w-3xl mx-auto">
+                <div className="aspect-[4/3] rounded-sm overflow-hidden relative group gothic-card p-0.5">
+                  <img src={pianoHandsImg} alt="Piano hands in concert" className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-700" loading="lazy" width={896} height={600} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+                </div>
+                <div className="aspect-[4/3] rounded-sm overflow-hidden relative group gothic-card p-0.5">
+                  <img src={concertHallImg} alt="Grand piano in ornate concert hall" className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-700" loading="lazy" width={896} height={600} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+                </div>
+                <div className="aspect-[4/3] rounded-sm overflow-hidden relative group gothic-card p-0.5">
+                  <img src={pianistSilhouetteImg} alt="Pianist silhouette on stage" className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-700" loading="lazy" width={896} height={600} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
