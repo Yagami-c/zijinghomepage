@@ -118,7 +118,11 @@ const translations = {
     "contact.title": "联系方式",
     "contact.phone": "电话",
     "contact.social": "社交媒体",
-    "video.title": "演出视频"
+    "video.title": "演出视频",
+    "invitation.greeting": "欢迎来到我的世界",
+    "invitation.subtitle": "专注于古典音乐",
+    "invitation.text": "音乐是灵魂的语言。每一个音符承载着情感，每一个乐句诉说着故事。我诚挚地邀请您一同感受古典音乐之美——这门超越时空、直抵心灵的永恒艺术。",
+    "invitation.signature": "— 曾子荆"
   }
 };
 
