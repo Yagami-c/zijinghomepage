@@ -42,7 +42,11 @@ const translations = {
     "contact.title": "Contact",
     "contact.phone": "Phone",
     "contact.social": "Social Media",
-    "video.title": "Performance Videos"
+    "video.title": "Performance Videos",
+    "invitation.greeting": "Welcome to My World",
+    "invitation.subtitle": "Devoted to Classical Music",
+    "invitation.text": "Music is the language of the soul. Every note carries emotion, every phrase tells a story. I invite you to share in the beauty of classical music — a timeless art that transcends boundaries and speaks to the heart.",
+    "invitation.signature": "— Zijing Zeng"
   },
   ru: {
     "nav.about": "О себе",
