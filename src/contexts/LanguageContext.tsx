@@ -42,7 +42,11 @@ const translations = {
     "contact.title": "Contact",
     "contact.phone": "Phone",
     "contact.social": "Social Media",
-    "video.title": "Performance Videos"
+    "video.title": "Performance Videos",
+    "invitation.greeting": "Welcome to My World",
+    "invitation.subtitle": "Devoted to Classical Music",
+    "invitation.text": "Music is the language of the soul. Every note carries emotion, every phrase tells a story. I invite you to share in the beauty of classical music — a timeless art that transcends boundaries and speaks to the heart.",
+    "invitation.signature": "— Zijing Zeng"
   },
   ru: {
     "nav.about": "О себе",
@@ -76,7 +80,11 @@ const translations = {
     "contact.title": "Контакты",
     "contact.phone": "Телефон",
     "contact.social": "Социальные сети",
-    "video.title": "Видео выступлений"
+    "video.title": "Видео выступлений",
+    "invitation.greeting": "Добро пожаловать в мой мир",
+    "invitation.subtitle": "Преданность классической музыке",
+    "invitation.text": "Музыка — это язык души. Каждая нота несёт в себе эмоцию, каждая фраза рассказывает историю. Я приглашаю вас разделить красоту классической музыки — вечного искусства, которое преодолевает границы и говорит с сердцем.",
+    "invitation.signature": "— Цзыцзин Цзэн"
   },
   zh: {
     "nav.about": "关于我",
@@ -110,7 +118,11 @@ const translations = {
     "contact.title": "联系方式",
     "contact.phone": "电话",
     "contact.social": "社交媒体",
-    "video.title": "演出视频"
+    "video.title": "演出视频",
+    "invitation.greeting": "欢迎来到我的世界",
+    "invitation.subtitle": "专注于古典音乐",
+    "invitation.text": "音乐是灵魂的语言。每一个音符承载着情感，每一个乐句诉说着故事。我诚挚地邀请您一同感受古典音乐之美——这门超越时空、直抵心灵的永恒艺术。",
+    "invitation.signature": "— 曾子荆"
   }
 };
 

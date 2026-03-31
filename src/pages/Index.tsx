@@ -3,7 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import pianoHandsImg from "@/assets/piano-hands.jpg";
 import concertHallImg from "@/assets/concert-hall.jpg";
 import pianistSilhouetteImg from "@/assets/pianist-silhouette.jpg";
-import { Calendar, Phone, Instagram, Youtube, MessageCircle } from "lucide-react";
+import { Calendar, Phone, Instagram, Youtube, MessageCircle, Music } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -144,6 +144,76 @@ export default function Index() {
         </div>
         {/* Bottom fade gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      </section>
+
+      {/* Invitation Section */}
+      <section className="py-20 md:py-32 relative overflow-hidden">
+        {/* Background ornamental patterns */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
+        <div className="absolute inset-0 gothic-pattern opacity-50" />
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            {/* Ornamental frame */}
+            <div className="relative border border-primary/20 rounded-sm p-1">
+              {/* Corner ornaments */}
+              <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-primary/40" />
+              <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-primary/40" />
+              <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-primary/40" />
+              <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-primary/40" />
+              
+              <div className="gothic-card rounded-sm p-8 md:p-16 text-center space-y-8">
+                {/* Top ornament */}
+                <div className="flex justify-center">
+                  <span className="text-primary/40 text-sm tracking-[1em] font-cinzel">✦ ✦ ✦</span>
+                </div>
+
+                {/* Musical note icon */}
+                <div className="flex justify-center">
+                  <div className="p-4 rounded-full border border-primary/20 bg-primary/5">
+                    <Music className="w-8 h-8 text-primary/60" />
+                  </div>
+                </div>
+
+                {/* Greeting */}
+                <h2 className="text-3xl md:text-5xl font-cinzel-decorative tracking-[0.12em] text-foreground gothic-glow">
+                  {t("invitation.greeting")}
+                </h2>
+
+                {/* Subtitle */}
+                <p className="text-lg md:text-xl font-cinzel tracking-[0.2em] text-primary/70 uppercase">
+                  {t("invitation.subtitle")}
+                </p>
+
+                {/* Decorative line */}
+                <div className="flex items-center justify-center gap-4 max-w-md mx-auto">
+                  <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
+                  <span className="text-primary/30 text-xs">◆</span>
+                  <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
+                </div>
+
+                {/* Invitation text */}
+                <p className="text-lg md:text-xl leading-relaxed text-foreground/75 font-cormorant italic max-w-2xl mx-auto">
+                  {t("invitation.text")}
+                </p>
+
+                {/* Signature */}
+                <div className="pt-4">
+                  <p className="text-xl md:text-2xl font-cinzel-decorative text-primary/80 tracking-[0.1em]">
+                    {t("invitation.signature")}
+                  </p>
+                </div>
+
+                {/* Bottom ornament */}
+                <div className="flex justify-center pt-2">
+                  <span className="text-primary/40 text-sm tracking-[1em] font-cinzel">✦ ✦ ✦</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Biography Section */}
