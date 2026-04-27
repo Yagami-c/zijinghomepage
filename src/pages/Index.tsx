@@ -107,6 +107,20 @@ export default function Index() {
           </CarouselContent>
         </Carousel>
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background flex items-center justify-center">
+          {/* Top-right personal quote */}
+          <div className="hidden md:block absolute top-24 right-8 lg:right-16 max-w-xs z-20 animate-quote-reveal">
+            <div className="relative gothic-card rounded-sm p-5 backdrop-blur-sm bg-background/40">
+              <span className="absolute -top-3 -left-2 text-primary/50 text-4xl font-cinzel-decorative leading-none">"</span>
+              <p className="text-sm md:text-base font-cormorant italic text-foreground/85 leading-relaxed pl-3">
+                {t("quote.text")}
+              </p>
+              <p className="text-right text-xs font-cinzel tracking-[0.2em] text-primary/70 mt-3">
+                {t("quote.author")}
+              </p>
+              <span className="absolute -bottom-3 -right-2 text-primary/50 text-4xl font-cinzel-decorative leading-none rotate-180">"</span>
+            </div>
+          </div>
+
           <div className="container mx-auto px-4 text-center">
             <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full px-4">
               {/* Ornamental top */}
@@ -124,19 +138,38 @@ export default function Index() {
                 <span className="text-primary/50 text-2xl tracking-[1em]">— ✦ —</span>
               </div>
 
-              {/* Aspirational piano images */}
-              <div className="grid grid-cols-3 gap-3 md:gap-5 mt-10 max-w-3xl mx-auto">
-                <div className="aspect-[4/3] rounded-sm overflow-hidden relative group gothic-card p-0.5">
-                  <img src={pianoHandsImg} alt="Piano hands in concert" className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-700" loading="lazy" width={896} height={600} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
-                </div>
-                <div className="aspect-[4/3] rounded-sm overflow-hidden relative group gothic-card p-0.5">
-                  <img src={concertHallImg} alt="Grand piano in ornate concert hall" className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-700" loading="lazy" width={896} height={600} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
-                </div>
-                <div className="aspect-[4/3] rounded-sm overflow-hidden relative group gothic-card p-0.5">
-                  <img src={pianistSilhouetteImg} alt="Pianist silhouette on stage" className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-700" loading="lazy" width={896} height={600} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+              {/* Aspirational piano images — staggered, animated, non-flat */}
+              <div className="mt-12 max-w-4xl mx-auto">
+                <div className="grid grid-cols-3 gap-4 md:gap-8 items-center">
+                  {/* Left — tilted down, smaller */}
+                  <div className="relative gothic-card overflow-hidden rounded-sm p-1 transform md:-rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0 transition-transform duration-700 shadow-2xl animate-gothic-float" style={{ animationDelay: '0s' }}>
+                    <div className="aspect-[3/4] overflow-hidden rounded-sm">
+                      <img src={pianoHandsImg} alt="Piano hands in concert" className="w-full h-full object-cover animate-kenburns-1" loading="lazy" width={896} height={1200} />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/20 pointer-events-none" />
+                    <div className="absolute bottom-3 left-0 right-0 text-center opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  {/* Center — tallest, prominent */}
+                  <div className="relative gothic-card overflow-hidden rounded-sm p-1 transform md:scale-110 md:-translate-y-4 hover:scale-[1.15] transition-transform duration-700 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.9)] animate-gothic-float" style={{ animationDelay: '1s' }}>
+                    <div className="aspect-[3/4] overflow-hidden rounded-sm">
+                      <img src={concertHallImg} alt="Grand piano in ornate concert hall" className="w-full h-full object-cover animate-kenburns-2" loading="lazy" width={896} height={1200} />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/10 pointer-events-none" />
+                    {/* Center gold corner ornaments */}
+                    <div className="absolute top-1 left-1 w-4 h-4 border-t border-l border-primary/60" />
+                    <div className="absolute top-1 right-1 w-4 h-4 border-t border-r border-primary/60" />
+                    <div className="absolute bottom-1 left-1 w-4 h-4 border-b border-l border-primary/60" />
+                    <div className="absolute bottom-1 right-1 w-4 h-4 border-b border-r border-primary/60" />
+                  </div>
+
+                  {/* Right — tilted up, smaller */}
+                  <div className="relative gothic-card overflow-hidden rounded-sm p-1 transform md:rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0 transition-transform duration-700 shadow-2xl animate-gothic-float" style={{ animationDelay: '2s' }}>
+                    <div className="aspect-[3/4] overflow-hidden rounded-sm">
+                      <img src={pianistSilhouetteImg} alt="Pianist silhouette on stage" className="w-full h-full object-cover animate-kenburns-3" loading="lazy" width={896} height={1200} />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/20 pointer-events-none" />
+                  </div>
                 </div>
               </div>
             </div>
