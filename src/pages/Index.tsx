@@ -107,6 +107,20 @@ export default function Index() {
           </CarouselContent>
         </Carousel>
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background flex items-center justify-center">
+          {/* Top-right personal quote */}
+          <div className="hidden md:block absolute top-24 right-8 lg:right-16 max-w-xs z-20 animate-quote-reveal">
+            <div className="relative gothic-card rounded-sm p-5 backdrop-blur-sm bg-background/40">
+              <span className="absolute -top-3 -left-2 text-primary/50 text-4xl font-cinzel-decorative leading-none">"</span>
+              <p className="text-sm md:text-base font-cormorant italic text-foreground/85 leading-relaxed pl-3">
+                {t("quote.text")}
+              </p>
+              <p className="text-right text-xs font-cinzel tracking-[0.2em] text-primary/70 mt-3">
+                {t("quote.author")}
+              </p>
+              <span className="absolute -bottom-3 -right-2 text-primary/50 text-4xl font-cinzel-decorative leading-none rotate-180">"</span>
+            </div>
+          </div>
+
           <div className="container mx-auto px-4 text-center">
             <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full px-4">
               {/* Ornamental top */}
@@ -124,19 +138,38 @@ export default function Index() {
                 <span className="text-primary/50 text-2xl tracking-[1em]">— ✦ —</span>
               </div>
 
-              {/* Aspirational piano images */}
-              <div className="grid grid-cols-3 gap-3 md:gap-5 mt-10 max-w-3xl mx-auto">
-                <div className="aspect-[4/3] rounded-sm overflow-hidden relative group gothic-card p-0.5">
-                  <img src={pianoHandsImg} alt="Piano hands in concert" className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-700" loading="lazy" width={896} height={600} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
-                </div>
-                <div className="aspect-[4/3] rounded-sm overflow-hidden relative group gothic-card p-0.5">
-                  <img src={concertHallImg} alt="Grand piano in ornate concert hall" className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-700" loading="lazy" width={896} height={600} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
-                </div>
-                <div className="aspect-[4/3] rounded-sm overflow-hidden relative group gothic-card p-0.5">
-                  <img src={pianistSilhouetteImg} alt="Pianist silhouette on stage" className="w-full h-full object-cover rounded-sm group-hover:scale-110 transition-transform duration-700" loading="lazy" width={896} height={600} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/50 to-transparent" />
+              {/* Aspirational piano images — staggered, animated, non-flat */}
+              <div className="mt-12 max-w-4xl mx-auto">
+                <div className="grid grid-cols-3 gap-4 md:gap-8 items-center">
+                  {/* Left — tilted down, smaller */}
+                  <div className="relative gothic-card overflow-hidden rounded-sm p-1 transform md:-rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0 transition-transform duration-700 shadow-2xl animate-gothic-float" style={{ animationDelay: '0s' }}>
+                    <div className="aspect-[3/4] overflow-hidden rounded-sm">
+                      <img src={pianoHandsImg} alt="Piano hands in concert" className="w-full h-full object-cover animate-kenburns-1" loading="lazy" width={896} height={1200} />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/20 pointer-events-none" />
+                    <div className="absolute bottom-3 left-0 right-0 text-center opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+
+                  {/* Center — tallest, prominent */}
+                  <div className="relative gothic-card overflow-hidden rounded-sm p-1 transform md:scale-110 md:-translate-y-4 hover:scale-[1.15] transition-transform duration-700 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.9)] animate-gothic-float" style={{ animationDelay: '1s' }}>
+                    <div className="aspect-[3/4] overflow-hidden rounded-sm">
+                      <img src={concertHallImg} alt="Grand piano in ornate concert hall" className="w-full h-full object-cover animate-kenburns-2" loading="lazy" width={896} height={1200} />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/10 pointer-events-none" />
+                    {/* Center gold corner ornaments */}
+                    <div className="absolute top-1 left-1 w-4 h-4 border-t border-l border-primary/60" />
+                    <div className="absolute top-1 right-1 w-4 h-4 border-t border-r border-primary/60" />
+                    <div className="absolute bottom-1 left-1 w-4 h-4 border-b border-l border-primary/60" />
+                    <div className="absolute bottom-1 right-1 w-4 h-4 border-b border-r border-primary/60" />
+                  </div>
+
+                  {/* Right — tilted up, smaller */}
+                  <div className="relative gothic-card overflow-hidden rounded-sm p-1 transform md:rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0 transition-transform duration-700 shadow-2xl animate-gothic-float" style={{ animationDelay: '2s' }}>
+                    <div className="aspect-[3/4] overflow-hidden rounded-sm">
+                      <img src={pianistSilhouetteImg} alt="Pianist silhouette on stage" className="w-full h-full object-cover animate-kenburns-3" loading="lazy" width={896} height={1200} />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/20 pointer-events-none" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -230,24 +263,83 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Schedule Section */}
-      <section id="schedule" className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 to-background" />
+      {/* Schedule Section — premium concert ticket style */}
+      <section id="schedule" className="py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 via-background to-background" />
+        <div className="absolute inset-0 gothic-pattern opacity-60" />
+        {/* Decorative background musical notes */}
+        <div className="absolute top-10 left-8 text-primary/5 text-[14rem] font-cinzel-decorative leading-none select-none pointer-events-none">♪</div>
+        <div className="absolute bottom-10 right-8 text-primary/5 text-[14rem] font-cinzel-decorative leading-none select-none pointer-events-none">♫</div>
+
         <div className="container mx-auto px-4 relative z-10">
           <SectionTitle>{t("schedule.title")}</SectionTitle>
-          <div className="max-w-3xl mx-auto space-y-6">
-            {performances.map((performance, index) => (
-              <div key={index} className="gothic-card rounded-sm p-6 flex items-start gap-5 group hover:border-primary/30 transition-all duration-500">
-                <div className="mt-1 p-2 rounded-sm bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300">
-                  <Calendar size={20} />
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            {performances.map((performance, index) => {
+              const dateStr = t(performance.date);
+              // Extract time (e.g. "17:00") and the rest as date label
+              const timeMatch = dateStr.match(/(\d{1,2}[:.]\d{2})/);
+              const time = timeMatch ? timeMatch[1].replace('.', ':') : '';
+              const dateLabel = timeMatch ? dateStr.replace(timeMatch[0], '').trim() : dateStr;
+              // Try to pull a numeric day for the big number
+              const dayMatch = dateLabel.match(/\d{1,2}/g);
+              const bigDay = dayMatch ? dayMatch[dayMatch.length - 1] : `${index + 1}`;
+
+              return (
+                <div
+                  key={index}
+                  className="schedule-card rounded-sm overflow-hidden group"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="grid grid-cols-[auto_1fr] md:grid-cols-[180px_1fr]">
+                    {/* Date block (ticket stub) */}
+                    <div className="schedule-date-block flex flex-col items-center justify-center py-6 px-4 md:px-6 min-w-[110px] md:min-w-0">
+                      <div className="text-[11px] font-cinzel tracking-[0.3em] text-primary/60 uppercase mb-1">
+                        {dateLabel.replace(bigDay, '').replace(/[年月日,]/g, ' ').trim().split(/\s+/).slice(-1)[0] || ''}
+                      </div>
+                      <div className="text-5xl md:text-6xl font-cinzel-decorative gold-shimmer-text leading-none">
+                        {bigDay}
+                      </div>
+                      <div className="mt-2 h-px w-8 bg-primary/40" />
+                      <div className="mt-2 text-[11px] font-cinzel tracking-[0.25em] text-foreground/60">
+                        {time}
+                      </div>
+                    </div>
+
+                    {/* Main content */}
+                    <div className="p-6 md:p-7 flex flex-col justify-center relative">
+                      {/* Top ornamental accent */}
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-primary/50 text-xs">◆</span>
+                        <div className="font-cinzel text-[11px] tracking-[0.3em] text-primary/70 uppercase">
+                          {t(performance.date)}
+                        </div>
+                      </div>
+
+                      <h3 className="text-xl md:text-2xl font-cinzel-decorative text-foreground tracking-wide leading-snug mb-3 group-hover:gothic-glow transition-all duration-500">
+                        {t(performance.program)}
+                      </h3>
+
+                      <div className="flex items-start gap-2 text-foreground/70">
+                        <Calendar size={14} className="text-primary/60 mt-1 flex-shrink-0" />
+                        <p className="font-cormorant italic text-base leading-relaxed">
+                          {t(performance.venue)}
+                        </p>
+                      </div>
+
+                      {/* Bottom ornament */}
+                      <div className="mt-4 flex items-center gap-3">
+                        <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
+                        <span className="text-primary/40 text-[10px] tracking-[0.4em] font-cinzel uppercase">Recital</span>
+                        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-1.5">
-                  <div className="font-cinzel text-sm tracking-[0.1em] text-primary">{t(performance.date)}</div>
-                  <div className="text-lg font-cormorant text-foreground">{t(performance.venue)}</div>
-                  <div className="text-muted-foreground font-cormorant italic">{t(performance.program)}</div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

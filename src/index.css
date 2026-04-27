@@ -183,3 +183,98 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(38 60% 50% / 0.5);
 }
+
+/* Ken Burns slow zoom for hero feature images */
+@keyframes kenburns-1 {
+  0%, 100% { transform: scale(1.05) translate(0, 0); }
+  50% { transform: scale(1.18) translate(-2%, -1%); }
+}
+@keyframes kenburns-2 {
+  0%, 100% { transform: scale(1.1) translate(0, 0); }
+  50% { transform: scale(1.22) translate(1.5%, -1.5%); }
+}
+@keyframes kenburns-3 {
+  0%, 100% { transform: scale(1.05) translate(0, 0); }
+  50% { transform: scale(1.18) translate(-1%, 1.5%); }
+}
+.animate-kenburns-1 { animation: kenburns-1 16s ease-in-out infinite; }
+.animate-kenburns-2 { animation: kenburns-2 18s ease-in-out infinite; }
+.animate-kenburns-3 { animation: kenburns-3 20s ease-in-out infinite; }
+
+/* Gentle float */
+@keyframes gothic-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-gothic-float { animation: gothic-float 6s ease-in-out infinite; }
+
+/* Quote fade-in slide */
+@keyframes quote-reveal {
+  0% { opacity: 0; transform: translateX(20px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+.animate-quote-reveal { animation: quote-reveal 1.6s ease-out 0.6s both; }
+
+/* Shimmer for premium accents */
+@keyframes gold-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.gold-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    hsl(38 60% 50%) 0%,
+    hsl(45 80% 70%) 50%,
+    hsl(38 60% 50%) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-shimmer 4s linear infinite;
+}
+
+/* Premium schedule card ornament */
+.schedule-card {
+  position: relative;
+  background:
+    linear-gradient(145deg, hsl(0 0% 9%) 0%, hsl(0 0% 5%) 100%);
+  border: 1px solid hsl(38 60% 50% / 0.2);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.schedule-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsl(38 60% 50% / 0.08) 0%, transparent 40%, transparent 60%, hsl(38 60% 50% / 0.05) 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.schedule-card:hover {
+  border-color: hsl(38 60% 50% / 0.5);
+  transform: translateY(-3px);
+  box-shadow:
+    0 20px 40px -20px hsla(0, 0%, 0%, 0.9),
+    0 0 0 1px hsl(38 60% 50% / 0.1),
+    inset 0 1px 0 0 hsl(38 60% 50% / 0.1);
+}
+.schedule-card:hover::before { opacity: 1; }
+
+.schedule-date-block {
+  background: linear-gradient(180deg, hsl(0 0% 11%) 0%, hsl(0 0% 6%) 100%);
+  border-right: 1px solid hsl(38 60% 50% / 0.2);
+  position: relative;
+}
+.schedule-date-block::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  width: 9px;
+  height: 9px;
+  background: hsl(0 0% 4%);
+  border: 1px solid hsl(38 60% 50% / 0.4);
+  transform: translateY(-50%) rotate(45deg);
+}
+
