@@ -263,24 +263,83 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Schedule Section */}
-      <section id="schedule" className="py-24 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 to-background" />
+      {/* Schedule Section — premium concert ticket style */}
+      <section id="schedule" className="py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 via-background to-background" />
+        <div className="absolute inset-0 gothic-pattern opacity-60" />
+        {/* Decorative background musical notes */}
+        <div className="absolute top-10 left-8 text-primary/5 text-[14rem] font-cinzel-decorative leading-none select-none pointer-events-none">♪</div>
+        <div className="absolute bottom-10 right-8 text-primary/5 text-[14rem] font-cinzel-decorative leading-none select-none pointer-events-none">♫</div>
+
         <div className="container mx-auto px-4 relative z-10">
           <SectionTitle>{t("schedule.title")}</SectionTitle>
-          <div className="max-w-3xl mx-auto space-y-6">
-            {performances.map((performance, index) => (
-              <div key={index} className="gothic-card rounded-sm p-6 flex items-start gap-5 group hover:border-primary/30 transition-all duration-500">
-                <div className="mt-1 p-2 rounded-sm bg-primary/10 text-primary group-hover:bg-primary/20 transition-colors duration-300">
-                  <Calendar size={20} />
+
+          <div className="max-w-4xl mx-auto space-y-6">
+            {performances.map((performance, index) => {
+              const dateStr = t(performance.date);
+              // Extract time (e.g. "17:00") and the rest as date label
+              const timeMatch = dateStr.match(/(\d{1,2}[:.]\d{2})/);
+              const time = timeMatch ? timeMatch[1].replace('.', ':') : '';
+              const dateLabel = timeMatch ? dateStr.replace(timeMatch[0], '').trim() : dateStr;
+              // Try to pull a numeric day for the big number
+              const dayMatch = dateLabel.match(/\d{1,2}/g);
+              const bigDay = dayMatch ? dayMatch[dayMatch.length - 1] : `${index + 1}`;
+
+              return (
+                <div
+                  key={index}
+                  className="schedule-card rounded-sm overflow-hidden group"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="grid grid-cols-[auto_1fr] md:grid-cols-[180px_1fr]">
+                    {/* Date block (ticket stub) */}
+                    <div className="schedule-date-block flex flex-col items-center justify-center py-6 px-4 md:px-6 min-w-[110px] md:min-w-0">
+                      <div className="text-[11px] font-cinzel tracking-[0.3em] text-primary/60 uppercase mb-1">
+                        {dateLabel.replace(bigDay, '').replace(/[年月日,]/g, ' ').trim().split(/\s+/).slice(-1)[0] || ''}
+                      </div>
+                      <div className="text-5xl md:text-6xl font-cinzel-decorative gold-shimmer-text leading-none">
+                        {bigDay}
+                      </div>
+                      <div className="mt-2 h-px w-8 bg-primary/40" />
+                      <div className="mt-2 text-[11px] font-cinzel tracking-[0.25em] text-foreground/60">
+                        {time}
+                      </div>
+                    </div>
+
+                    {/* Main content */}
+                    <div className="p-6 md:p-7 flex flex-col justify-center relative">
+                      {/* Top ornamental accent */}
+                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="text-primary/50 text-xs">◆</span>
+                        <div className="font-cinzel text-[11px] tracking-[0.3em] text-primary/70 uppercase">
+                          {t(performance.date)}
+                        </div>
+                      </div>
+
+                      <h3 className="text-xl md:text-2xl font-cinzel-decorative text-foreground tracking-wide leading-snug mb-3 group-hover:gothic-glow transition-all duration-500">
+                        {t(performance.program)}
+                      </h3>
+
+                      <div className="flex items-start gap-2 text-foreground/70">
+                        <Calendar size={14} className="text-primary/60 mt-1 flex-shrink-0" />
+                        <p className="font-cormorant italic text-base leading-relaxed">
+                          {t(performance.venue)}
+                        </p>
+                      </div>
+
+                      {/* Bottom ornament */}
+                      <div className="mt-4 flex items-center gap-3">
+                        <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
+                        <span className="text-primary/40 text-[10px] tracking-[0.4em] font-cinzel uppercase">Recital</span>
+                        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-1.5">
-                  <div className="font-cinzel text-sm tracking-[0.1em] text-primary">{t(performance.date)}</div>
-                  <div className="text-lg font-cormorant text-foreground">{t(performance.venue)}</div>
-                  <div className="text-muted-foreground font-cormorant italic">{t(performance.program)}</div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
