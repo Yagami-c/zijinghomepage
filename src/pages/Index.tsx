@@ -1,9 +1,10 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Navbar } from "@/components/Navbar";
+import { useReveal } from "@/hooks/use-reveal";
 import pianoHandsImg from "@/assets/piano-hands.jpg";
 import concertHallImg from "@/assets/concert-hall.jpg";
 import pianistSilhouetteImg from "@/assets/pianist-silhouette.jpg";
-import { Calendar, Phone, Instagram, Youtube, MessageCircle, Music } from "lucide-react";
+import { Calendar, Phone, Instagram, Youtube, MessageCircle, Music, MapPin, Clock } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -13,21 +14,9 @@ import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
 const performances = [
-  {
-    date: "performance6.date",
-    venue: "performance6.venue",
-    program: "performance6.title",
-  },
-  {
-    date: "performance7.date",
-    venue: "performance7.venue",
-    program: "performance7.title",
-  },
-  {
-    date: "performance8.date",
-    venue: "performance8.venue",
-    program: "performance8.title",
-  },
+  { date: "performance6.date", venue: "performance6.venue", program: "performance6.title" },
+  { date: "performance7.date", venue: "performance7.venue", program: "performance7.title" },
+  { date: "performance8.date", venue: "performance8.venue", program: "performance8.title" },
 ];
 
 const GothicDivider = () => (
@@ -38,24 +27,45 @@ const GothicDivider = () => (
   </div>
 );
 
-const SectionTitle = ({ children }: { children: React.ReactNode }) => (
-  <div className="text-center mb-12">
-    <h2 className="text-4xl md:text-5xl font-cinzel tracking-[0.1em] text-foreground gothic-glow mb-4">{children}</h2>
-    <GothicDivider />
-  </div>
-);
+const SectionTitle = ({ children, eyebrow }: { children: React.ReactNode; eyebrow?: string }) => {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  return (
+    <div ref={ref} className={`text-center mb-14 reveal ${visible ? "is-visible" : ""}`}>
+      {eyebrow && (
+        <div className="section-ornament mb-4">
+          <span>✦</span>
+          <span className="text-[0.65rem]">{eyebrow}</span>
+          <span>✦</span>
+        </div>
+      )}
+      <h2 className="text-4xl md:text-5xl font-cinzel tracking-[0.12em] text-foreground gothic-glow mb-4">{children}</h2>
+      <GothicDivider />
+    </div>
+  );
+};
+
+const Reveal = ({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) => {
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default function Index() {
   const { t } = useLanguage();
-  const autoplayRef = useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: false })
-  );
+  const autoplayRef = useRef(Autoplay({ delay: 5000, stopOnInteraction: false }));
 
   const heroImages = [
     "/lovable-uploads/f5249637-7b76-4f9f-843a-709c6a7b7555.png",
     "/lovable-uploads/832dfd71-1ed4-4f9e-a5e5-e02a6028c015.png",
     "/lovable-uploads/a716b21b-801b-44f1-8665-bb5dba860461.png",
-    "/lovable-uploads/9910e064-049f-46ab-9904-80cebf45ad4e.png"
+    "/lovable-uploads/9910e064-049f-46ab-9904-80cebf45ad4e.png",
   ];
 
   const videos = [
@@ -83,22 +93,22 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section className="min-h-screen relative overflow-hidden">
-        <Carousel 
-          className="w-full h-screen" 
+      <section className="min-h-screen relative overflow-hidden vignette grain">
+        <Carousel
+          className="w-full h-screen"
           opts={{ loop: true, duration: 2000, watchDrag: true, dragFree: false }}
           plugins={[autoplayRef.current]}
         >
           <CarouselContent className="h-full">
             {heroImages.map((image, index) => (
               <CarouselItem key={index} className="h-full">
-                <div 
-                  className="w-full h-full bg-cover bg-center transition-all duration-2000 ease-in-out transform scale-105 hover:scale-110"
-                  style={{ 
+                <div
+                  className="w-full h-full bg-cover bg-center transition-all duration-2000 ease-in-out transform scale-105"
+                  style={{
                     backgroundImage: `url(${image})`,
-                    position: 'absolute',
+                    position: "absolute",
                     top: 0, left: 0, right: 0, bottom: 0,
                   }}
                 />
@@ -106,10 +116,12 @@ export default function Index() {
             ))}
           </CarouselContent>
         </Carousel>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background flex items-center justify-center">
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/35 to-background flex items-center justify-center">
           {/* Top-right personal quote */}
           <div className="hidden md:block absolute top-24 right-8 lg:right-16 max-w-xs z-20 animate-quote-reveal">
-            <div className="relative gothic-card rounded-sm p-5 backdrop-blur-sm bg-background/40">
+            <div className="relative ornate-frame gothic-card rounded-sm p-5 backdrop-blur-md bg-background/50">
+              <span className="corner-tr" />
+              <span className="corner-bl" />
               <span className="absolute -top-3 -left-2 text-primary/50 text-4xl font-cinzel-decorative leading-none">"</span>
               <p className="text-sm md:text-base font-cormorant italic text-foreground/85 leading-relaxed pl-3">
                 {t("quote.text")}
@@ -123,7 +135,6 @@ export default function Index() {
 
           <div className="container mx-auto px-4 text-center">
             <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full px-4">
-              {/* Ornamental top */}
               <div className="flex justify-center mb-6">
                 <span className="text-primary/50 text-2xl tracking-[1em]">— ✦ —</span>
               </div>
@@ -133,38 +144,31 @@ export default function Index() {
               <p className="text-xl md:text-2xl font-cormorant italic tracking-[0.3em] text-primary/80 drop-shadow-lg">
                 {t("hero.title")}
               </p>
-              {/* Ornamental bottom */}
               <div className="flex justify-center mt-6">
                 <span className="text-primary/50 text-2xl tracking-[1em]">— ✦ —</span>
               </div>
 
-              {/* Aspirational piano images — staggered, animated, non-flat */}
+              {/* Aspirational piano images — staggered, animated */}
               <div className="mt-12 max-w-4xl mx-auto">
                 <div className="grid grid-cols-3 gap-4 md:gap-8 items-center">
-                  {/* Left — tilted down, smaller */}
-                  <div className="relative gothic-card overflow-hidden rounded-sm p-1 transform md:-rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0 transition-transform duration-700 shadow-2xl animate-gothic-float" style={{ animationDelay: '0s' }}>
+                  <div className="relative ornate-frame gothic-card overflow-hidden rounded-sm p-1 transform md:-rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0 transition-transform duration-700 shadow-2xl animate-gothic-float" style={{ animationDelay: "0s" }}>
+                    <span className="corner-tr" /><span className="corner-bl" />
                     <div className="aspect-[3/4] overflow-hidden rounded-sm">
                       <img src={pianoHandsImg} alt="Piano hands in concert" className="w-full h-full object-cover animate-kenburns-1" loading="lazy" width={896} height={1200} />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/20 pointer-events-none" />
-                    <div className="absolute bottom-3 left-0 right-0 text-center opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
 
-                  {/* Center — tallest, prominent */}
-                  <div className="relative gothic-card overflow-hidden rounded-sm p-1 transform md:scale-110 md:-translate-y-4 hover:scale-[1.15] transition-transform duration-700 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.9)] animate-gothic-float" style={{ animationDelay: '1s' }}>
+                  <div className="relative ornate-frame gothic-card overflow-hidden rounded-sm p-1 transform md:scale-110 md:-translate-y-4 hover:scale-[1.15] transition-transform duration-700 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.9)] animate-gothic-float" style={{ animationDelay: "1s" }}>
+                    <span className="corner-tr" /><span className="corner-bl" />
                     <div className="aspect-[3/4] overflow-hidden rounded-sm">
                       <img src={concertHallImg} alt="Grand piano in ornate concert hall" className="w-full h-full object-cover animate-kenburns-2" loading="lazy" width={896} height={1200} />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-background/10 pointer-events-none" />
-                    {/* Center gold corner ornaments */}
-                    <div className="absolute top-1 left-1 w-4 h-4 border-t border-l border-primary/60" />
-                    <div className="absolute top-1 right-1 w-4 h-4 border-t border-r border-primary/60" />
-                    <div className="absolute bottom-1 left-1 w-4 h-4 border-b border-l border-primary/60" />
-                    <div className="absolute bottom-1 right-1 w-4 h-4 border-b border-r border-primary/60" />
                   </div>
 
-                  {/* Right — tilted up, smaller */}
-                  <div className="relative gothic-card overflow-hidden rounded-sm p-1 transform md:rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0 transition-transform duration-700 shadow-2xl animate-gothic-float" style={{ animationDelay: '2s' }}>
+                  <div className="relative ornate-frame gothic-card overflow-hidden rounded-sm p-1 transform md:rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0 transition-transform duration-700 shadow-2xl animate-gothic-float" style={{ animationDelay: "2s" }}>
+                    <span className="corner-tr" /><span className="corner-bl" />
                     <div className="aspect-[3/4] overflow-hidden rounded-sm">
                       <img src={pianistSilhouetteImg} alt="Pianist silhouette on stage" className="w-full h-full object-cover animate-kenburns-3" loading="lazy" width={896} height={1200} />
                     </div>
@@ -175,91 +179,76 @@ export default function Index() {
             </div>
           </div>
         </div>
-        {/* Bottom fade gradient */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* Invitation Section */}
       <section className="py-20 md:py-32 relative overflow-hidden">
-        {/* Background ornamental patterns */}
         <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
         <div className="absolute inset-0 gothic-pattern opacity-50" />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-        
+
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto">
-            {/* Ornamental frame */}
-            <div className="relative border border-primary/20 rounded-sm p-1">
-              {/* Corner ornaments */}
-              <div className="absolute -top-3 -left-3 w-6 h-6 border-t-2 border-l-2 border-primary/40" />
-              <div className="absolute -top-3 -right-3 w-6 h-6 border-t-2 border-r-2 border-primary/40" />
-              <div className="absolute -bottom-3 -left-3 w-6 h-6 border-b-2 border-l-2 border-primary/40" />
-              <div className="absolute -bottom-3 -right-3 w-6 h-6 border-b-2 border-r-2 border-primary/40" />
-              
-              <div className="gothic-card rounded-sm p-8 md:p-16 text-center space-y-8">
-                {/* Top ornament */}
-                <div className="flex justify-center">
-                  <span className="text-primary/40 text-sm tracking-[1em] font-cinzel">✦ ✦ ✦</span>
-                </div>
-
-                {/* Musical note icon */}
-                <div className="flex justify-center">
-                  <div className="p-4 rounded-full border border-primary/20 bg-primary/5">
-                    <Music className="w-8 h-8 text-primary/60" />
+          <Reveal>
+            <div className="max-w-4xl mx-auto">
+              <div className="ornate-frame rounded-sm p-1">
+                <span className="corner-tr" /><span className="corner-bl" />
+                <div className="gothic-card rounded-sm p-8 md:p-16 text-center space-y-8">
+                  <div className="section-ornament">
+                    <span>✦</span><span>✦</span><span>✦</span>
                   </div>
-                </div>
-
-                {/* Greeting */}
-                <h2 className="text-3xl md:text-5xl font-cinzel-decorative tracking-[0.12em] text-foreground gothic-glow">
-                  {t("invitation.greeting")}
-                </h2>
-
-                {/* Subtitle */}
-                <p className="text-lg md:text-xl font-cinzel tracking-[0.2em] text-primary/70 uppercase">
-                  {t("invitation.subtitle")}
-                </p>
-
-                {/* Decorative line */}
-                <div className="flex items-center justify-center gap-4 max-w-md mx-auto">
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
-                  <span className="text-primary/30 text-xs">◆</span>
-                  <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
-                </div>
-
-                {/* Invitation text */}
-                <p className="text-lg md:text-xl leading-relaxed text-foreground/75 font-cormorant italic max-w-2xl mx-auto">
-                  {t("invitation.text")}
-                </p>
-
-                {/* Signature */}
-                <div className="pt-4">
-                  <p className="text-xl md:text-2xl font-cinzel-decorative text-primary/80 tracking-[0.1em]">
-                    {t("invitation.signature")}
+                  <div className="flex justify-center">
+                    <div className="p-4 rounded-full border border-primary/30 bg-primary/5 animate-gothic-float">
+                      <Music className="w-8 h-8 text-primary/70" />
+                    </div>
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-cinzel-decorative tracking-[0.12em] text-foreground gothic-glow">
+                    {t("invitation.greeting")}
+                  </h2>
+                  <p className="text-lg md:text-xl font-cinzel tracking-[0.2em] text-primary/70 uppercase">
+                    {t("invitation.subtitle")}
                   </p>
-                </div>
-
-                {/* Bottom ornament */}
-                <div className="flex justify-center pt-2">
-                  <span className="text-primary/40 text-sm tracking-[1em] font-cinzel">✦ ✦ ✦</span>
+                  <div className="flex items-center justify-center gap-4 max-w-md mx-auto">
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
+                    <span className="text-primary/30 text-xs">◆</span>
+                    <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
+                  </div>
+                  <p className="text-lg md:text-xl leading-relaxed text-foreground/75 font-cormorant italic max-w-2xl mx-auto">
+                    {t("invitation.text")}
+                  </p>
+                  <div className="pt-4">
+                    <p className="text-xl md:text-2xl font-cinzel-decorative gold-shimmer-text tracking-[0.1em]">
+                      {t("invitation.signature")}
+                    </p>
+                  </div>
+                  <div className="section-ornament">
+                    <span>✦</span><span>✦</span><span>✦</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Biography Section */}
-      <section id="about" className="py-24 gothic-pattern">
-        <div className="container mx-auto px-4">
-          <SectionTitle>{t("about.title")}</SectionTitle>
-          <div className="max-w-3xl mx-auto">
-            <div className="gothic-card rounded-sm p-8 md:p-12">
-              <p className="text-lg md:text-xl leading-relaxed whitespace-pre-wrap text-foreground/85 font-cormorant">
-                {t("about.text")}
-              </p>
+      <section id="about" className="py-24 gothic-pattern relative overflow-hidden">
+        <div className="absolute top-12 right-12 text-primary/[0.04] text-[20rem] font-cinzel-decorative leading-none select-none pointer-events-none hidden lg:block">Z</div>
+        <div className="container mx-auto px-4 relative z-10">
+          <SectionTitle eyebrow="VITA">{t("about.title")}</SectionTitle>
+          <Reveal>
+            <div className="max-w-3xl mx-auto">
+              <div className="ornate-frame rounded-sm p-1">
+                <span className="corner-tr" /><span className="corner-bl" />
+                <div className="gothic-card rounded-sm p-8 md:p-12">
+                  <p className="text-lg md:text-xl leading-[1.9] whitespace-pre-wrap text-foreground/85 font-cormorant drop-cap">
+                    {t("about.text")}
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -267,119 +256,125 @@ export default function Index() {
       <section id="schedule" className="py-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 via-background to-background" />
         <div className="absolute inset-0 gothic-pattern opacity-60" />
-        {/* Decorative background musical notes */}
         <div className="absolute top-10 left-8 text-primary/5 text-[14rem] font-cinzel-decorative leading-none select-none pointer-events-none">♪</div>
         <div className="absolute bottom-10 right-8 text-primary/5 text-[14rem] font-cinzel-decorative leading-none select-none pointer-events-none">♫</div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <SectionTitle>{t("schedule.title")}</SectionTitle>
+          <SectionTitle eyebrow="CONCERT PROGRAMME">{t("schedule.title")}</SectionTitle>
 
           <div className="max-w-4xl mx-auto space-y-6">
             {performances.map((performance, index) => {
               const dateStr = t(performance.date);
-              // Extract time (e.g. "17:00") and the rest as date label
               const timeMatch = dateStr.match(/(\d{1,2}[:.]\d{2})/);
-              const time = timeMatch ? timeMatch[1].replace('.', ':') : '';
-              const dateLabel = timeMatch ? dateStr.replace(timeMatch[0], '').trim() : dateStr;
-              // Try to pull a numeric day for the big number
+              const time = timeMatch ? timeMatch[1].replace(".", ":") : "";
+              const dateLabel = timeMatch ? dateStr.replace(timeMatch[0], "").trim() : dateStr;
               const dayMatch = dateLabel.match(/\d{1,2}/g);
               const bigDay = dayMatch ? dayMatch[dayMatch.length - 1] : `${index + 1}`;
+              const monthLabel = dateLabel.replace(bigDay, "").replace(/[年月日,]/g, " ").trim().split(/\s+/).slice(-1)[0] || "";
 
               return (
-                <div
-                  key={index}
-                  className="schedule-card rounded-sm overflow-hidden group"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="grid grid-cols-[auto_1fr] md:grid-cols-[180px_1fr]">
-                    {/* Date block (ticket stub) */}
-                    <div className="schedule-date-block flex flex-col items-center justify-center py-6 px-4 md:px-6 min-w-[110px] md:min-w-0">
-                      <div className="text-[11px] font-cinzel tracking-[0.3em] text-primary/60 uppercase mb-1">
-                        {dateLabel.replace(bigDay, '').replace(/[年月日,]/g, ' ').trim().split(/\s+/).slice(-1)[0] || ''}
-                      </div>
-                      <div className="text-5xl md:text-6xl font-cinzel-decorative gold-shimmer-text leading-none">
-                        {bigDay}
-                      </div>
-                      <div className="mt-2 h-px w-8 bg-primary/40" />
-                      <div className="mt-2 text-[11px] font-cinzel tracking-[0.25em] text-foreground/60">
-                        {time}
-                      </div>
-                    </div>
-
-                    {/* Main content */}
-                    <div className="p-6 md:p-7 flex flex-col justify-center relative">
-                      {/* Top ornamental accent */}
-                      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-primary/50 text-xs">◆</span>
-                        <div className="font-cinzel text-[11px] tracking-[0.3em] text-primary/70 uppercase">
-                          {t(performance.date)}
+                <Reveal key={index} delay={index * 120}>
+                  <div className="schedule-card ornate-frame rounded-sm overflow-hidden group">
+                    <span className="corner-tr" /><span className="corner-bl" />
+                    <div className="grid grid-cols-[auto_1fr] md:grid-cols-[180px_1fr]">
+                      <div className="schedule-date-block flex flex-col items-center justify-center py-6 px-4 md:px-6 min-w-[110px] md:min-w-0">
+                        <div className="text-[11px] font-cinzel tracking-[0.3em] text-primary/60 uppercase mb-1">
+                          {monthLabel}
+                        </div>
+                        <div className="text-5xl md:text-6xl font-cinzel-decorative gold-shimmer-text leading-none">
+                          {bigDay}
+                        </div>
+                        <div className="mt-2 h-px w-8 bg-primary/40" />
+                        <div className="mt-2 flex items-center gap-1 text-[11px] font-cinzel tracking-[0.25em] text-foreground/60">
+                          <Clock size={10} className="text-primary/50" />
+                          {time}
                         </div>
                       </div>
 
-                      <h3 className="text-xl md:text-2xl font-cinzel-decorative text-foreground tracking-wide leading-snug mb-3 group-hover:gothic-glow transition-all duration-500">
-                        {t(performance.program)}
-                      </h3>
+                      <div className="p-6 md:p-7 flex flex-col justify-center relative">
+                        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                      <div className="flex items-start gap-2 text-foreground/70">
-                        <Calendar size={14} className="text-primary/60 mt-1 flex-shrink-0" />
-                        <p className="font-cormorant italic text-base leading-relaxed">
-                          {t(performance.venue)}
-                        </p>
-                      </div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="text-primary/50 text-xs">◆</span>
+                          <div className="font-cinzel text-[11px] tracking-[0.3em] text-primary/70 uppercase">
+                            {t(performance.date)}
+                          </div>
+                        </div>
 
-                      {/* Bottom ornament */}
-                      <div className="mt-4 flex items-center gap-3">
-                        <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
-                        <span className="text-primary/40 text-[10px] tracking-[0.4em] font-cinzel uppercase">Recital</span>
-                        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
+                        <h3 className="text-xl md:text-2xl font-cinzel-decorative text-foreground tracking-wide leading-snug mb-3 group-hover:gothic-glow transition-all duration-500">
+                          {t(performance.program)}
+                        </h3>
+
+                        <div className="flex items-start gap-2 text-foreground/70">
+                          <MapPin size={14} className="text-primary/60 mt-1 flex-shrink-0" />
+                          <p className="font-cormorant italic text-base leading-relaxed">
+                            {t(performance.venue)}
+                          </p>
+                        </div>
+
+                        <div className="mt-4 flex items-center gap-3">
+                          <div className="h-px flex-1 bg-gradient-to-r from-primary/30 to-transparent" />
+                          <span className="text-primary/40 text-[10px] tracking-[0.4em] font-cinzel uppercase">Recital</span>
+                          <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/30" />
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </Reveal>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Gallery Section — masonry */}
       <section id="gallery" className="py-24 gothic-pattern">
         <div className="container mx-auto px-4">
-          <SectionTitle>{t("gallery.title")}</SectionTitle>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <SectionTitle eyebrow="MOMENTS ON STAGE">{t("gallery.title")}</SectionTitle>
+          <div className="max-w-6xl mx-auto masonry">
             {galleryImages.map((image, index) => (
-              <div key={index} className="aspect-[3/4] rounded-sm overflow-hidden relative group cursor-pointer">
-                <img 
-                  src={image}
-                  alt={`Performance ${index + 1}`}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="absolute inset-0 border border-primary/0 group-hover:border-primary/20 transition-colors duration-500 rounded-sm" />
-              </div>
+              <Reveal key={index} delay={(index % 6) * 80}>
+                <div className="relative group cursor-pointer ornate-frame rounded-sm overflow-hidden">
+                  <span className="corner-tr" /><span className="corner-bl" />
+                  <img
+                    src={image}
+                    alt={`Performance ${index + 1}`}
+                    className="w-full h-auto object-cover group-hover:scale-[1.06] transition-transform duration-[1200ms] ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-700">
+                    <span className="text-primary/70 text-xs">◆</span>
+                    <span className="font-cinzel text-[10px] tracking-[0.3em] text-foreground/80 uppercase">
+                      Plate {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       {/* Video Section */}
-      <section className="py-24 relative">
+      <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 to-background" />
         <div className="container mx-auto px-4 relative z-10">
-          <SectionTitle>{t("video.title")}</SectionTitle>
+          <SectionTitle eyebrow="LIVE RECORDINGS">{t("video.title")}</SectionTitle>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {videos.map((video) => (
-              <div key={video.id} className="aspect-video gothic-card rounded-sm overflow-hidden p-1">
-                <iframe
-                  className="w-full h-full rounded-sm"
-                  src={`https://www.youtube.com/embed/${video.id}`}
-                  title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+            {videos.map((video, i) => (
+              <Reveal key={video.id} delay={i * 100}>
+                <div className="aspect-video ornate-frame gothic-card rounded-sm overflow-hidden p-1 group">
+                  <span className="corner-tr" /><span className="corner-bl" />
+                  <iframe
+                    className="w-full h-full rounded-sm"
+                    src={`https://www.youtube.com/embed/${video.id}`}
+                    title={video.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -388,59 +383,70 @@ export default function Index() {
       {/* Contact Section */}
       <section id="contact" className="py-24 gothic-pattern">
         <div className="container mx-auto px-4">
-          <SectionTitle>{t("contact.title")}</SectionTitle>
-          <div className="max-w-xl mx-auto">
-            <div className="gothic-card rounded-sm p-8 md:p-10 space-y-8">
-              <div className="flex items-center gap-5">
-                <div className="p-2 rounded-sm bg-primary/10 text-primary">
-                  <Phone size={20} />
-                </div>
-                <div>
-                  <div className="font-cinzel text-sm tracking-[0.1em] text-primary mb-1">{t("contact.phone")}</div>
-                  <a href="tel:+79267170585" className="text-foreground hover:text-primary transition-colors font-cormorant text-lg">
-                    +7 (926)-717-05-85
-                  </a>
-                  <div className="text-sm text-muted-foreground mt-1 font-cormorant italic">WhatsApp, Telegram</div>
-                </div>
-              </div>
+          <SectionTitle eyebrow="GET IN TOUCH">{t("contact.title")}</SectionTitle>
+          <Reveal>
+            <div className="max-w-xl mx-auto">
+              <div className="ornate-frame rounded-sm p-1">
+                <span className="corner-tr" /><span className="corner-bl" />
+                <div className="gothic-card rounded-sm p-8 md:p-10 space-y-8">
+                  <div className="flex items-center gap-5">
+                    <div className="p-3 rounded-sm border border-primary/30 bg-primary/10 text-primary">
+                      <Phone size={20} />
+                    </div>
+                    <div>
+                      <div className="font-cinzel text-xs tracking-[0.25em] text-primary/80 mb-1 uppercase">{t("contact.phone")}</div>
+                      <a href="tel:+79267170585" className="story-link text-foreground hover:text-primary transition-colors font-cormorant text-lg">
+                        +7 (926)-717-05-85
+                      </a>
+                      <div className="text-sm text-muted-foreground mt-1 font-cormorant italic">WhatsApp · Telegram</div>
+                    </div>
+                  </div>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+                  <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-              <div className="flex items-center gap-5">
-                <div className="p-2 rounded-sm bg-primary/10 text-primary">
-                  <MessageCircle size={20} />
-                </div>
-                <div>
-                  <div className="font-cinzel text-sm tracking-[0.1em] text-primary mb-1">WeChat</div>
-                  <span className="text-foreground font-cormorant text-lg">zzjdoremi</span>
-                </div>
-              </div>
+                  <div className="flex items-center gap-5">
+                    <div className="p-3 rounded-sm border border-primary/30 bg-primary/10 text-primary">
+                      <MessageCircle size={20} />
+                    </div>
+                    <div>
+                      <div className="font-cinzel text-xs tracking-[0.25em] text-primary/80 mb-1 uppercase">WeChat</div>
+                      <span className="text-foreground font-cormorant text-lg">zzjdoremi</span>
+                    </div>
+                  </div>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+                  <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-              <div>
-                <div className="font-cinzel text-sm tracking-[0.1em] text-primary mb-4">{t("contact.social")}</div>
-                <div className="flex gap-4">
-                  <a href="https://www.instagram.com/zijing_zeng" target="_blank" rel="noopener noreferrer" 
-                     className="p-3 rounded-sm bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
-                    <Instagram size={20} />
-                  </a>
-                  <a href="https://youtube.com/@zijingzeng997" target="_blank" rel="noopener noreferrer" 
-                     className="p-3 rounded-sm bg-primary/10 text-primary hover:bg-primary/20 transition-colors duration-300">
-                    <Youtube size={20} />
-                  </a>
+                  <div>
+                    <div className="font-cinzel text-xs tracking-[0.25em] text-primary/80 mb-4 uppercase">{t("contact.social")}</div>
+                    <div className="flex gap-4">
+                      <a href="https://www.instagram.com/zijing_zeng" target="_blank" rel="noopener noreferrer"
+                         className="p-3 rounded-sm border border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500">
+                        <Instagram size={20} />
+                      </a>
+                      <a href="https://youtube.com/@zijingzeng997" target="_blank" rel="noopener noreferrer"
+                         className="p-3 rounded-sm border border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500">
+                        <Youtube size={20} />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-border">
+      <footer className="py-10 border-t border-border relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-4 bg-background text-primary/50 text-xs tracking-[0.5em]">
+          ✦ ✦ ✦
+        </div>
         <div className="container mx-auto px-4 text-center">
+          <div className="font-cinzel-decorative text-primary/60 text-lg tracking-[0.3em] mb-2">
+            {t("hero.name")}
+          </div>
           <span className="text-muted-foreground font-cormorant text-sm tracking-[0.2em]">
-            © {new Date().getFullYear()} Zijing Zeng · Classical Pianist
+            © {new Date().getFullYear()} · Classical Pianist
           </span>
         </div>
       </footer>
