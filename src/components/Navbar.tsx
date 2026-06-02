@@ -1,7 +1,13 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { OPEN_CONTACT_EVENT } from "./ContactSidebar";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+
+const openContact = (e: React.MouseEvent) => {
+  e.preventDefault();
+  window.dispatchEvent(new CustomEvent(OPEN_CONTACT_EVENT));
+};
 
 export function Navbar() {
   const { t } = useLanguage();
