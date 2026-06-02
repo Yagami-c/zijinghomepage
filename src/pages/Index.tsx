@@ -1,10 +1,11 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Navbar } from "@/components/Navbar";
+import { ContactSidebar } from "@/components/ContactSidebar";
 import { useReveal } from "@/hooks/use-reveal";
 import pianoHandsImg from "@/assets/piano-hands.jpg";
 import concertHallImg from "@/assets/concert-hall.jpg";
 import pianistSilhouetteImg from "@/assets/pianist-silhouette.jpg";
-import { Calendar, Phone, Instagram, Youtube, MessageCircle, Music, MapPin, Clock } from "lucide-react";
+import { Music, MapPin, Clock } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
