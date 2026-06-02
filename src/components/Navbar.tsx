@@ -44,7 +44,7 @@ export function Navbar() {
             <a href="#about" onClick={() => setMobileOpen(false)} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.about")}</a>
             <a href="#schedule" onClick={() => setMobileOpen(false)} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.schedule")}</a>
             <a href="#gallery" onClick={() => setMobileOpen(false)} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.gallery")}</a>
-            <a href="#contact" onClick={() => setMobileOpen(false)} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.contact")}</a>
+            <a href="#contact" onClick={(e) => { openContact(e); setMobileOpen(false); }} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.contact")}</a>
             <LanguageSwitcher />
           </div>
         )}
