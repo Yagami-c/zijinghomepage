@@ -1,7 +1,13 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { OPEN_CONTACT_EVENT } from "./ContactSidebar";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+
+const openContact = (e: React.MouseEvent) => {
+  e.preventDefault();
+  window.dispatchEvent(new CustomEvent(OPEN_CONTACT_EVENT));
+};
 
 export function Navbar() {
   const { t } = useLanguage();
@@ -21,7 +27,7 @@ export function Navbar() {
             <span className="text-primary/30">◆</span>
             <a href="#gallery" className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300">{t("nav.gallery")}</a>
             <span className="text-primary/30">◆</span>
-            <a href="#contact" className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300">{t("nav.contact")}</a>
+            <a href="#contact" onClick={openContact} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300">{t("nav.contact")}</a>
             <div className="pl-4 border-l border-border">
               <LanguageSwitcher />
             </div>
@@ -38,7 +44,7 @@ export function Navbar() {
             <a href="#about" onClick={() => setMobileOpen(false)} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.about")}</a>
             <a href="#schedule" onClick={() => setMobileOpen(false)} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.schedule")}</a>
             <a href="#gallery" onClick={() => setMobileOpen(false)} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.gallery")}</a>
-            <a href="#contact" onClick={() => setMobileOpen(false)} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.contact")}</a>
+            <a href="#contact" onClick={(e) => { openContact(e); setMobileOpen(false); }} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors">{t("nav.contact")}</a>
             <LanguageSwitcher />
           </div>
         )}

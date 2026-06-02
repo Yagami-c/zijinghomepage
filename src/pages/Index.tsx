@@ -1,10 +1,11 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Navbar } from "@/components/Navbar";
+import { ContactSidebar } from "@/components/ContactSidebar";
 import { useReveal } from "@/hooks/use-reveal";
 import pianoHandsImg from "@/assets/piano-hands.jpg";
 import concertHallImg from "@/assets/concert-hall.jpg";
 import pianistSilhouetteImg from "@/assets/pianist-silhouette.jpg";
-import { Calendar, Phone, Instagram, Youtube, MessageCircle, Music, MapPin, Clock } from "lucide-react";
+import { Music, MapPin, Clock } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
@@ -380,61 +381,7 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 gothic-pattern">
-        <div className="container mx-auto px-4">
-          <SectionTitle eyebrow="GET IN TOUCH">{t("contact.title")}</SectionTitle>
-          <Reveal>
-            <div className="max-w-xl mx-auto">
-              <div className="ornate-frame rounded-sm p-1">
-                <span className="corner-tr" /><span className="corner-bl" />
-                <div className="gothic-card rounded-sm p-8 md:p-10 space-y-8">
-                  <div className="flex items-center gap-5">
-                    <div className="p-3 rounded-sm border border-primary/30 bg-primary/10 text-primary">
-                      <Phone size={20} />
-                    </div>
-                    <div>
-                      <div className="font-cinzel text-xs tracking-[0.25em] text-primary/80 mb-1 uppercase">{t("contact.phone")}</div>
-                      <a href="tel:+79267170585" className="story-link text-foreground hover:text-primary transition-colors font-cormorant text-lg">
-                        +7 (926)-717-05-85
-                      </a>
-                      <div className="text-sm text-muted-foreground mt-1 font-cormorant italic">WhatsApp · Telegram</div>
-                    </div>
-                  </div>
-
-                  <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
-                  <div className="flex items-center gap-5">
-                    <div className="p-3 rounded-sm border border-primary/30 bg-primary/10 text-primary">
-                      <MessageCircle size={20} />
-                    </div>
-                    <div>
-                      <div className="font-cinzel text-xs tracking-[0.25em] text-primary/80 mb-1 uppercase">WeChat</div>
-                      <span className="text-foreground font-cormorant text-lg">zzjdoremi</span>
-                    </div>
-                  </div>
-
-                  <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
-                  <div>
-                    <div className="font-cinzel text-xs tracking-[0.25em] text-primary/80 mb-4 uppercase">{t("contact.social")}</div>
-                    <div className="flex gap-4">
-                      <a href="https://www.instagram.com/zijing_zeng" target="_blank" rel="noopener noreferrer"
-                         className="p-3 rounded-sm border border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500">
-                        <Instagram size={20} />
-                      </a>
-                      <a href="https://youtube.com/@zijingzeng997" target="_blank" rel="noopener noreferrer"
-                         className="p-3 rounded-sm border border-primary/30 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500">
-                        <Youtube size={20} />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <ContactSidebar />
 
       {/* Footer */}
       <footer className="py-10 border-t border-border relative">
