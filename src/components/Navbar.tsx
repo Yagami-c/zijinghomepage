@@ -27,7 +27,7 @@ export function Navbar() {
             <span className="text-primary/30">◆</span>
             <a href="#gallery" className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300">{t("nav.gallery")}</a>
             <span className="text-primary/30">◆</span>
-            <a href="#contact" className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300">{t("nav.contact")}</a>
+            <a href="#contact" onClick={openContact} className="font-cinzel text-sm tracking-[0.15em] uppercase text-foreground/70 hover:text-primary transition-colors duration-300">{t("nav.contact")}</a>
             <div className="pl-4 border-l border-border">
               <LanguageSwitcher />
             </div>
