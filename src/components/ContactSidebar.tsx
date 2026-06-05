@@ -20,12 +20,12 @@ export function ContactSidebar() {
       <SheetTrigger asChild>
         <button
           aria-label={t("contact.title")}
-          className="fixed right-0 top-1/2 -translate-y-1/2 z-40 group flex items-center gap-2 pl-3 pr-2 py-4 rounded-l-sm border border-r-0 border-primary/40 bg-background/90 backdrop-blur-md text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 shadow-[0_0_25px_rgba(0,0,0,0.5)]"
+          className="fixed right-0 top-1/2 -translate-y-1/2 z-40 group flex flex-col items-center gap-2 pl-2 pr-3 py-4 rounded-l-sm border border-r-0 border-primary/40 bg-background/90 backdrop-blur-md text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 shadow-[0_0_25px_rgba(0,0,0,0.5)]"
         >
-          <Mail size={16} />
           <span className="font-cinzel text-[10px] tracking-[0.3em] uppercase [writing-mode:vertical-rl] rotate-180">
             {t("nav.contact")}
           </span>
+          <Mail size={16} />
         </button>
       </SheetTrigger>
 
