@@ -6,48 +6,51 @@
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 40 20% 88%;
+    /* Imperial Russian palette — Bolshoi crimson, midnight, tsarist gold */
+    --background: 350 25% 5%;
+    --foreground: 40 30% 90%;
 
-    --card: 0 0% 7%;
-    --card-foreground: 40 20% 88%;
+    --card: 350 20% 8%;
+    --card-foreground: 40 30% 90%;
 
-    --popover: 0 0% 7%;
-    --popover-foreground: 40 20% 88%;
+    --popover: 350 20% 8%;
+    --popover-foreground: 40 30% 90%;
 
-    --primary: 38 60% 50%;
-    --primary-foreground: 0 0% 4%;
+    --primary: 42 75% 55%;
+    --primary-foreground: 350 30% 6%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 40 20% 88%;
+    --secondary: 350 30% 14%;
+    --secondary-foreground: 40 30% 90%;
 
-    --muted: 0 0% 14%;
-    --muted-foreground: 40 10% 55%;
+    --muted: 350 15% 14%;
+    --muted-foreground: 40 15% 60%;
 
-    --accent: 0 0% 14%;
-    --accent-foreground: 40 20% 88%;
+    --accent: 0 55% 32%;
+    --accent-foreground: 40 30% 92%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 40 20% 88%;
+    --destructive-foreground: 40 30% 90%;
 
-    --border: 40 15% 18%;
-    --input: 40 15% 18%;
-    --ring: 38 60% 50%;
+    --border: 40 25% 22%;
+    --input: 40 25% 22%;
+    --ring: 42 75% 55%;
 
     --radius: 0.25rem;
 
-    --gold-dark: 38 70% 35%;
-    --gold-light: 38 60% 60%;
-    --gothic-shadow: 0 10px 40px -10px hsla(0, 0%, 0%, 0.8);
+    --gold-dark: 38 75% 38%;
+    --gold-light: 45 85% 70%;
+    --imperial-red: 355 65% 32%;
+    --imperial-red-deep: 355 70% 18%;
+    --gothic-shadow: 0 10px 40px -10px hsla(0, 0%, 0%, 0.85);
 
-    --sidebar-background: 0 0% 6%;
-    --sidebar-foreground: 40 20% 88%;
-    --sidebar-primary: 38 60% 50%;
-    --sidebar-primary-foreground: 0 0% 4%;
-    --sidebar-accent: 0 0% 12%;
-    --sidebar-accent-foreground: 40 20% 88%;
-    --sidebar-border: 40 15% 18%;
-    --sidebar-ring: 38 60% 50%;
+    --sidebar-background: 350 20% 7%;
+    --sidebar-foreground: 40 30% 90%;
+    --sidebar-primary: 42 75% 55%;
+    --sidebar-primary-foreground: 350 30% 6%;
+    --sidebar-accent: 350 30% 14%;
+    --sidebar-accent-foreground: 40 30% 90%;
+    --sidebar-border: 40 25% 22%;
+    --sidebar-ring: 42 75% 55%;
   }
 
   .dark {
