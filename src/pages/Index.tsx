@@ -361,6 +361,7 @@ export default function Index() {
                     alt={`Zijing Zeng in concert — performance photograph ${index + 1}`}
                     className="w-full h-auto object-cover group-hover:scale-[1.06] transition-transform duration-[1200ms] ease-out"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-700">
@@ -388,8 +389,9 @@ export default function Index() {
                   <span className="corner-tr" /><span className="corner-bl" />
                   <iframe
                     className="w-full h-full rounded-sm"
-                    src={`https://www.youtube.com/embed/${video.id}`}
+                    src={`https://www.youtube-nocookie.com/embed/${video.id}`}
                     title={video.title}
+                    loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
