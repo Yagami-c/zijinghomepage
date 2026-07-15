@@ -141,6 +141,7 @@ export default function Index() {
               </div>
               <h1 className="text-5xl md:text-8xl font-cinzel-decorative tracking-[0.15em] text-foreground gothic-glow mb-4 drop-shadow-2xl">
                 {t("hero.name")}
+                <span className="sr-only"> — Classical Pianist Portfolio</span>
               </h1>
               <p className="text-xl md:text-2xl font-cormorant italic tracking-[0.3em] text-primary/80 drop-shadow-lg">
                 {t("hero.title")}
