@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zijinghomepage.lovable.app/sitemap.xml
