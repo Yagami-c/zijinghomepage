@@ -388,8 +388,9 @@ export default function Index() {
                   <span className="corner-tr" /><span className="corner-bl" />
                   <iframe
                     className="w-full h-full rounded-sm"
-                    src={`https://www.youtube.com/embed/${video.id}`}
+                    src={`https://www.youtube-nocookie.com/embed/${video.id}`}
                     title={video.title}
+                    loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
