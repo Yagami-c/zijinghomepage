@@ -91,9 +91,27 @@ export default function Index() {
     "/lovable-uploads/83fc3260-63e3-49e9-b4b9-741748acb556.png",
   ];
 
+  const eventsJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": performances.map((p) => ({
+      "@type": "Event",
+      name: t(p.program),
+      startDate: t(p.date),
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: { "@type": "Place", name: t(p.venue) },
+      performer: { "@type": "Person", name: "Zijing Zeng" },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventsJsonLd) }}
+      />
       <Navbar />
+
 
       {/* Hero Section */}
       <section className="min-h-screen relative overflow-hidden vignette grain">
