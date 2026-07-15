@@ -340,7 +340,7 @@ export default function Index() {
                   <span className="corner-tr" /><span className="corner-bl" />
                   <img
                     src={image}
-                    alt={`Performance ${index + 1}`}
+                    alt={`Zijing Zeng in concert — performance photograph ${index + 1}`}
                     className="w-full h-auto object-cover group-hover:scale-[1.06] transition-transform duration-[1200ms] ease-out"
                     loading="lazy"
                   />
