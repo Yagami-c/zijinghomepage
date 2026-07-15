@@ -20,12 +20,15 @@ export function ContactSidebar() {
       <SheetTrigger asChild>
         <button
           aria-label={t("contact.title")}
-          className="fixed right-0 top-1/2 -translate-y-1/2 z-40 group flex items-center gap-2 pl-3 pr-4 py-2 rounded-l-sm border border-r-0 border-primary/40 bg-background/90 backdrop-blur-md text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-500 shadow-[0_0_25px_rgba(0,0,0,0.5)]"
+          className="group fixed right-5 bottom-6 md:right-8 md:bottom-10 z-40 flex items-center gap-3 pl-5 pr-6 py-3.5 rounded-full border border-primary/60 bg-gradient-to-r from-[hsl(var(--imperial-red-deep))] via-background to-[hsl(var(--imperial-red-deep))] text-primary shadow-[0_10px_40px_-10px_hsl(var(--primary)/0.6),0_0_0_1px_hsl(var(--primary)/0.2)_inset] hover:text-primary-foreground hover:shadow-[0_15px_50px_-10px_hsl(var(--primary)/0.9)] transition-all duration-500 hover:-translate-y-0.5"
         >
-          <span className="font-cinzel text-[11px] tracking-[0.2em] uppercase">
+          <span className="absolute inset-0 rounded-full bg-primary/20 animate-ping opacity-60 group-hover:opacity-0" aria-hidden />
+          <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-primary/15 border border-primary/40 group-hover:bg-primary group-hover:text-primary-foreground transition-colors duration-500">
+            <Mail size={16} />
+          </span>
+          <span className="relative font-cinzel text-[12px] tracking-[0.28em] uppercase gold-shimmer-text group-hover:[-webkit-text-fill-color:hsl(var(--primary-foreground))]">
             {t("nav.contact")}
           </span>
-          <Mail size={16} />
         </button>
       </SheetTrigger>
 
