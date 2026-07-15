@@ -91,9 +91,27 @@ export default function Index() {
     "/lovable-uploads/83fc3260-63e3-49e9-b4b9-741748acb556.png",
   ];
 
+  const eventsJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": performances.map((p) => ({
+      "@type": "Event",
+      name: t(p.program),
+      startDate: t(p.date),
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: { "@type": "Place", name: t(p.venue) },
+      performer: { "@type": "Person", name: "Zijing Zeng" },
+    })),
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eventsJsonLd) }}
+      />
       <Navbar />
+
 
       {/* Hero Section */}
       <section className="min-h-screen relative overflow-hidden vignette grain">
@@ -141,6 +159,7 @@ export default function Index() {
               </div>
               <h1 className="text-5xl md:text-8xl font-cinzel-decorative tracking-[0.15em] text-foreground gothic-glow mb-4 drop-shadow-2xl">
                 {t("hero.name")}
+                <span className="sr-only"> — Classical Pianist Portfolio</span>
               </h1>
               <p className="text-xl md:text-2xl font-cormorant italic tracking-[0.3em] text-primary/80 drop-shadow-lg">
                 {t("hero.title")}
@@ -339,7 +358,7 @@ export default function Index() {
                   <span className="corner-tr" /><span className="corner-bl" />
                   <img
                     src={image}
-                    alt={`Performance ${index + 1}`}
+                    alt={`Zijing Zeng in concert — performance photograph ${index + 1}`}
                     className="w-full h-auto object-cover group-hover:scale-[1.06] transition-transform duration-[1200ms] ease-out"
                     loading="lazy"
                   />
