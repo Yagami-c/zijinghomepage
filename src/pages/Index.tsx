@@ -15,6 +15,9 @@ import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
 const performances = [
+  { date: "performance9.date", venue: "performance9.venue", program: "performance9.title" },
+  { date: "performance10.date", venue: "performance10.venue", program: "performance10.title" },
+  { date: "performance11.date", venue: "performance11.venue", program: "performance11.title" },
   { date: "performance6.date", venue: "performance6.venue", program: "performance6.title" },
   { date: "performance7.date", venue: "performance7.venue", program: "performance7.title" },
   { date: "performance8.date", venue: "performance8.venue", program: "performance8.title" },
