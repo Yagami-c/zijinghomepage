@@ -306,13 +306,7 @@ export default function Index() {
 
           <div className="max-w-4xl mx-auto space-y-6">
             {performances.map((performance, index) => {
-              const dateStr = t(performance.date);
-              const timeMatch = dateStr.match(/(\d{1,2}[:.]\d{2})/);
-              const time = timeMatch ? timeMatch[1].replace(".", ":") : "";
-              const dateLabel = timeMatch ? dateStr.replace(timeMatch[0], "").trim() : dateStr;
-              const dayMatch = dateLabel.match(/\d{1,2}/g);
-              const bigDay = dayMatch ? dayMatch[dayMatch.length - 1] : `${index + 1}`;
-              const monthLabel = dateLabel.replace(bigDay, "").replace(/[年月日,]/g, " ").trim().split(/\s+/).slice(-1)[0] || "";
+              const { monthLabel, bigDay, time } = parseConcertDate(t(performance.date));
 
               return (
                 <Reveal key={index} delay={index * 120}>
