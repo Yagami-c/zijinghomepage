@@ -83,6 +83,60 @@ export const performances: Array<{
       zh: "拉赫玛尼诺夫、李斯特作品",
     },
   },
+  {
+    isoDate: "2025-07-20T17:30:00+10:00",
+    date: {
+      en: "July 20, 2025 17:30",
+      ru: "20 июля 2025 17:30",
+      zh: "2025年7月20日 17:30",
+    },
+    venue: {
+      en: "Verbrugghen Hall, Sydney Conservatorium of Music, 1 Conservatorium Rd, NSW 2000, Sydney, Australia",
+      ru: "Зал Вербрюггена, Консерватория Сиднея, 1 Conservatorium Rd, NSW 2000, Сидней, Австралия",
+      zh: "悉尼音乐学院维布鲁根音乐厅，悉尼音乐学院路1号，新南威尔士州2000，悉尼，澳大利亚",
+    },
+    program: {
+      en: "Piano Recital",
+      ru: "Фортепианный рецитал",
+      zh: "钢琴独奏音乐会",
+    },
+  },
+  {
+    isoDate: "2025-07-28T19:00:00+03:00",
+    date: {
+      en: "July 28, 2025 19:00",
+      ru: "28 июля 2025 19:00",
+      zh: "2025年7月28日 19:00",
+    },
+    venue: {
+      en: "Concert hall Maltese Chapel, Sadovaya Street, 26, Saint Petersburg, Russia",
+      ru: "Концертный зал Мальтийская часовня, Садовая улица, 26, Санкт-Петербург, Россия",
+      zh: "圣彼得堡马尔他礼拜堂音乐厅，花园街26号，圣彼得堡，俄罗斯",
+    },
+    program: {
+      en: "Piano Recital",
+      ru: "Фортепианный рецитал",
+      zh: "钢琴独奏音乐会",
+    },
+  },
+  {
+    isoDate: "2025-07-30T19:00:00+03:00",
+    date: {
+      en: "July 30, 2025 19:00",
+      ru: "30 июля 2025 19:00",
+      zh: "2025年7月30日 19:00",
+    },
+    venue: {
+      en: "Rachmaninoff Hall of the Moscow Conservatory, Bol'shaya Nikitskaya Ulitsa, 11, Moscow, Russia",
+      ru: "Рахманиновский зал Московской консерватории, Большая Никитская улица, 11, Москва, Россия",
+      zh: "莫斯科音乐学院拉赫马尼诺夫音乐厅，大尼基茨卡娅街11号，莫斯科，俄罗斯",
+    },
+    program: {
+      en: "Piano Recital",
+      ru: "Фортепианный рецитал",
+      zh: "钢琴独奏音乐会",
+    },
+  },
 ];
 
 export const contact = {
