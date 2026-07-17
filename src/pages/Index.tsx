@@ -15,6 +15,9 @@ import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
 const performances = [
+  { date: "performance9.date", venue: "performance9.venue", program: "performance9.title" },
+  { date: "performance10.date", venue: "performance10.venue", program: "performance10.title" },
+  { date: "performance11.date", venue: "performance11.venue", program: "performance11.title" },
   { date: "performance6.date", venue: "performance6.venue", program: "performance6.title" },
   { date: "performance7.date", venue: "performance7.venue", program: "performance7.title" },
   { date: "performance8.date", venue: "performance8.venue", program: "performance8.title" },
@@ -56,6 +59,25 @@ const Reveal = ({ children, delay = 0, className = "" }: { children: React.React
       {children}
     </div>
   );
+};
+
+const parseConcertDate = (dateStr: string) => {
+  const timeMatch = dateStr.match(/(\d{1,2}[:.]\d{2})/);
+  const time = timeMatch ? timeMatch[1].replace(".", ":") : "";
+  const datePart = timeMatch ? dateStr.replace(timeMatch[0], "").trim() : dateStr;
+
+  const enMatch = datePart.match(/^([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})$/);
+  if (enMatch) return { monthLabel: enMatch[1], bigDay: enMatch[2], time };
+
+  const ruMatch = datePart.match(/^(\d{1,2})\s+([а-яА-ЯёЁ]+)\s+(\d{4})$/);
+  if (ruMatch) return { monthLabel: ruMatch[2], bigDay: ruMatch[1], time };
+
+  const zhMatch = datePart.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日$/);
+  if (zhMatch) return { monthLabel: zhMatch[2], bigDay: zhMatch[3], time };
+
+  const dayMatch = datePart.match(/\d{1,2}/g);
+  const bigDay = dayMatch ? dayMatch[dayMatch.length - 1] : "";
+  return { monthLabel: "", bigDay, time };
 };
 
 export default function Index() {
@@ -284,13 +306,7 @@ export default function Index() {
 
           <div className="max-w-4xl mx-auto space-y-6">
             {performances.map((performance, index) => {
-              const dateStr = t(performance.date);
-              const timeMatch = dateStr.match(/(\d{1,2}[:.]\d{2})/);
-              const time = timeMatch ? timeMatch[1].replace(".", ":") : "";
-              const dateLabel = timeMatch ? dateStr.replace(timeMatch[0], "").trim() : dateStr;
-              const dayMatch = dateLabel.match(/\d{1,2}/g);
-              const bigDay = dayMatch ? dayMatch[dayMatch.length - 1] : `${index + 1}`;
-              const monthLabel = dateLabel.replace(bigDay, "").replace(/[年月日,]/g, " ").trim().split(/\s+/).slice(-1)[0] || "";
+              const { monthLabel, bigDay, time } = parseConcertDate(t(performance.date));
 
               return (
                 <Reveal key={index} delay={index * 120}>
