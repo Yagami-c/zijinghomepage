@@ -61,6 +61,25 @@ const Reveal = ({ children, delay = 0, className = "" }: { children: React.React
   );
 };
 
+const parseConcertDate = (dateStr: string) => {
+  const timeMatch = dateStr.match(/(\d{1,2}[:.]\d{2})/);
+  const time = timeMatch ? timeMatch[1].replace(".", ":") : "";
+  const datePart = timeMatch ? dateStr.replace(timeMatch[0], "").trim() : dateStr;
+
+  const enMatch = datePart.match(/^([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})$/);
+  if (enMatch) return { monthLabel: enMatch[1], bigDay: enMatch[2], time };
+
+  const ruMatch = datePart.match(/^(\d{1,2})\s+([а-яА-ЯёЁ]+)\s+(\d{4})$/);
+  if (ruMatch) return { monthLabel: ruMatch[2], bigDay: ruMatch[1], time };
+
+  const zhMatch = datePart.match(/^(\d{4})年(\d{1,2})月(\d{1,2})日$/);
+  if (zhMatch) return { monthLabel: zhMatch[2], bigDay: zhMatch[3], time };
+
+  const dayMatch = datePart.match(/\d{1,2}/g);
+  const bigDay = dayMatch ? dayMatch[dayMatch.length - 1] : "";
+  return { monthLabel: "", bigDay, time };
+};
+
 export default function Index() {
   const { t } = useLanguage();
   const autoplayRef = useRef(Autoplay({ delay: 5000, stopOnInteraction: false }));
