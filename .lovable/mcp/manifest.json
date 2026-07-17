@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "sdk_version": "0.23.0",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "zijing-zeng-mcp",
+      "version": "0.1.0",
+      "title": "Zijing Zeng — Pianist MCP"
+    },
+    "tools": [
+      {
+        "name": "get_biography",
+        "title": "Get biography",
+        "description": "Return the biography of classical pianist Zijing Zeng (曾子荆 / Цзыцзин Цзэн) in the requested language.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "language": {
+              "type": "string",
+              "enum": [
+                "en",
+                "ru",
+                "zh"
+              ],
+              "description": "Language of the biography: 'en' (English), 'ru' (Russian), 'zh' (Chinese). Defaults to 'en'."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "list_upcoming_performances",
+        "title": "List upcoming performances",
+        "description": "List Zijing Zeng's upcoming concerts (date, venue, program). Past performances are filtered out automatically.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "language": {
+              "type": "string",
+              "enum": [
+                "en",
+                "ru",
+                "zh"
+              ],
+              "description": "Language for the human-readable date, venue and program strings. Defaults to 'en'."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_contact_info",
+        "title": "Get contact info",
+        "description": "Return public contact information and official website for classical pianist Zijing Zeng.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "language": {
+              "type": "string",
+              "enum": [
+                "en",
+                "ru",
+                "zh"
+              ],
+              "description": "Language for human-readable fields. Defaults to 'en'."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
