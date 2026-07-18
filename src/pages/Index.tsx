@@ -5,7 +5,7 @@ import { useReveal } from "@/hooks/use-reveal";
 import pianoHandsImg from "@/assets/piano-hands.jpg";
 import concertHallImg from "@/assets/concert-hall.jpg";
 import pianistSilhouetteImg from "@/assets/pianist-silhouette.jpg";
-import { Music, MapPin, Clock } from "lucide-react";
+import { Music, MapPin, Clock, Sparkles, GraduationCap, Trophy, Landmark, Users } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
