@@ -91,6 +91,35 @@ const parseConcertDate = (dateStr: string) => {
 export default function Index() {
   const { t } = useLanguage();
   const autoplayRef = useRef(Autoplay({ delay: 5000, stopOnInteraction: false }));
+  const [countryFilter, setCountryFilter] = useState<string>("all");
+  const [cityFilter, setCityFilter] = useState<string>("all");
+
+  const availableCountries = useMemo(
+    () => Array.from(new Set(performances.map((p) => p.country))),
+    []
+  );
+  const availableCities = useMemo(
+    () =>
+      Array.from(
+        new Set(
+          performances
+            .filter((p) => countryFilter === "all" || p.country === countryFilter)
+            .map((p) => p.city)
+        )
+      ),
+    [countryFilter]
+  );
+
+  const filteredPerformances = useMemo(
+    () =>
+      performances.filter(
+        (p) =>
+          (countryFilter === "all" || p.country === countryFilter) &&
+          (cityFilter === "all" || p.city === cityFilter)
+      ),
+    [countryFilter, cityFilter]
+  );
+
 
   const heroImages = [
     "/lovable-uploads/f5249637-7b76-4f9f-843a-709c6a7b7555.png",
