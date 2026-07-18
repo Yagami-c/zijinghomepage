@@ -12,15 +12,23 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
+import { useRef, useState, useMemo } from "react";
 
-const performances = [
-  { date: "performance9.date", venue: "performance9.venue", program: "performance9.title" },
-  { date: "performance10.date", venue: "performance10.venue", program: "performance10.title" },
-  { date: "performance11.date", venue: "performance11.venue", program: "performance11.title" },
-  { date: "performance6.date", venue: "performance6.venue", program: "performance6.title" },
-  { date: "performance7.date", venue: "performance7.venue", program: "performance7.title" },
-  { date: "performance8.date", venue: "performance8.venue", program: "performance8.title" },
+type Performance = {
+  date: string;
+  venue: string;
+  program: string;
+  country: string; // translation key
+  city: string;    // translation key
+};
+
+const performances: Performance[] = [
+  { date: "performance9.date",  venue: "performance9.venue",  program: "performance9.title",  country: "country.australia", city: "city.sydney" },
+  { date: "performance10.date", venue: "performance10.venue", program: "performance10.title", country: "country.russia",    city: "city.saint_petersburg" },
+  { date: "performance11.date", venue: "performance11.venue", program: "performance11.title", country: "country.russia",    city: "city.moscow" },
+  { date: "performance6.date",  venue: "performance6.venue",  program: "performance6.title",  country: "country.russia",    city: "city.moscow_region" },
+  { date: "performance7.date",  venue: "performance7.venue",  program: "performance7.title",  country: "country.russia",    city: "city.moscow" },
+  { date: "performance8.date",  venue: "performance8.venue",  program: "performance8.title",  country: "country.russia",    city: "city.moscow_region" },
 ];
 
 const GothicDivider = () => (
