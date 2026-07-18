@@ -177,7 +177,18 @@ const translations = {
     "invitation.text": "音乐是灵魂的语言。每一个音符承载着情感，每一个乐句诉说着故事。我诚挚地邀请您一同感受古典音乐之美——这门超越时空、直抵心灵的永恒艺术。",
     "invitation.signature": "— 曾子荆",
     "quote.text": "音乐，是音符之间的静默。",
-    "quote.author": "— 克劳德·德彪西"
+    "quote.author": "— 克劳德·德彪西",
+    "filter.country": "国家",
+    "filter.city": "城市",
+    "filter.all": "全部",
+    "filter.results": "场演出",
+    "filter.empty": "没有符合筛选条件的演出。",
+    "country.russia": "俄罗斯",
+    "country.australia": "澳大利亚",
+    "city.moscow": "莫斯科",
+    "city.moscow_region": "莫斯科州",
+    "city.saint_petersburg": "圣彼得堡",
+    "city.sydney": "悉尼"
   }
 };
 
