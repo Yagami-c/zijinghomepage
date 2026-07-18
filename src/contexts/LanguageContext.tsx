@@ -181,7 +181,7 @@ const translations = {
     "bio.card2.text": "2016年考入莫斯科国立柴可夫斯基音乐学院，师从Olga Zhukova教授（助教Elenora Karpukhova），2021年以全优成绩毕业。此后作为助教研修生跟随Dmitry Kaprin副教授学习。2024年，在Alexey Yudin教授指导下完成副博士（Аспирантура）学位，目前跟随钢琴家Stanislav Korchagin深造。2022年起于莫斯科国立大学艺术系任钢琴主科教师。",
     "bio.card3.eyebrow": "殊荣",
     "bio.card3.title": "比赛与奖项",
-    "bio.card3.text": "武汉KAWAI钢琴比赛（2010）、李斯特钢琴比赛（2011）获奖者；2012年获北京K. Imola国际钢琴比赛第一名；2014年长江钢琴杯青少年比赛获奖。2019年荣获莫斯科"伊斯拉美"音乐家大奖赛特等奖，同年获第19届慕尼黑Münchner Klavierpodium der Jugend肖邦奖。2022年入选Glocal Piano Project；入围第64届布索尼国际钢琴比赛及第十七届柴可夫斯基国际钢琴比赛（2023）。",
+    "bio.card3.text": "武汉KAWAI钢琴比赛（2010）、李斯特钢琴比赛（2011）获奖者；2012年获北京K. Imola国际钢琴比赛第一名；2014年长江钢琴杯青少年比赛获奖。2019年荣获莫斯科「伊斯拉美」音乐家大奖赛特等奖，同年获第19届慕尼黑Münchner Klavierpodium der Jugend肖邦奖。2022年入选Glocal Piano Project；入围第64届布索尼国际钢琴比赛及第十七届柴可夫斯基国际钢琴比赛（2023）。",
     "bio.card4.eyebrow": "舞台",
     "bio.card4.title": "演出与合作",
     "bio.card4.text": "曾登台众多俄罗斯顶级音乐厅，包括莫斯科音乐学院大厅与音乐之家。2013年7月受邀代表中国出席意大利伊莫拉国际音乐节。除独奏曲目外，与俄罗斯著名大提琴家、教育家、柴可夫斯基国际比赛金奖得主Kirill Rodin保持长期室内乐合作。",
