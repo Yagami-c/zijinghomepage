@@ -403,3 +403,46 @@
   transform: translateY(-50%) rotate(45deg);
 }
 
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: hsl(38 40% 78% / 0.75);
+  background: linear-gradient(180deg, hsl(0 0% 10%) 0%, hsl(0 0% 6%) 100%);
+  border: 1px solid hsl(38 60% 50% / 0.25);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.35s ease;
+  position: relative;
+}
+.filter-chip::before,
+.filter-chip::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid hsl(38 60% 50% / 0.35);
+  transition: border-color 0.35s ease;
+}
+.filter-chip::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.filter-chip::after  { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+.filter-chip:hover {
+  color: hsl(38 70% 82%);
+  border-color: hsl(38 70% 55% / 0.55);
+  box-shadow: 0 0 14px hsl(38 60% 50% / 0.15);
+}
+.filter-chip-active {
+  color: hsl(0 0% 6%);
+  background: linear-gradient(135deg, hsl(38 70% 62%) 0%, hsl(38 55% 45%) 100%);
+  border-color: hsl(38 70% 55%);
+  box-shadow: 0 0 18px hsl(38 60% 50% / 0.35), inset 0 1px 0 hsl(38 90% 80% / 0.4);
+}
+.filter-chip-active::before,
+.filter-chip-active::after { border-color: hsl(38 90% 75%); }
+
+

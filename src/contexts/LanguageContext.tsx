@@ -57,7 +57,18 @@ const translations = {
     "invitation.text": "Music is the language of the soul. Every note carries emotion, every phrase tells a story. I invite you to share in the beauty of classical music — a timeless art that transcends boundaries and speaks to the heart.",
     "invitation.signature": "— Zijing Zeng",
     "quote.text": "Music is the silence between the notes.",
-    "quote.author": "— Claude Debussy"
+    "quote.author": "— Claude Debussy",
+    "filter.country": "Country",
+    "filter.city": "City",
+    "filter.all": "All",
+    "filter.results": "concerts shown",
+    "filter.empty": "No concerts match the selected filters.",
+    "country.russia": "Russia",
+    "country.australia": "Australia",
+    "city.moscow": "Moscow",
+    "city.moscow_region": "Moscow Region",
+    "city.saint_petersburg": "Saint Petersburg",
+    "city.sydney": "Sydney"
   },
   ru: {
     "nav.about": "О себе",
@@ -106,7 +117,18 @@ const translations = {
     "invitation.text": "Музыка — это язык души. Каждая нота несёт в себе эмоцию, каждая фраза рассказывает историю. Я приглашаю вас разделить красоту классической музыки — вечного искусства, которое преодолевает границы и говорит с сердцем.",
     "invitation.signature": "— Цзыцзин Цзэн",
     "quote.text": "Музыка — это тишина между нотами.",
-    "quote.author": "— Клод Дебюсси"
+    "quote.author": "— Клод Дебюсси",
+    "filter.country": "Страна",
+    "filter.city": "Город",
+    "filter.all": "Все",
+    "filter.results": "концертов показано",
+    "filter.empty": "Нет концертов, соответствующих выбранным фильтрам.",
+    "country.russia": "Россия",
+    "country.australia": "Австралия",
+    "city.moscow": "Москва",
+    "city.moscow_region": "Московская область",
+    "city.saint_petersburg": "Санкт-Петербург",
+    "city.sydney": "Сидней"
   },
   zh: {
     "nav.about": "关于我",
@@ -155,7 +177,18 @@ const translations = {
     "invitation.text": "音乐是灵魂的语言。每一个音符承载着情感，每一个乐句诉说着故事。我诚挚地邀请您一同感受古典音乐之美——这门超越时空、直抵心灵的永恒艺术。",
     "invitation.signature": "— 曾子荆",
     "quote.text": "音乐，是音符之间的静默。",
-    "quote.author": "— 克劳德·德彪西"
+    "quote.author": "— 克劳德·德彪西",
+    "filter.country": "国家",
+    "filter.city": "城市",
+    "filter.all": "全部",
+    "filter.results": "场演出",
+    "filter.empty": "没有符合筛选条件的演出。",
+    "country.russia": "俄罗斯",
+    "country.australia": "澳大利亚",
+    "city.moscow": "莫斯科",
+    "city.moscow_region": "莫斯科州",
+    "city.saint_petersburg": "圣彼得堡",
+    "city.sydney": "悉尼"
   }
 };
 
