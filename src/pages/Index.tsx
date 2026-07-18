@@ -341,8 +341,74 @@ export default function Index() {
         <div className="container mx-auto px-4 relative z-10">
           <SectionTitle eyebrow="CONCERT PROGRAMME">{t("schedule.title")}</SectionTitle>
 
+          {/* Filters */}
+          <Reveal>
+            <div className="max-w-4xl mx-auto mb-10 gothic-card ornate-frame rounded-sm p-5 md:p-6">
+              <span className="corner-tr" /><span className="corner-bl" />
+              <div className="grid gap-5 md:grid-cols-2">
+                <div>
+                  <div className="text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase mb-3">
+                    {t("filter.country")}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => { setCountryFilter("all"); setCityFilter("all"); }}
+                      className={`filter-chip ${countryFilter === "all" ? "filter-chip-active" : ""}`}
+                    >
+                      {t("filter.all")}
+                    </button>
+                    {availableCountries.map((c) => (
+                      <button
+                        key={c}
+                        onClick={() => { setCountryFilter(c); setCityFilter("all"); }}
+                        className={`filter-chip ${countryFilter === c ? "filter-chip-active" : ""}`}
+                      >
+                        {t(c)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase mb-3">
+                    {t("filter.city")}
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <button
+                      onClick={() => setCityFilter("all")}
+                      className={`filter-chip ${cityFilter === "all" ? "filter-chip-active" : ""}`}
+                    >
+                      {t("filter.all")}
+                    </button>
+                    {availableCities.map((c) => (
+                      <button
+                        key={c}
+                        onClick={() => setCityFilter(c)}
+                        className={`filter-chip ${cityFilter === c ? "filter-chip-active" : ""}`}
+                      >
+                        {t(c)}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 text-center text-xs font-cormorant italic text-foreground/60">
+                {filteredPerformances.length} / {performances.length} · {t("filter.results")}
+              </div>
+            </div>
+          </Reveal>
+
           <div className="max-w-4xl mx-auto space-y-6">
-            {performances.map((performance, index) => {
+            {filteredPerformances.length === 0 && (
+              <Reveal>
+                <div className="text-center py-12 gothic-card ornate-frame rounded-sm">
+                  <span className="corner-tr" /><span className="corner-bl" />
+                  <p className="font-cormorant italic text-lg text-foreground/70 px-6">
+                    {t("filter.empty")}
+                  </p>
+                </div>
+              </Reveal>
+            )}
+            {filteredPerformances.map((performance, index) => {
               const { monthLabel, bigDay, time } = parseConcertDate(t(performance.date));
 
               return (
