@@ -316,18 +316,64 @@ export default function Index() {
         <div className="absolute top-12 right-12 text-primary/[0.04] text-[20rem] font-cinzel-decorative leading-none select-none pointer-events-none hidden lg:block">Z</div>
         <div className="container mx-auto px-4 relative z-10">
           <SectionTitle eyebrow="VITA">{t("about.title")}</SectionTitle>
-          <Reveal>
-            <div className="max-w-3xl mx-auto">
-              <div className="ornate-frame rounded-sm p-1">
-                <span className="corner-tr" /><span className="corner-bl" />
-                <div className="gothic-card rounded-sm p-8 md:p-12">
-                  <p className="text-lg md:text-xl leading-[1.9] whitespace-pre-wrap text-foreground/85 font-cormorant drop-cap">
-                    {t("about.text")}
-                  </p>
+
+          {(() => {
+            const bioCards = [
+              { icon: Sparkles,       key: "card1" },
+              { icon: GraduationCap,  key: "card2" },
+              { icon: Trophy,         key: "card3" },
+              { icon: Landmark,       key: "card4" },
+              { icon: Users,          key: "card5" },
+            ];
+            return (
+              <div className="max-w-6xl mx-auto">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {bioCards.map(({ icon: Icon, key }, i) => (
+                    <Reveal key={key} delay={i * 100}>
+                      <article className="ornate-frame rounded-sm p-1 h-full group">
+                        <span className="corner-tr" /><span className="corner-bl" />
+                        <div className="gothic-card rounded-sm h-full p-6 md:p-7 flex flex-col">
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className="p-2 rounded-full border border-primary/30 bg-primary/5 group-hover:border-primary/60 transition-colors">
+                              <Icon className="w-4 h-4 text-primary/80" />
+                            </div>
+                            <span className="font-cinzel text-[10px] tracking-[0.35em] text-primary/70 uppercase">
+                              {t(`bio.${key}.eyebrow`)}
+                            </span>
+                          </div>
+                          <h3 className="text-xl md:text-2xl font-cinzel-decorative text-foreground tracking-wide leading-snug mb-3 group-hover:gothic-glow transition-all duration-500">
+                            {t(`bio.${key}.title`)}
+                          </h3>
+                          <div className="h-px w-10 bg-gradient-to-r from-primary/60 to-transparent mb-4" />
+                          <p className="font-cormorant text-base md:text-lg leading-relaxed text-foreground/80 flex-1">
+                            {t(`bio.${key}.text`)}
+                          </p>
+                        </div>
+                      </article>
+                    </Reveal>
+                  ))}
+
+                  {/* Pull-quote card spans wider */}
+                  <Reveal delay={500} className="md:col-span-2 lg:col-span-3">
+                    <div className="ornate-frame rounded-sm p-1">
+                      <span className="corner-tr" /><span className="corner-bl" />
+                      <blockquote className="gothic-card rounded-sm p-8 md:p-12 text-center relative">
+                        <span className="absolute top-3 left-5 text-primary/40 text-6xl font-cinzel-decorative leading-none">"</span>
+                        <span className="absolute bottom-0 right-5 text-primary/40 text-6xl font-cinzel-decorative leading-none rotate-180">"</span>
+                        <p className="font-cormorant italic text-lg md:text-2xl leading-relaxed text-foreground/85 max-w-3xl mx-auto">
+                          {t("bio.quote.text")}
+                        </p>
+                        <footer className="mt-6 font-cinzel tracking-[0.3em] text-sm text-primary/80 uppercase">
+                          {t("bio.quote.author")}
+                        </footer>
+                      </blockquote>
+                    </div>
+                  </Reveal>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            );
+          })()}
+
         </div>
       </section>
 
