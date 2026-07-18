@@ -57,7 +57,18 @@ const translations = {
     "invitation.text": "Music is the language of the soul. Every note carries emotion, every phrase tells a story. I invite you to share in the beauty of classical music — a timeless art that transcends boundaries and speaks to the heart.",
     "invitation.signature": "— Zijing Zeng",
     "quote.text": "Music is the silence between the notes.",
-    "quote.author": "— Claude Debussy"
+    "quote.author": "— Claude Debussy",
+    "filter.country": "Country",
+    "filter.city": "City",
+    "filter.all": "All",
+    "filter.results": "concerts shown",
+    "filter.empty": "No concerts match the selected filters.",
+    "country.russia": "Russia",
+    "country.australia": "Australia",
+    "city.moscow": "Moscow",
+    "city.moscow_region": "Moscow Region",
+    "city.saint_petersburg": "Saint Petersburg",
+    "city.sydney": "Sydney"
   },
   ru: {
     "nav.about": "О себе",
