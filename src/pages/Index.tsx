@@ -319,33 +319,67 @@ export default function Index() {
 
           {(() => {
             const bioCards = [
-              { icon: Sparkles,       key: "card1" },
-              { icon: GraduationCap,  key: "card2" },
-              { icon: Trophy,         key: "card3" },
-              { icon: Landmark,       key: "card4" },
-              { icon: Users,          key: "card5" },
+              // Card 1 — Origins: soft chapel, luminous, rounded arch, floating halo
+              {
+                icon: Sparkles, key: "card1",
+                variant: "bio-card--chapel",
+                iconVariant: "bio-icon--halo",
+                colSpan: "lg:col-span-2",
+                rotate: "-rotate-[0.6deg]",
+              },
+              // Card 2 — Moscow: dense midnight, sharp shadow, cut-corner shape
+              {
+                icon: GraduationCap, key: "card2",
+                variant: "bio-card--midnight",
+                iconVariant: "bio-icon--seal",
+                colSpan: "lg:col-span-1",
+                rotate: "rotate-[0.4deg]",
+              },
+              // Card 3 — Awards: crimson glow, laurel frame, medal icon
+              {
+                icon: Trophy, key: "card3",
+                variant: "bio-card--laurel",
+                iconVariant: "bio-icon--medallion",
+                colSpan: "lg:col-span-1",
+                rotate: "-rotate-[0.3deg]",
+              },
+              // Card 4 — Concerts: parchment tint, arched top, engraved icon
+              {
+                icon: Landmark, key: "card4",
+                variant: "bio-card--parchment",
+                iconVariant: "bio-icon--arch",
+                colSpan: "lg:col-span-2",
+                rotate: "rotate-[0.6deg]",
+              },
+              // Card 5 — Masterclasses: full-width scroll, ornate icon
+              {
+                icon: Users, key: "card5",
+                variant: "bio-card--scroll",
+                iconVariant: "bio-icon--diamond",
+                colSpan: "lg:col-span-3",
+                rotate: "-rotate-[0.2deg]",
+              },
             ];
             return (
               <div className="max-w-6xl mx-auto">
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  {bioCards.map(({ icon: Icon, key }, i) => (
-                    <Reveal key={key} delay={i * 100}>
-                      <article className="ornate-frame rounded-sm p-1 h-full group">
-                        <span className="corner-tr" /><span className="corner-bl" />
-                        <div className="gothic-card rounded-sm h-full p-6 md:p-7 flex flex-col">
-                          <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-full border border-primary/30 bg-primary/5 group-hover:border-primary/60 transition-colors">
-                              <Icon className="w-4 h-4 text-primary/80" />
-                            </div>
-                            <span className="font-cinzel text-[10px] tracking-[0.35em] text-primary/70 uppercase">
+                  {bioCards.map(({ icon: Icon, key, variant, iconVariant, colSpan, rotate }, i) => (
+                    <Reveal key={key} delay={i * 120} className={colSpan}>
+                      <article className={`bio-card ${variant} ${rotate} h-full group relative`}>
+                        <div className="bio-card__inner h-full p-7 md:p-8 flex flex-col relative z-10">
+                          <div className="flex items-center gap-4 mb-5">
+                            <span className={`bio-icon ${iconVariant}`}>
+                              <Icon className="w-5 h-5" strokeWidth={1.5} />
+                            </span>
+                            <span className="font-cinzel text-[10px] tracking-[0.4em] text-primary/70 uppercase">
                               {t(`bio.${key}.eyebrow`)}
                             </span>
                           </div>
-                          <h3 className="text-xl md:text-2xl font-cinzel-decorative text-foreground tracking-wide leading-snug mb-3 group-hover:gothic-glow transition-all duration-500">
+                          <h3 className="text-xl md:text-[1.6rem] font-cinzel-decorative text-foreground tracking-wide leading-snug mb-4 group-hover:gothic-glow transition-all duration-500">
                             {t(`bio.${key}.title`)}
                           </h3>
-                          <div className="h-px w-10 bg-gradient-to-r from-primary/60 to-transparent mb-4" />
-                          <p className="font-cormorant text-base md:text-lg leading-relaxed text-foreground/80 flex-1">
+                          <div className="h-px w-12 bg-gradient-to-r from-primary/70 via-primary/30 to-transparent mb-5" />
+                          <p className="font-cormorant text-base md:text-lg leading-relaxed text-foreground/85 flex-1">
                             {t(`bio.${key}.text`)}
                           </p>
                         </div>
@@ -353,20 +387,23 @@ export default function Index() {
                     </Reveal>
                   ))}
 
-                  {/* Pull-quote card spans wider */}
-                  <Reveal delay={500} className="md:col-span-2 lg:col-span-3">
-                    <div className="ornate-frame rounded-sm p-1">
-                      <span className="corner-tr" /><span className="corner-bl" />
-                      <blockquote className="gothic-card rounded-sm p-8 md:p-12 text-center relative">
-                        <span className="absolute top-3 left-5 text-primary/40 text-6xl font-cinzel-decorative leading-none">"</span>
-                        <span className="absolute bottom-0 right-5 text-primary/40 text-6xl font-cinzel-decorative leading-none rotate-180">"</span>
-                        <p className="font-cormorant italic text-lg md:text-2xl leading-relaxed text-foreground/85 max-w-3xl mx-auto">
+                  {/* Pull-quote — imperial cartouche */}
+                  <Reveal delay={720} className="md:col-span-2 lg:col-span-3">
+                    <div className="bio-card bio-card--cartouche relative">
+                      <div className="bio-card__inner p-10 md:p-14 text-center relative z-10">
+                        <span className="absolute top-4 left-6 text-primary/50 text-7xl font-cinzel-decorative leading-none">“</span>
+                        <span className="absolute bottom-2 right-6 text-primary/50 text-7xl font-cinzel-decorative leading-none">”</span>
+                        <p className="font-cormorant italic text-lg md:text-2xl leading-relaxed text-foreground/90 max-w-3xl mx-auto">
                           {t("bio.quote.text")}
                         </p>
-                        <footer className="mt-6 font-cinzel tracking-[0.3em] text-sm text-primary/80 uppercase">
-                          {t("bio.quote.author")}
-                        </footer>
-                      </blockquote>
+                        <div className="flex items-center justify-center gap-3 mt-7">
+                          <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary/70" />
+                          <footer className="font-cinzel tracking-[0.35em] text-sm text-primary/85 uppercase">
+                            {t("bio.quote.author")}
+                          </footer>
+                          <span className="h-px w-10 bg-gradient-to-l from-transparent to-primary/70" />
+                        </div>
+                      </div>
                     </div>
                   </Reveal>
                 </div>
