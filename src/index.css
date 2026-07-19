@@ -446,3 +446,260 @@
 .filter-chip-active::after { border-color: hsl(38 90% 75%); }
 
 
+
+/* ============================================================
+   Biography cards — each with a distinct personality
+   ============================================================ */
+.bio-card {
+  position: relative;
+  border-radius: 3px;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.6s ease, filter 0.6s ease;
+  isolation: isolate;
+}
+.bio-card:hover { transform: translateY(-6px) rotate(0deg) scale(1.005); }
+
+.bio-card__inner {
+  position: relative;
+  height: 100%;
+  border-radius: inherit;
+}
+.bio-card::before,
+.bio-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Variant 1: Chapel — luminous, arched top, soft halo --- */
+.bio-card--chapel {
+  background:
+    radial-gradient(ellipse 120% 60% at 50% 0%, hsl(45 80% 65% / 0.14), transparent 65%),
+    linear-gradient(160deg, hsl(350 22% 11%) 0%, hsl(350 28% 6%) 100%);
+  border: 1px solid hsl(var(--primary) / 0.28);
+  border-radius: 60px 60px 4px 4px;
+  box-shadow:
+    0 20px 50px -25px hsl(0 0% 0% / 0.9),
+    inset 0 1px 0 hsl(var(--primary) / 0.25),
+    0 0 60px -20px hsl(45 80% 60% / 0.35);
+}
+.bio-card--chapel::before {
+  border-radius: inherit;
+  background: radial-gradient(circle at 50% -10%, hsl(45 90% 70% / 0.18), transparent 45%);
+}
+.bio-card--chapel:hover {
+  box-shadow:
+    0 30px 70px -25px hsl(0 0% 0% / 0.95),
+    inset 0 1px 0 hsl(var(--primary) / 0.4),
+    0 0 90px -15px hsl(45 90% 65% / 0.5);
+}
+
+/* --- Variant 2: Midnight — dense, sharp cut corners, tight shadow --- */
+.bio-card--midnight {
+  background:
+    linear-gradient(135deg, hsl(220 30% 8%) 0%, hsl(350 25% 5%) 60%, hsl(0 40% 8%) 100%);
+  border: 1px solid hsl(220 30% 30% / 0.5);
+  clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+  box-shadow:
+    0 25px 40px -20px hsl(0 0% 0%),
+    inset 0 0 40px hsl(220 40% 20% / 0.4);
+}
+.bio-card--midnight::after {
+  background:
+    linear-gradient(135deg, transparent 17px, hsl(var(--primary) / 0.3) 17px, hsl(var(--primary) / 0.3) 18px, transparent 18px) top left / 100% 100% no-repeat;
+}
+.bio-card--midnight:hover { filter: brightness(1.12); }
+
+/* --- Variant 3: Laurel — crimson glow, elevated, oval hint --- */
+.bio-card--laurel {
+  background:
+    radial-gradient(ellipse at 50% 100%, hsl(var(--imperial-red) / 0.25) 0%, transparent 60%),
+    linear-gradient(180deg, hsl(350 25% 9%) 0%, hsl(355 40% 7%) 100%);
+  border: 1px solid hsl(var(--imperial-red) / 0.55);
+  border-radius: 4px 4px 40px 40px;
+  box-shadow:
+    0 18px 45px -18px hsl(355 70% 15% / 0.9),
+    inset 0 -1px 0 hsl(var(--primary) / 0.3),
+    0 0 40px -10px hsl(var(--imperial-red) / 0.5);
+}
+.bio-card--laurel::before {
+  border-radius: inherit;
+  background: repeating-linear-gradient(45deg, transparent 0 10px, hsl(var(--primary) / 0.025) 10px 11px);
+}
+.bio-card--laurel:hover {
+  box-shadow:
+    0 25px 60px -18px hsl(355 80% 20% / 1),
+    inset 0 -1px 0 hsl(var(--primary) / 0.5),
+    0 0 70px -10px hsl(var(--imperial-red) / 0.7);
+}
+
+/* --- Variant 4: Parchment — warmer tint, arched, semi-transparent --- */
+.bio-card--parchment {
+  background:
+    linear-gradient(170deg, hsl(38 25% 12% / 0.85) 0%, hsl(350 22% 7% / 0.92) 100%);
+  border: 1px solid hsl(38 40% 40% / 0.4);
+  border-radius: 4px 4px 4px 60px;
+  backdrop-filter: blur(6px);
+  box-shadow:
+    0 15px 40px -20px hsl(0 0% 0% / 0.8),
+    inset 0 1px 0 hsl(38 50% 60% / 0.15);
+}
+.bio-card--parchment::before {
+  border-radius: inherit;
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='60'><g fill='none' stroke='%23c89a3a' stroke-opacity='0.05'><path d='M30 5 L35 25 L55 30 L35 35 L30 55 L25 35 L5 30 L25 25 Z'/></g></svg>");
+  opacity: 0.6;
+}
+.bio-card--parchment:hover { border-color: hsl(38 60% 55% / 0.7); }
+
+/* --- Variant 5: Scroll — wide, elegant, dual-edge gilding --- */
+.bio-card--scroll {
+  background:
+    linear-gradient(90deg, hsl(350 30% 6%) 0%, hsl(350 22% 10%) 50%, hsl(350 30% 6%) 100%);
+  border-top: 1px solid hsl(var(--primary) / 0.45);
+  border-bottom: 1px solid hsl(var(--primary) / 0.45);
+  border-left: none;
+  border-right: none;
+  box-shadow:
+    0 20px 50px -25px hsl(0 0% 0% / 0.9),
+    inset 0 0 80px hsl(var(--imperial-red) / 0.08);
+}
+.bio-card--scroll::before {
+  background:
+    linear-gradient(90deg, hsl(var(--primary) / 0.4), transparent 8%, transparent 92%, hsl(var(--primary) / 0.4)) top / 100% 3px no-repeat,
+    linear-gradient(90deg, hsl(var(--primary) / 0.4), transparent 8%, transparent 92%, hsl(var(--primary) / 0.4)) bottom / 100% 3px no-repeat;
+}
+.bio-card--scroll:hover {
+  box-shadow:
+    0 30px 60px -25px hsl(0 0% 0%),
+    inset 0 0 120px hsl(var(--imperial-red) / 0.15);
+}
+
+/* --- Cartouche — pull quote --- */
+.bio-card--cartouche {
+  background:
+    radial-gradient(ellipse at center, hsl(350 25% 10%) 0%, hsl(350 30% 5%) 90%);
+  border: 1px solid hsl(var(--primary) / 0.35);
+  border-radius: 120px / 20px;
+  box-shadow:
+    0 30px 70px -30px hsl(0 0% 0%),
+    inset 0 0 100px hsl(var(--imperial-red) / 0.15),
+    inset 0 1px 0 hsl(var(--primary) / 0.3),
+    0 0 60px -20px hsl(var(--primary) / 0.35);
+}
+.bio-card--cartouche::before {
+  border-radius: inherit;
+  border: 1px dashed hsl(var(--primary) / 0.25);
+  margin: 8px;
+  inset: 8px;
+}
+
+/* ============================================================
+   Bio icons — each specially framed
+   ============================================================ */
+.bio-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  color: hsl(45 80% 68%);
+  flex-shrink: 0;
+  transition: transform 0.5s ease, color 0.5s ease;
+}
+.bio-card:hover .bio-icon { transform: rotate(-6deg) scale(1.08); color: hsl(45 90% 78%); }
+
+/* Halo — concentric glowing rings */
+.bio-icon--halo::before,
+.bio-icon--halo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid hsl(var(--primary) / 0.4);
+}
+.bio-icon--halo::after {
+  inset: -6px;
+  border-style: dashed;
+  border-color: hsl(var(--primary) / 0.25);
+  animation: gothic-float 5s ease-in-out infinite;
+}
+.bio-icon--halo {
+  background: radial-gradient(circle, hsl(45 80% 55% / 0.18), transparent 70%);
+  box-shadow: 0 0 20px hsl(45 80% 55% / 0.3);
+}
+
+/* Seal — sharp diamond-in-square */
+.bio-icon--seal {
+  background: linear-gradient(135deg, hsl(220 30% 15%), hsl(350 25% 8%));
+  border: 1px solid hsl(var(--primary) / 0.5);
+  transform: rotate(45deg);
+  border-radius: 4px;
+}
+.bio-icon--seal > * { transform: rotate(-45deg); }
+.bio-icon--seal::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid hsl(var(--primary) / 0.3);
+  border-radius: 2px;
+}
+
+/* Medallion — crimson laurel ring */
+.bio-icon--medallion {
+  background: radial-gradient(circle, hsl(var(--imperial-red) / 0.4), hsl(350 30% 8%));
+  border-radius: 50%;
+  border: 1px solid hsl(var(--primary) / 0.6);
+  box-shadow:
+    0 0 0 3px hsl(350 30% 5%),
+    0 0 0 4px hsl(var(--primary) / 0.35),
+    0 0 25px hsl(var(--imperial-red) / 0.5);
+}
+.bio-icon--medallion::before {
+  content: "★";
+  position: absolute;
+  top: -8px; right: -6px;
+  font-size: 10px;
+  color: hsl(45 90% 70%);
+  text-shadow: 0 0 6px hsl(45 90% 60%);
+}
+
+/* Arch — cathedral window */
+.bio-icon--arch {
+  background: linear-gradient(180deg, hsl(38 25% 15% / 0.6), hsl(350 25% 6%));
+  border: 1px solid hsl(var(--primary) / 0.5);
+  border-radius: 22px 22px 3px 3px;
+  box-shadow: inset 0 -2px 0 hsl(var(--primary) / 0.2), 0 4px 15px -5px hsl(0 0% 0% / 0.8);
+}
+.bio-icon--arch::before {
+  content: "";
+  position: absolute;
+  top: 6px; bottom: 4px; left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, hsl(var(--primary) / 0.4), transparent);
+  transform: translateX(-50%);
+}
+
+/* Diamond — filigree rhombus with outer points */
+.bio-icon--diamond {
+  background: linear-gradient(135deg, hsl(350 30% 10%), hsl(220 25% 8%));
+  border: 1px solid hsl(var(--primary) / 0.55);
+  transform: rotate(45deg);
+  border-radius: 2px;
+  box-shadow: 0 0 25px hsl(var(--primary) / 0.25);
+}
+.bio-icon--diamond > * { transform: rotate(-45deg); }
+.bio-icon--diamond::before,
+.bio-icon--diamond::after {
+  content: "◆";
+  position: absolute;
+  color: hsl(var(--primary) / 0.7);
+  font-size: 8px;
+  transform: rotate(-45deg);
+}
+.bio-icon--diamond::before { top: -14px; left: 50%; margin-left: -4px; }
+.bio-icon--diamond::after  { bottom: -14px; left: 50%; margin-left: -4px; }
