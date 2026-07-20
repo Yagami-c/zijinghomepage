@@ -11,6 +11,7 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef, useState, useMemo } from "react";
 
@@ -93,6 +94,7 @@ export default function Index() {
   const autoplayRef = useRef(Autoplay({ delay: 5000, stopOnInteraction: false }));
   const [countryFilter, setCountryFilter] = useState<string>("all");
   const [cityFilter, setCityFilter] = useState<string>("all");
+  const [openBioKey, setOpenBioKey] = useState<string | null>(null);
 
   const availableCountries = useMemo(
     () => Array.from(new Set(performances.map((p) => p.country))),
