@@ -347,10 +347,20 @@ export default function Index() {
                   {bioCards.map(({ icon: Icon, key, variant, iconVariant, pos, slide, z }, i) => (
                     <Reveal key={key} delay={i * 120} className={`bio-slot ${pos} ${slide}`}>
                       <article
-                        className={`bio-card ${variant} group relative h-full`}
+                        className={`bio-card ${variant} group relative h-full cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60`}
                         style={{ zIndex: z }}
                         onMouseMove={onMove}
                         onMouseLeave={onLeave}
+                        onClick={() => setOpenBioKey(key)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setOpenBioKey(key);
+                          }
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={t(`bio.${key}.title`)}
                       >
                         <div className="bio-card__inner h-full p-7 md:p-8 flex flex-col relative z-10">
                           <div className="flex items-center gap-4 mb-5 bio-parallax-strong">
@@ -368,6 +378,11 @@ export default function Index() {
                           <p className="font-cormorant text-[0.98rem] md:text-lg leading-relaxed text-foreground/85 flex-1 bio-parallax-soft">
                             {t(`bio.${key}.text`)}
                           </p>
+                          <div className="mt-5 flex items-center gap-2 text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase opacity-70 group-hover:opacity-100 transition-opacity">
+                            <span className="h-px w-6 bg-primary/50" />
+                            {t("bio.dialog.hint")}
+                            <span aria-hidden="true">→</span>
+                          </div>
                         </div>
                         <span className="bio-sheen" aria-hidden="true" />
                         <span className="bio-index" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
@@ -375,6 +390,59 @@ export default function Index() {
                     </Reveal>
                   ))}
                 </div>
+
+                <Dialog open={openBioKey !== null} onOpenChange={(o) => !o && setOpenBioKey(null)}>
+                  <DialogContent className="max-w-2xl gothic-card ornate-frame border-primary/30 max-h-[85vh] overflow-y-auto">
+                    <span className="corner-tr" /><span className="corner-bl" />
+                    {openBioKey && (
+                      <>
+                        <DialogHeader className="text-left">
+                          <div className="font-cinzel text-[10px] tracking-[0.4em] text-primary/70 uppercase mb-2">
+                            {t(`bio.${openBioKey}.eyebrow`)}
+                          </div>
+                          <DialogTitle className="text-2xl md:text-3xl font-cinzel-decorative tracking-wide text-foreground gothic-glow">
+                            {t(`bio.${openBioKey}.title`)}
+                          </DialogTitle>
+                          <DialogDescription className="sr-only">
+                            {t(`bio.${openBioKey}.title`)}
+                          </DialogDescription>
+                        </DialogHeader>
+
+                        <div className="mt-4 space-y-6">
+                          <div>
+                            <div className="text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase mb-2">
+                              {t("bio.dialog.summary_label")}
+                            </div>
+                            <p className="font-cormorant text-base md:text-lg leading-relaxed text-foreground/90">
+                              {t(`bio.${openBioKey}.text`)}
+                            </p>
+                          </div>
+
+                          <GothicDivider />
+
+                          <div>
+                            <div className="text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase mb-2">
+                              {t("bio.dialog.full_label")}
+                            </div>
+                            <p className="font-cormorant text-[0.95rem] md:text-base leading-relaxed text-foreground/80 whitespace-pre-wrap">
+                              {t("about.text")}
+                            </p>
+                          </div>
+
+                          <div className="border-t border-primary/20 pt-4">
+                            <div className="text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase mb-2">
+                              {t("bio.dialog.source_label")}
+                            </div>
+                            <p className="font-cormorant italic text-sm md:text-base text-foreground/70">
+                              {t("bio.dialog.source_text")}
+                            </p>
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </DialogContent>
+                </Dialog>
+
 
                 <Reveal delay={700} className="mt-14 bio-slide-up">
                   <div
