@@ -319,29 +319,39 @@ export default function Index() {
 
           {(() => {
             const bioCards = [
-              { icon: Sparkles,      key: "card1", variant: "bio-card--chapel",    iconVariant: "bio-icon--halo",      pos: "bio-pos-1", z: 30 },
-              { icon: GraduationCap, key: "card2", variant: "bio-card--midnight",  iconVariant: "bio-icon--seal",      pos: "bio-pos-2", z: 40 },
-              { icon: Trophy,        key: "card3", variant: "bio-card--laurel",    iconVariant: "bio-icon--medallion", pos: "bio-pos-3", z: 20 },
-              { icon: Landmark,      key: "card4", variant: "bio-card--parchment", iconVariant: "bio-icon--arch",      pos: "bio-pos-4", z: 35 },
-              { icon: Users,         key: "card5", variant: "bio-card--scroll",    iconVariant: "bio-icon--diamond",   pos: "bio-pos-5", z: 25 },
+              { icon: Sparkles,      key: "card1", variant: "bio-card--chapel",    iconVariant: "bio-icon--halo",      pos: "bio-pos-1", slide: "bio-slide-l", z: 30 },
+              { icon: GraduationCap, key: "card2", variant: "bio-card--midnight",  iconVariant: "bio-icon--seal",      pos: "bio-pos-2", slide: "bio-slide-r", z: 40 },
+              { icon: Trophy,        key: "card3", variant: "bio-card--laurel",    iconVariant: "bio-icon--medallion", pos: "bio-pos-3", slide: "bio-slide-l", z: 20 },
+              { icon: Landmark,      key: "card4", variant: "bio-card--parchment", iconVariant: "bio-icon--arch",      pos: "bio-pos-4", slide: "bio-slide-r", z: 35 },
+              { icon: Users,         key: "card5", variant: "bio-card--scroll",    iconVariant: "bio-icon--diamond",   pos: "bio-pos-5", slide: "bio-slide-up", z: 25 },
             ];
+
+            const onMove = (e: React.MouseEvent<HTMLElement>) => {
+              const el = e.currentTarget;
+              const r = el.getBoundingClientRect();
+              const mx = (e.clientX - r.left) / r.width - 0.5;
+              const my = (e.clientY - r.top) / r.height - 0.5;
+              el.style.setProperty("--mx", mx.toFixed(3));
+              el.style.setProperty("--my", my.toFixed(3));
+            };
+            const onLeave = (e: React.MouseEvent<HTMLElement>) => {
+              e.currentTarget.style.setProperty("--mx", "0");
+              e.currentTarget.style.setProperty("--my", "0");
+            };
+
             return (
               <div className="max-w-6xl mx-auto">
-                {/* Collage stage — cards overlap on lg+, stack on smaller */}
                 <div className="bio-stage relative">
-                  {/* decorative floating overlays */}
-                  <span className="bio-wax hidden lg:block" aria-hidden="true">Z</span>
-                  <span className="bio-ribbon hidden lg:block" aria-hidden="true" />
-                  <span className="bio-veil hidden lg:block" aria-hidden="true" />
-
-                  {bioCards.map(({ icon: Icon, key, variant, iconVariant, pos, z }, i) => (
-                    <Reveal key={key} delay={i * 140} className={`bio-slot ${pos}`}>
+                  {bioCards.map(({ icon: Icon, key, variant, iconVariant, pos, slide, z }, i) => (
+                    <Reveal key={key} delay={i * 120} className={`bio-slot ${pos} ${slide}`}>
                       <article
                         className={`bio-card ${variant} group relative h-full`}
                         style={{ zIndex: z }}
+                        onMouseMove={onMove}
+                        onMouseLeave={onLeave}
                       >
                         <div className="bio-card__inner h-full p-7 md:p-8 flex flex-col relative z-10">
-                          <div className="flex items-center gap-4 mb-5">
+                          <div className="flex items-center gap-4 mb-5 bio-parallax-strong">
                             <span className={`bio-icon ${iconVariant}`}>
                               <Icon className="w-5 h-5" strokeWidth={1.5} />
                             </span>
@@ -349,25 +359,28 @@ export default function Index() {
                               {t(`bio.${key}.eyebrow`)}
                             </span>
                           </div>
-                          <h3 className="text-xl md:text-[1.55rem] font-cinzel-decorative text-foreground tracking-wide leading-snug mb-4 group-hover:gothic-glow transition-all duration-500">
+                          <h3 className="text-xl md:text-[1.5rem] font-cinzel-decorative text-foreground tracking-wide leading-snug mb-4 bio-parallax group-hover:gothic-glow transition-all duration-500">
                             {t(`bio.${key}.title`)}
                           </h3>
                           <div className="h-px w-12 bg-gradient-to-r from-primary/70 via-primary/30 to-transparent mb-5" />
-                          <p className="font-cormorant text-[0.98rem] md:text-lg leading-relaxed text-foreground/85 flex-1">
+                          <p className="font-cormorant text-[0.98rem] md:text-lg leading-relaxed text-foreground/85 flex-1 bio-parallax-soft">
                             {t(`bio.${key}.text`)}
                           </p>
                         </div>
-                        {/* corner tag / index number */}
+                        <span className="bio-sheen" aria-hidden="true" />
                         <span className="bio-index" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
                       </article>
                     </Reveal>
                   ))}
                 </div>
 
-                {/* Pull-quote — imperial cartouche */}
-                <Reveal delay={900} className="mt-16 lg:mt-24">
-                  <div className="bio-card bio-card--cartouche relative">
-                    <div className="bio-card__inner p-10 md:p-14 text-center relative z-10">
+                <Reveal delay={700} className="mt-14 bio-slide-up">
+                  <div
+                    className="bio-card bio-card--cartouche relative"
+                    onMouseMove={onMove}
+                    onMouseLeave={onLeave}
+                  >
+                    <div className="bio-card__inner p-10 md:p-14 text-center relative z-10 bio-parallax">
                       <span className="absolute top-4 left-6 text-primary/50 text-7xl font-cinzel-decorative leading-none">“</span>
                       <span className="absolute bottom-2 right-6 text-primary/50 text-7xl font-cinzel-decorative leading-none">”</span>
                       <p className="font-cormorant italic text-lg md:text-2xl leading-relaxed text-foreground/90 max-w-3xl mx-auto">
@@ -381,6 +394,7 @@ export default function Index() {
                         <span className="h-px w-10 bg-gradient-to-l from-transparent to-primary/70" />
                       </div>
                     </div>
+                    <span className="bio-sheen" aria-hidden="true" />
                   </div>
                 </Reveal>
               </div>
