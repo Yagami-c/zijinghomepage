@@ -85,7 +85,12 @@ const translations = {
     "city.moscow": "Moscow",
     "city.moscow_region": "Moscow Region",
     "city.saint_petersburg": "Saint Petersburg",
-    "city.sydney": "Sydney"
+    "city.sydney": "Sydney",
+    "bio.dialog.hint": "Click to read more",
+    "bio.dialog.summary_label": "Summary",
+    "bio.dialog.full_label": "Full biography",
+    "bio.dialog.source_label": "Source",
+    "bio.dialog.source_text": "Compiled from the artist's official biography and public performance records. Content provided and verified by Zijing Zeng."
   },
   ru: {
     "nav.about": "О себе",
@@ -162,7 +167,12 @@ const translations = {
     "city.moscow": "Москва",
     "city.moscow_region": "Московская область",
     "city.saint_petersburg": "Санкт-Петербург",
-    "city.sydney": "Сидней"
+    "city.sydney": "Сидней",
+    "bio.dialog.hint": "Нажмите, чтобы узнать больше",
+    "bio.dialog.summary_label": "Кратко",
+    "bio.dialog.full_label": "Полная биография",
+    "bio.dialog.source_label": "Источник",
+    "bio.dialog.source_text": "Составлено на основе официальной биографии артистки и открытых сведений о концертах. Материал предоставлен и проверен Цзыцзин Цзэн."
   },
   zh: {
     "nav.about": "关于我",
@@ -239,7 +249,12 @@ const translations = {
     "city.moscow": "莫斯科",
     "city.moscow_region": "莫斯科州",
     "city.saint_petersburg": "圣彼得堡",
-    "city.sydney": "悉尼"
+    "city.sydney": "悉尼",
+    "bio.dialog.hint": "点击查看详情",
+    "bio.dialog.summary_label": "摘要",
+    "bio.dialog.full_label": "完整介绍",
+    "bio.dialog.source_label": "来源说明",
+    "bio.dialog.source_text": "内容整理自艺术家提供的官方个人简历及公开演出记录，已由曾子荆本人核实。"
   }
 };
 
