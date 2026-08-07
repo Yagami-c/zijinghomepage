@@ -24,7 +24,10 @@ export default function MediaFolder() {
           </Link>
         </div>
         <SectionTitle eyebrow="MEDIA LIBRARY">{t(folder.titleKey)}</SectionTitle>
-        <p className="text-center max-w-2xl mx-auto font-cormorant italic text-foreground/70 -mt-8 mb-14">{t(folder.descKey)}</p>
+        <p className="text-center max-w-2xl mx-auto font-cormorant italic text-foreground/70 -mt-8 mb-4">{t(folder.descKey)}</p>
+        <p className="text-center font-cinzel text-[10px] tracking-[0.3em] text-primary/70 uppercase mb-14">
+          {t("media.source")}: {t(folder.sourceKey)}
+        </p>
 
         {folder.videos.length > 0 && (
           <div className="max-w-6xl mx-auto mb-16">
