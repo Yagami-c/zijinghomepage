@@ -2,7 +2,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { SectionTitle, Reveal } from "@/components/section-primitives";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Play, ZoomIn } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { mediaFolders } from "@/lib/site-data";
 
@@ -13,6 +13,8 @@ export default function MediaFolder() {
   const [activeVideo, setActiveVideo] = useState(folder?.videos[0]?.id);
   const [lightbox, setLightbox] = useState<number | null>(null);
   const count = folder?.photos.length ?? 0;
+  const touchStart = useRef<number | null>(null);
+  const touchDelta = useRef(0);
 
   const prev = useCallback(() => setLightbox((i) => (i === null ? i : (i - 1 + count) % count)), [count]);
   const next = useCallback(() => setLightbox((i) => (i === null ? i : (i + 1) % count)), [count]);
@@ -131,12 +133,22 @@ export default function MediaFolder() {
           <DialogTitle className="sr-only">{t(folder.titleKey)}</DialogTitle>
           {lightbox !== null && (
             <div className="space-y-4">
-              <div className="relative flex items-center justify-center">
+              <div
+                className="relative flex items-center justify-center touch-pan-y select-none"
+                onTouchStart={(e) => { touchStart.current = e.touches[0].clientX; touchDelta.current = 0; }}
+                onTouchMove={(e) => { if (touchStart.current !== null) touchDelta.current = e.touches[0].clientX - touchStart.current; }}
+                onTouchEnd={() => {
+                  if (Math.abs(touchDelta.current) > 50) { touchDelta.current < 0 ? next() : prev(); }
+                  touchStart.current = null; touchDelta.current = 0;
+                }}
+              >
                 <img
                   src={folder.photos[lightbox]}
                   alt={`${t(folder.captionKey)} — ${t(folder.titleKey)} ${lightbox + 1}`}
-                  className="max-h-[70vh] w-auto max-w-full object-contain rounded-sm"
+                  className="max-h-[70vh] w-auto max-w-full object-contain rounded-sm pointer-events-none"
+                  draggable={false}
                 />
+
                 {folder.photos.length > 1 && (
                   <>
                     <button
