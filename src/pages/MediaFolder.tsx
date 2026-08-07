@@ -24,7 +24,10 @@ export default function MediaFolder() {
           </Link>
         </div>
         <SectionTitle eyebrow="MEDIA LIBRARY">{t(folder.titleKey)}</SectionTitle>
-        <p className="text-center max-w-2xl mx-auto font-cormorant italic text-foreground/70 -mt-8 mb-14">{t(folder.descKey)}</p>
+        <p className="text-center max-w-2xl mx-auto font-cormorant italic text-foreground/70 -mt-8 mb-4">{t(folder.descKey)}</p>
+        <p className="text-center font-cinzel text-[10px] tracking-[0.3em] text-primary/70 uppercase mb-14">
+          {t("media.source")}: {t(folder.sourceKey)}
+        </p>
 
         {folder.videos.length > 0 && (
           <div className="max-w-6xl mx-auto mb-16">
@@ -36,7 +39,7 @@ export default function MediaFolder() {
                     key={activeVideo}
                     className="w-full h-full rounded-sm"
                     src={`https://www.youtube-nocookie.com/embed/${activeVideo}?autoplay=0`}
-                    title={folder.videos.find((v) => v.id === activeVideo)?.title || ""}
+                    title={t(folder.videos.find((v) => v.id === activeVideo)?.title || "")}
                     loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -59,12 +62,12 @@ export default function MediaFolder() {
                         }`}
                       >
                         <div className={`relative w-16 h-10 rounded-sm overflow-hidden bg-black flex-shrink-0 flex items-center justify-center ${activeVideo === v.id ? "ring-1 ring-primary/60" : ""}`}>
-                          <img src={`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`} alt={v.title} loading="lazy" className="w-full h-full object-cover" />
+                          <img src={`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`} alt={t(v.title)} loading="lazy" className="w-full h-full object-cover" />
                           <Play size={14} className="absolute text-primary drop-shadow-lg" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="font-cinzel text-[10px] tracking-[0.25em] text-primary/70 uppercase">#{String(i + 1).padStart(2, "0")}</div>
-                          <div className="font-cormorant text-sm text-foreground/90 truncate">{v.title}</div>
+                          <div className="font-cormorant text-sm text-foreground/90 truncate">{t(v.title)}</div>
                         </div>
                       </button>
                     ))}
@@ -83,14 +86,14 @@ export default function MediaFolder() {
                   <span className="corner-tr" /><span className="corner-bl" />
                   <img
                     src={image}
-                    alt={`${t(folder.titleKey)} — ${index + 1}`}
+                    alt={`${t(folder.captionKey)} — ${t(folder.titleKey)} ${index + 1}`}
                     className="w-full h-auto object-cover group-hover:scale-[1.06] transition-transform duration-[1200ms] ease-out"
                     loading="lazy" decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-700">
                     <span className="text-primary/70 text-xs">◆</span>
-                    <span className="font-cinzel text-[10px] tracking-[0.3em] text-foreground/80 uppercase">Plate {String(index + 1).padStart(2, "0")}</span>
+                    <span className="font-cinzel text-[10px] tracking-[0.3em] text-foreground/80 uppercase">{t("media.plate")} {String(index + 1).padStart(2, "0")} · {t(folder.captionKey)}</span>
                   </div>
                 </div>
               </Reveal>
