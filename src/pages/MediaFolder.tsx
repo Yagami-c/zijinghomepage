@@ -1,8 +1,9 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { SectionTitle, Reveal } from "@/components/section-primitives";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { ChevronLeft, Play } from "lucide-react";
-import { useState } from "react";
+import { ChevronLeft, ChevronRight, Play, ZoomIn } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { mediaFolders } from "@/lib/site-data";
 
 export default function MediaFolder() {
@@ -10,6 +11,21 @@ export default function MediaFolder() {
   const { slug } = useParams<{ slug: string }>();
   const folder = mediaFolders.find((f) => f.slug === slug);
   const [activeVideo, setActiveVideo] = useState(folder?.videos[0]?.id);
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const count = folder?.photos.length ?? 0;
+
+  const prev = useCallback(() => setLightbox((i) => (i === null ? i : (i - 1 + count) % count)), [count]);
+  const next = useCallback(() => setLightbox((i) => (i === null ? i : (i + 1) % count)), [count]);
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox, prev, next]);
 
   if (!folder) return <Navigate to="/media" replace />;
 
