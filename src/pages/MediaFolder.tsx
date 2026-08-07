@@ -2,7 +2,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { SectionTitle, Reveal } from "@/components/section-primitives";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Play, ZoomIn } from "lucide-react";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { mediaFolders } from "@/lib/site-data";
 
@@ -13,6 +13,8 @@ export default function MediaFolder() {
   const [activeVideo, setActiveVideo] = useState(folder?.videos[0]?.id);
   const [lightbox, setLightbox] = useState<number | null>(null);
   const count = folder?.photos.length ?? 0;
+  const touchStart = useRef<number | null>(null);
+  const touchDelta = useRef(0);
 
   const prev = useCallback(() => setLightbox((i) => (i === null ? i : (i - 1 + count) % count)), [count]);
   const next = useCallback(() => setLightbox((i) => (i === null ? i : (i + 1) % count)), [count]);
