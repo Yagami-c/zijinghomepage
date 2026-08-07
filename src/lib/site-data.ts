@@ -48,6 +48,8 @@ export type MediaFolder = {
   slug: string;
   titleKey: string;
   descKey: string;
+  sourceKey: string;
+  captionKey: string;
   cover: string;
   videos: typeof videos;
   photos: string[];
@@ -58,6 +60,8 @@ export const mediaFolders: MediaFolder[] = [
     slug: "recordings",
     titleKey: "media.folder.recordings.title",
     descKey: "media.folder.recordings.desc",
+    sourceKey: "media.source.youtube",
+    captionKey: "media.photo.stage",
     cover: galleryAll[0],
     videos: videos,
     photos: [],
@@ -66,6 +70,8 @@ export const mediaFolders: MediaFolder[] = [
     slug: "stage",
     titleKey: "media.folder.stage.title",
     descKey: "media.folder.stage.desc",
+    sourceKey: "media.source.archive",
+    captionKey: "media.photo.stage",
     cover: galleryAll[2],
     videos: [],
     photos: galleryAll.slice(0, 6),
@@ -74,6 +80,8 @@ export const mediaFolders: MediaFolder[] = [
     slug: "studio",
     titleKey: "media.folder.studio.title",
     descKey: "media.folder.studio.desc",
+    sourceKey: "media.source.archive",
+    captionKey: "media.photo.studio",
     cover: galleryAll[7],
     videos: [],
     photos: galleryAll.slice(6),
