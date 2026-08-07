@@ -131,12 +131,22 @@ export default function MediaFolder() {
           <DialogTitle className="sr-only">{t(folder.titleKey)}</DialogTitle>
           {lightbox !== null && (
             <div className="space-y-4">
-              <div className="relative flex items-center justify-center">
+              <div
+                className="relative flex items-center justify-center touch-pan-y select-none"
+                onTouchStart={(e) => { touchStart.current = e.touches[0].clientX; touchDelta.current = 0; }}
+                onTouchMove={(e) => { if (touchStart.current !== null) touchDelta.current = e.touches[0].clientX - touchStart.current; }}
+                onTouchEnd={() => {
+                  if (Math.abs(touchDelta.current) > 50) { touchDelta.current < 0 ? next() : prev(); }
+                  touchStart.current = null; touchDelta.current = 0;
+                }}
+              >
                 <img
                   src={folder.photos[lightbox]}
                   alt={`${t(folder.captionKey)} — ${t(folder.titleKey)} ${lightbox + 1}`}
-                  className="max-h-[70vh] w-auto max-w-full object-contain rounded-sm"
+                  className="max-h-[70vh] w-auto max-w-full object-contain rounded-sm pointer-events-none"
+                  draggable={false}
                 />
+
                 {folder.photos.length > 1 && (
                   <>
                     <button
