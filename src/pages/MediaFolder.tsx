@@ -82,7 +82,12 @@ export default function MediaFolder() {
           <div className="max-w-6xl mx-auto masonry">
             {folder.photos.map((image, index) => (
               <Reveal key={index} delay={(index % 6) * 80}>
-                <div className="relative group cursor-pointer ornate-frame rounded-sm overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => setLightbox(index)}
+                  aria-label={`${t("media.zoom")} — ${t(folder.captionKey)} ${index + 1}`}
+                  className="w-full block relative group cursor-zoom-in ornate-frame rounded-sm overflow-hidden"
+                >
                   <span className="corner-tr" /><span className="corner-bl" />
                   <img
                     src={image}
@@ -91,16 +96,61 @@ export default function MediaFolder() {
                     loading="lazy" decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="absolute top-3 right-3 p-2 rounded-sm bg-background/70 backdrop-blur-md border border-primary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <ZoomIn size={14} className="text-primary" />
+                  </div>
                   <div className="absolute bottom-3 left-4 right-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-700">
                     <span className="text-primary/70 text-xs">◆</span>
                     <span className="font-cinzel text-[10px] tracking-[0.3em] text-foreground/80 uppercase">{t("media.plate")} {String(index + 1).padStart(2, "0")} · {t(folder.captionKey)}</span>
                   </div>
-                </div>
+                </button>
               </Reveal>
             ))}
           </div>
         )}
       </div>
+
+      <Dialog open={lightbox !== null} onOpenChange={(o) => !o && setLightbox(null)}>
+        <DialogContent className="max-w-5xl border-primary/30 bg-background/95 backdrop-blur-xl p-4 sm:p-6">
+          <DialogTitle className="sr-only">{t(folder.titleKey)}</DialogTitle>
+          {lightbox !== null && (
+            <div className="space-y-4">
+              <div className="relative flex items-center justify-center">
+                <img
+                  src={folder.photos[lightbox]}
+                  alt={`${t(folder.captionKey)} — ${t(folder.titleKey)} ${lightbox + 1}`}
+                  className="max-h-[70vh] w-auto max-w-full object-contain rounded-sm"
+                />
+                {folder.photos.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={prev}
+                      aria-label={t("media.prev")}
+                      className="absolute left-2 p-3 rounded-sm bg-background/70 backdrop-blur-md border border-primary/30 text-primary hover:bg-primary/15 transition-colors"
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={next}
+                      aria-label={t("media.next")}
+                      className="absolute right-2 p-3 rounded-sm bg-background/70 backdrop-blur-md border border-primary/30 text-primary hover:bg-primary/15 transition-colors"
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+                  </>
+                )}
+              </div>
+              <div className="flex flex-wrap items-center justify-between gap-2 font-cinzel text-[10px] tracking-[0.3em] text-primary/80 uppercase">
+                <span>{t("media.plate")} {String(lightbox + 1).padStart(2, "0")} · {t(folder.captionKey)}</span>
+                <span>{lightbox + 1} / {folder.photos.length}</span>
+                <span>{t("media.source")}: {t(folder.sourceKey)}</span>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
