@@ -23,11 +23,11 @@ export const heroImages = [
 ];
 
 export const videos = [
-  { id: "ZfT6xoLs7QY", title: "Performance 1" },
-  { id: "ySZBNtqPF0I", title: "Performance 2" },
-  { id: "DjIpBxAQ13U", title: "Performance 3" },
-  { id: "Yji4EdOKNQY", title: "Performance 4" },
-  { id: "9DxPdf38Ji4", title: "Performance 5" },
+  { id: "ZfT6xoLs7QY", title: "media.video.1" },
+  { id: "ySZBNtqPF0I", title: "media.video.2" },
+  { id: "DjIpBxAQ13U", title: "media.video.3" },
+  { id: "Yji4EdOKNQY", title: "media.video.4" },
+  { id: "9DxPdf38Ji4", title: "media.video.5" },
 ];
 
 const galleryAll = [
