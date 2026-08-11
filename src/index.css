@@ -899,3 +899,74 @@
   .bio-sheen { transition: none !important; transform: none !important; }
 }
 
+/* Social card interaction — shine sweep, glow, and loading shimmer */
+@keyframes shine-sweep {
+  0% { transform: translateX(-120%) skewX(-18deg); }
+  100% { transform: translateX(220%) skewX(-18deg); }
+}
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.social-card {
+  position: relative;
+  overflow: hidden;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.social-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    hsl(38 70% 60% / 0.18) 50%,
+    transparent 60%
+  );
+  transform: translateX(-120%) skewX(-18deg);
+  pointer-events: none;
+  z-index: 1;
+}
+.social-card:hover::before {
+  animation: shine-sweep 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.social-card .social-card__glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(circle at 50% 0%, hsl(38 70% 55% / 0.25), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.social-card:hover .social-card__glow { opacity: 1; }
+.social-card.loading .social-card__glow { opacity: 1; }
+.social-card.loading .social-card__spinner {
+  opacity: 1;
+  visibility: visible;
+}
+.social-card.loading .social-card__content { opacity: 0.35; }
+.social-card__spinner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+.social-card__spinner::after {
+  content: '';
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid hsl(38 60% 50% / 0.25);
+  border-top-color: hsl(38 70% 60%);
+  animation: spinner 0.8s linear infinite;
+}
+
+

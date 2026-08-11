@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
   Sheet,
   SheetContent,
@@ -7,7 +7,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Phone, MessageCircle, Instagram, Youtube, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Phone, MessageCircle, Instagram, Youtube, X, type LucideIcon } from "lucide-react";
+
 
 export const OPEN_CONTACT_EVENT = "open-contact-sidebar";
 
@@ -53,8 +55,54 @@ const ContactChannel = ({
 
   return <div className="block">{content}</div>;
 };
+const SocialCard = ({
+  href,
+  icon: Icon,
+  label,
+  ariaLabel,
+}: {
+  href: string;
+  icon: LucideIcon;
+  label: string;
+  ariaLabel: string;
+}) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleClick = useCallback(() => {
+    setLoading(true);
+    window.setTimeout(() => setLoading(false), 600);
+  }, []);
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={ariaLabel}
+      onClick={handleClick}
+      className={cn(
+        "social-card group flex items-center gap-3 py-3 px-4 rounded-xl border border-border/60 bg-card/40 transition-all duration-300 select-none",
+        "hover:bg-muted/70 hover:border-primary/70 hover:shadow-[0_0_40px_-8px_hsl(var(--primary)/0.35)] hover:-translate-y-0.5",
+        "active:scale-[0.97] active:translate-y-px active:shadow-[0_0_50px_-6px_hsl(var(--primary)/0.45)]",
+        loading && "loading"
+      )}
+    >
+      <span className="social-card__glow" aria-hidden />
+      <span className="social-card__spinner" aria-hidden />
+      <span className="social-card__content relative z-10 flex items-center gap-3">
+        <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-110 group-hover:text-primary transition-all duration-300">
+          <Icon size={18} />
+        </div>
+        <span className="text-sm font-cormorant text-foreground group-hover:text-primary transition-colors">
+          {label}
+        </span>
+      </span>
+    </a>
+  );
+};
 
 export function ContactSidebar() {
+
   const { t } = useLanguage();
   const [open, setOpen] = useState(false);
 
@@ -135,36 +183,21 @@ export function ContactSidebar() {
                 {t("contact.social")}
               </span>
               <div className="grid grid-cols-2 gap-3">
-                <a
+                <SocialCard
                   href="https://www.instagram.com/zijing_zeng"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="group flex items-center gap-3 py-3 px-4 rounded-xl border border-border/60 bg-card/40 hover:bg-muted/60 hover:border-primary/40 transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)] hover:shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.15)] active:scale-[0.99]"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-105 transition-transform duration-300">
-                    <Instagram size={18} />
-                  </div>
-                  <span className="text-sm font-cormorant text-foreground group-hover:text-primary transition-colors">
-                    Instagram
-                  </span>
-                </a>
-                <a
+                  icon={Instagram}
+                  label="Instagram"
+                  ariaLabel="Instagram"
+                />
+                <SocialCard
                   href="https://youtube.com/@zijingzeng997"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="group flex items-center gap-3 py-3 px-4 rounded-xl border border-border/60 bg-card/40 hover:bg-muted/60 hover:border-primary/40 transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)] hover:shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.15)] active:scale-[0.99]"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-105 transition-transform duration-300">
-                    <Youtube size={18} />
-                  </div>
-                  <span className="text-sm font-cormorant text-foreground group-hover:text-primary transition-colors">
-                    YouTube
-                  </span>
-                </a>
+                  icon={Youtube}
+                  label="YouTube"
+                  ariaLabel="YouTube"
+                />
               </div>
             </div>
+
           </div>
 
           <a
