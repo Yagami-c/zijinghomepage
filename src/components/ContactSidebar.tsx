@@ -183,36 +183,21 @@ export function ContactSidebar() {
                 {t("contact.social")}
               </span>
               <div className="grid grid-cols-2 gap-3">
-                <a
+                <SocialCard
                   href="https://www.instagram.com/zijing_zeng"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="group flex items-center gap-3 py-3 px-4 rounded-xl border border-border/60 bg-card/40 hover:bg-muted/60 hover:border-primary/40 transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)] hover:shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.15)] active:scale-[0.99]"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-105 transition-transform duration-300">
-                    <Instagram size={18} />
-                  </div>
-                  <span className="text-sm font-cormorant text-foreground group-hover:text-primary transition-colors">
-                    Instagram
-                  </span>
-                </a>
-                <a
+                  icon={Instagram}
+                  label="Instagram"
+                  ariaLabel="Instagram"
+                />
+                <SocialCard
                   href="https://youtube.com/@zijingzeng997"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="group flex items-center gap-3 py-3 px-4 rounded-xl border border-border/60 bg-card/40 hover:bg-muted/60 hover:border-primary/40 transition-all duration-300 shadow-[inset_0_1px_1px_rgba(255,255,255,0.02)] hover:shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.15)] active:scale-[0.99]"
-                >
-                  <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-105 transition-transform duration-300">
-                    <Youtube size={18} />
-                  </div>
-                  <span className="text-sm font-cormorant text-foreground group-hover:text-primary transition-colors">
-                    YouTube
-                  </span>
-                </a>
+                  icon={Youtube}
+                  label="YouTube"
+                  ariaLabel="YouTube"
+                />
               </div>
             </div>
+
           </div>
 
           <a
