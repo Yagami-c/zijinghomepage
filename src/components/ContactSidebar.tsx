@@ -99,10 +99,11 @@ export function ContactSidebar() {
               <button
                 onClick={() => setOpen(false)}
                 className="shrink-0 w-9 h-9 rounded-full border border-border/70 bg-card/40 flex items-center justify-center hover:bg-muted hover:border-primary/40 hover:text-primary transition-all duration-300 active:scale-95"
-                aria-label={t("media.close") || "Close"}
+                aria-label={t("ui.close")}
               >
                 <X size={15} />
               </button>
+
             </div>
             <div className="w-16 h-px bg-gradient-to-r from-primary/70 to-transparent mt-4" />
           </SheetHeader>
