@@ -123,8 +123,10 @@ const translations = {
     "bio.dialog.summary_label": "Summary",
     "bio.dialog.full_label": "Full biography",
     "bio.dialog.source_label": "Source",
-    "bio.dialog.source_text": "Compiled from the artist's official biography and public performance records. Content provided and verified by Zijing Zeng."
+    "bio.dialog.source_text": "Compiled from the artist's official biography and public performance records. Content provided and verified by Zijing Zeng.",
+    "ui.close": "Close"
   },
+
   ru: {
     "nav.home": "Главная",
     "nav.about": "О себе",
@@ -238,8 +240,10 @@ const translations = {
     "bio.dialog.summary_label": "Кратко",
     "bio.dialog.full_label": "Полная биография",
     "bio.dialog.source_label": "Источник",
-    "bio.dialog.source_text": "Составлено на основе официальной биографии артистки и открытых сведений о концертах. Материал предоставлен и проверен Цзыцзин Цзэн."
+    "bio.dialog.source_text": "Составлено на основе официальной биографии артистки и открытых сведений о концертах. Материал предоставлен и проверен Цзыцзин Цзэн.",
+    "ui.close": "Закрыть"
   },
+
   zh: {
     "nav.home": "首页",
     "nav.about": "关于我",
@@ -353,8 +357,10 @@ const translations = {
     "bio.dialog.summary_label": "摘要",
     "bio.dialog.full_label": "完整介绍",
     "bio.dialog.source_label": "来源说明",
-    "bio.dialog.source_text": "内容整理自艺术家提供的官方个人简历及公开演出记录，已由曾子荆本人核实。"
+    "bio.dialog.source_text": "内容整理自艺术家提供的官方个人简历及公开演出记录，已由曾子荆本人核实。",
+    "ui.close": "关闭"
   }
+
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
