@@ -55,8 +55,54 @@ const ContactChannel = ({
 
   return <div className="block">{content}</div>;
 };
+const SocialCard = ({
+  href,
+  icon: Icon,
+  label,
+  ariaLabel,
+}: {
+  href: string;
+  icon: LucideIcon;
+  label: string;
+  ariaLabel: string;
+}) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleClick = useCallback(() => {
+    setLoading(true);
+    window.setTimeout(() => setLoading(false), 600);
+  }, []);
+
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={ariaLabel}
+      onClick={handleClick}
+      className={cn(
+        "social-card group flex items-center gap-3 py-3 px-4 rounded-xl border border-border/60 bg-card/40 transition-all duration-300 select-none",
+        "hover:bg-muted/70 hover:border-primary/70 hover:shadow-[0_0_40px_-8px_hsl(var(--primary)/0.35)] hover:-translate-y-0.5",
+        "active:scale-[0.97] active:translate-y-px active:shadow-[0_0_50px_-6px_hsl(var(--primary)/0.45)]",
+        loading && "loading"
+      )}
+    >
+      <span className="social-card__glow" aria-hidden />
+      <span className="social-card__spinner" aria-hidden />
+      <span className="social-card__content relative z-10 flex items-center gap-3">
+        <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-110 group-hover:text-primary transition-all duration-300">
+          <Icon size={18} />
+        </div>
+        <span className="text-sm font-cormorant text-foreground group-hover:text-primary transition-colors">
+          {label}
+        </span>
+      </span>
+    </a>
+  );
+};
 
 export function ContactSidebar() {
+
   const { t } = useLanguage();
   const [open, setOpen] = useState(false);
 
