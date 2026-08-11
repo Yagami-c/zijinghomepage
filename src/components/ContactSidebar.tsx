@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
   Sheet,
   SheetContent,
@@ -7,7 +7,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Phone, MessageCircle, Instagram, Youtube, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Phone, MessageCircle, Instagram, Youtube, X, type LucideIcon } from "lucide-react";
+
 
 export const OPEN_CONTACT_EVENT = "open-contact-sidebar";
 
