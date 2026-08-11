@@ -94,8 +94,13 @@ const translations = {
     "performance11.venue": "Rachmaninoff Hall of the Moscow Conservatory, Bol'shaya Nikitskaya Ulitsa, 11, Moscow, Russia",
     "performance11.title": "Piano Recital",
     "contact.title": "Contact",
+    "contact.concierge": "Contact Concierge",
+    "contact.direct_line": "Direct Line",
     "contact.phone": "Phone",
+    "contact.wechat": "WeChat",
     "contact.social": "Social Media",
+    "contact.cta": "Book a Concert",
+
     "video.title": "Performance Videos",
     "invitation.greeting": "Welcome to My World",
     "invitation.subtitle": "Devoted to Classical Music",
@@ -118,8 +123,10 @@ const translations = {
     "bio.dialog.summary_label": "Summary",
     "bio.dialog.full_label": "Full biography",
     "bio.dialog.source_label": "Source",
-    "bio.dialog.source_text": "Compiled from the artist's official biography and public performance records. Content provided and verified by Zijing Zeng."
+    "bio.dialog.source_text": "Compiled from the artist's official biography and public performance records. Content provided and verified by Zijing Zeng.",
+    "ui.close": "Close"
   },
+
   ru: {
     "nav.home": "Главная",
     "nav.about": "О себе",
@@ -204,8 +211,13 @@ const translations = {
     "performance11.venue": "Рахманиновский зал Московской консерватории, Большая Никитская улица, 11, Москва, Россия",
     "performance11.title": "Фортепианный рецитал",
     "contact.title": "Контакты",
+    "contact.concierge": "Контакт-консьерж",
+    "contact.direct_line": "Прямая линия",
     "contact.phone": "Телефон",
+    "contact.wechat": "WeChat",
     "contact.social": "Социальные сети",
+    "contact.cta": "Заказать концерт",
+
     "video.title": "Видео выступлений",
     "invitation.greeting": "Добро пожаловать в мой мир",
     "invitation.subtitle": "Преданность классической музыке",
@@ -228,8 +240,10 @@ const translations = {
     "bio.dialog.summary_label": "Кратко",
     "bio.dialog.full_label": "Полная биография",
     "bio.dialog.source_label": "Источник",
-    "bio.dialog.source_text": "Составлено на основе официальной биографии артистки и открытых сведений о концертах. Материал предоставлен и проверен Цзыцзин Цзэн."
+    "bio.dialog.source_text": "Составлено на основе официальной биографии артистки и открытых сведений о концертах. Материал предоставлен и проверен Цзыцзин Цзэн.",
+    "ui.close": "Закрыть"
   },
+
   zh: {
     "nav.home": "首页",
     "nav.about": "关于我",
@@ -314,8 +328,13 @@ const translations = {
     "performance11.venue": "莫斯科音乐学院拉赫马尼诺夫音乐厅，大尼基茨卡娅街11号，莫斯科，俄罗斯",
     "performance11.title": "钢琴独奏音乐会",
     "contact.title": "联系方式",
+    "contact.concierge": "联系管家",
+    "contact.direct_line": "直线电话",
     "contact.phone": "电话",
+    "contact.wechat": "微信",
     "contact.social": "社交媒体",
+    "contact.cta": "预约演出",
+
     "video.title": "演出视频",
     "invitation.greeting": "欢迎来到我的世界",
     "invitation.subtitle": "专注于古典音乐",
@@ -338,8 +357,10 @@ const translations = {
     "bio.dialog.summary_label": "摘要",
     "bio.dialog.full_label": "完整介绍",
     "bio.dialog.source_label": "来源说明",
-    "bio.dialog.source_text": "内容整理自艺术家提供的官方个人简历及公开演出记录，已由曾子荆本人核实。"
+    "bio.dialog.source_text": "内容整理自艺术家提供的官方个人简历及公开演出记录，已由曾子荆本人核实。",
+    "ui.close": "关闭"
   }
+
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
