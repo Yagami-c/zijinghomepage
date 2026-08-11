@@ -35,7 +35,8 @@ const ContactChannel = ({
       </span>
       <div className={wrapperClass}>{children}</div>
     </>
-  );;
+  );
+
 
   if (href) {
     return (
