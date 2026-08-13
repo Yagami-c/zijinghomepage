@@ -100,9 +100,29 @@ export default function Schedule() {
                         <div className="font-cinzel text-[11px] tracking-[0.3em] text-primary/70 uppercase">{t(p.date)}</div>
                       </div>
                       <h3 className="text-xl md:text-2xl font-cinzel-decorative text-foreground tracking-wide leading-snug mb-3 group-hover:gothic-glow transition-all duration-500">{t(p.program)}</h3>
-                      <div className="flex items-start gap-2 text-foreground/70">
-                        <MapPin size={14} className="text-primary/60 mt-1 flex-shrink-0" />
-                        <p className="font-cormorant italic text-base leading-relaxed">{t(p.venue)}</p>
+                      <div className="flex items-start gap-2">
+                        <MapPin size={14} className="text-primary/60 mt-1.5 flex-shrink-0" />
+                        <p className="prose-warm font-cormorant italic">{t(p.venue)}</p>
+                      </div>
+                      <div className="mt-5">
+                        {p.ticketUrl ? (
+                          <a
+                            href={p.ticketUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-outline-imperial w-full sm:w-auto"
+                          >
+                            {t("schedule.buyTickets")} <span aria-hidden="true">→</span>
+                          </a>
+                        ) : (
+                          <button
+                            type="button"
+                            onClick={() => window.dispatchEvent(new Event(OPEN_CONTACT_EVENT))}
+                            className="btn-outline-imperial w-full sm:w-auto"
+                          >
+                            {t("schedule.buyTickets")} <span aria-hidden="true">→</span>
+                          </button>
+                        )}
                       </div>
                     </div>
                   </div>
