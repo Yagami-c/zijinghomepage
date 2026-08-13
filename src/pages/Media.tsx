@@ -17,17 +17,19 @@ export default function Media() {
             <Reveal key={folder.slug} delay={i * 120}>
               <Link
                 to={`/media/${folder.slug}`}
-                className="group block relative ornate-frame gothic-card rounded-sm overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_60px_-15px_hsl(var(--primary)/0.5)]"
+                className="media-card group block relative ornate-frame gothic-card rounded-sm overflow-hidden hover:-translate-y-1.5"
               >
                 <span className="corner-tr" /><span className="corner-bl" />
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={folder.cover}
                     alt={t(folder.titleKey)}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1200ms] ease-out"
+                    className="w-full h-full object-cover group-hover:scale-[1.12] transition-transform duration-[1200ms] ease-out"
                     loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[radial-gradient(ellipse_at_center,hsl(var(--primary)/0.18),transparent_65%)]" />
                   <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-sm bg-background/70 backdrop-blur-md border border-primary/30">
                     <Folder size={14} className="text-primary" />
                     <span className="font-cinzel text-[10px] tracking-[0.3em] text-primary/90 uppercase">Folder</span>
@@ -37,7 +39,7 @@ export default function Media() {
                   <h3 className="text-xl md:text-2xl font-cinzel-decorative tracking-wide text-foreground group-hover:gothic-glow transition-all duration-500">
                     {t(folder.titleKey)}
                   </h3>
-                  <p className="font-cormorant italic text-foreground/70 leading-relaxed">{t(folder.descKey)}</p>
+                  <p className="prose-warm font-cormorant italic">{t(folder.descKey)}</p>
                   <div className="flex items-center gap-4 pt-2 text-[11px] font-cinzel tracking-[0.25em] text-primary/70 uppercase">
                     {folder.videos.length > 0 && (
                       <span className="flex items-center gap-1.5"><Film size={12} /> {folder.videos.length} {t("media.videos")}</span>
