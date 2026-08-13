@@ -94,7 +94,19 @@ export default function Home() {
                   </div>
                   <h2 className="text-3xl md:text-5xl font-cinzel-decorative tracking-[0.12em] text-foreground gothic-glow">{t("invitation.greeting")}</h2>
                   <p className="text-lg md:text-xl font-cinzel tracking-[0.2em] text-primary/70 uppercase">{t("invitation.subtitle")}</p>
-                  <p className="text-lg md:text-xl leading-relaxed text-foreground/75 font-cormorant italic max-w-2xl mx-auto">{t("invitation.text")}</p>
+
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                    <Link to="/schedule" className="btn-imperial w-full sm:w-auto">
+                      {t("cta.viewSchedule")}
+                      <ArrowDown size={14} className="animate-gothic-float" />
+                    </Link>
+                    <Link to="/media/recordings" className="btn-outline-imperial w-full sm:w-auto">
+                      {t("cta.listen")}
+                      <Play size={12} />
+                    </Link>
+                  </div>
+
+                  <p className="prose-warm font-cormorant italic max-w-2xl mx-auto">{t("invitation.text")}</p>
                   <p className="text-xl md:text-2xl font-cinzel-decorative gold-shimmer-text tracking-[0.1em]">{t("invitation.signature")}</p>
                 </div>
               </div>
