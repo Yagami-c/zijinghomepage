@@ -1,12 +1,13 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { SectionTitle, GothicDivider, Reveal } from "@/components/section-primitives";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Sparkles, GraduationCap, Trophy, Landmark, Users } from "lucide-react";
+import { Sparkles, GraduationCap, Trophy, Landmark, Users, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export default function About() {
   const { t } = useLanguage();
   const [openBioKey, setOpenBioKey] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string[]>([]);
 
   const bioCards = [
     { icon: Sparkles,      key: "card1", variant: "bio-card--chapel",    iconVariant: "bio-icon--halo",      pos: "bio-pos-1", slide: "bio-slide-l", z: 30 },
@@ -97,7 +98,7 @@ export default function About() {
                   <div className="mt-4 space-y-6">
                     <div>
                       <div className="text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase mb-2">{t("bio.dialog.summary_label")}</div>
-                      <p className="font-cormorant text-base md:text-lg leading-relaxed text-foreground/90">{t(`bio.${openBioKey}.text`)}</p>
+                      <p className="font-cormorant text-base md:text-lg leading-relaxed prose-warm">{t(`bio.${openBioKey}.text`)}</p>
                     </div>
                     <GothicDivider />
                     <div>
