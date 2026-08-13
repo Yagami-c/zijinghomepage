@@ -4,6 +4,7 @@ export type Performance = {
   program: string;
   country: string;
   city: string;
+  ticketUrl?: string;
 };
 
 export const performances: Performance[] = [
