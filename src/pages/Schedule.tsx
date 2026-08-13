@@ -3,6 +3,7 @@ import { SectionTitle, Reveal, parseConcertDate } from "@/components/section-pri
 import { MapPin, Clock } from "lucide-react";
 import { useMemo, useState } from "react";
 import { performances } from "@/lib/site-data";
+import { OPEN_CONTACT_EVENT } from "@/components/ContactSidebar";
 
 export default function Schedule() {
   const { t } = useLanguage();
