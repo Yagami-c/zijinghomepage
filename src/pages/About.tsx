@@ -1,12 +1,13 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { SectionTitle, GothicDivider, Reveal } from "@/components/section-primitives";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Sparkles, GraduationCap, Trophy, Landmark, Users } from "lucide-react";
+import { Sparkles, GraduationCap, Trophy, Landmark, Users, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export default function About() {
   const { t } = useLanguage();
   const [openBioKey, setOpenBioKey] = useState<string | null>(null);
+  const [expanded, setExpanded] = useState<string[]>([]);
 
   const bioCards = [
     { icon: Sparkles,      key: "card1", variant: "bio-card--chapel",    iconVariant: "bio-icon--halo",      pos: "bio-pos-1", slide: "bio-slide-l", z: 30 },
@@ -56,10 +57,22 @@ export default function About() {
                       {t(`bio.${key}.title`)}
                     </h3>
                     <div className="h-px w-12 bg-gradient-to-r from-primary/70 via-primary/30 to-transparent mb-5" />
-                    <p className="font-cormorant text-[0.98rem] md:text-lg leading-relaxed text-foreground/85 flex-1 bio-parallax-soft">
+                    <p className={`prose-warm font-cormorant flex-1 bio-parallax-soft ${expanded.includes(key) ? "" : "clamp-3"}`}>
                       {t(`bio.${key}.text`)}
                     </p>
-                    <div className="mt-5 flex items-center gap-2 text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase opacity-70 group-hover:opacity-100 transition-opacity">
+                    <button
+                      type="button"
+                      aria-expanded={expanded.includes(key)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setExpanded((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
+                      }}
+                      className="mt-4 self-start flex items-center gap-2 text-[11px] font-cinzel tracking-[0.3em] text-primary uppercase hover:text-[hsl(var(--gold-light))] transition-colors"
+                    >
+                      {expanded.includes(key) ? t("ui.readLess") : t("ui.readMore")}
+                      <ChevronDown size={13} className={`transition-transform duration-300 ${expanded.includes(key) ? "rotate-180" : ""}`} />
+                    </button>
+                    <div className="mt-4 flex items-center gap-2 text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase opacity-70 group-hover:opacity-100 transition-opacity">
                       <span className="h-px w-6 bg-primary/50" />
                       {t("bio.dialog.hint")}
                       <span aria-hidden="true">→</span>
@@ -85,7 +98,7 @@ export default function About() {
                   <div className="mt-4 space-y-6">
                     <div>
                       <div className="text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase mb-2">{t("bio.dialog.summary_label")}</div>
-                      <p className="font-cormorant text-base md:text-lg leading-relaxed text-foreground/90">{t(`bio.${openBioKey}.text`)}</p>
+                      <p className="font-cormorant text-base md:text-lg leading-relaxed prose-warm">{t(`bio.${openBioKey}.text`)}</p>
                     </div>
                     <GothicDivider />
                     <div>

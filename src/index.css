@@ -970,3 +970,79 @@
 }
 
 
+
+/* === Imperial CTA button === */
+.btn-imperial {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 2.2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: hsl(var(--primary-foreground));
+  background: linear-gradient(135deg, hsl(var(--gold-dark)) 0%, hsl(var(--primary)) 45%, hsl(var(--gold-light)) 100%);
+  border: 1px solid hsl(var(--gold-light) / 0.55);
+  border-radius: 3px;
+  box-shadow: 0 14px 34px -12px hsl(var(--primary) / 0.55), inset 0 1px 0 hsl(0 0% 100% / 0.25);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, filter 0.3s ease;
+  overflow: hidden;
+  touch-action: manipulation;
+}
+.btn-imperial:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow: 0 22px 46px -12px hsl(var(--primary) / 0.7), inset 0 1px 0 hsl(0 0% 100% / 0.35);
+}
+.btn-imperial:active { transform: translateY(0) scale(0.985); }
+
+.btn-outline-imperial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: hsl(var(--primary));
+  border: 1px solid hsl(var(--primary) / 0.45);
+  border-radius: 2px;
+  background: linear-gradient(180deg, hsl(var(--primary) / 0.06), transparent);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  touch-action: manipulation;
+}
+.btn-outline-imperial:hover {
+  color: hsl(var(--primary-foreground));
+  background: hsl(var(--primary));
+  border-color: hsl(var(--gold-light));
+  box-shadow: 0 12px 28px -12px hsl(var(--primary) / 0.7);
+}
+.btn-outline-imperial:active { transform: scale(0.98); }
+
+/* Warm readable body copy */
+.prose-warm {
+  color: hsl(42 40% 88%);
+  font-size: 1.0625rem;
+  line-height: 1.85;
+}
+@media (max-width: 767px) {
+  .prose-warm { font-size: 1rem; }
+}
+.clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Media folder card glow */
+.media-card { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s ease, border-color 0.5s ease; }
+.media-card:hover {
+  border-color: hsl(var(--primary) / 0.55);
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.25), 0 26px 60px -18px hsl(var(--primary) / 0.45);
+}
