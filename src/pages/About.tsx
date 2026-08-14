@@ -60,23 +60,27 @@ export default function About() {
                     <p className={`prose-warm font-cormorant flex-1 bio-parallax-soft ${expanded.includes(key) ? "" : "clamp-3"}`}>
                       {t(`bio.${key}.text`)}
                     </p>
-                    <button
-                      type="button"
-                      aria-expanded={expanded.includes(key)}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setExpanded((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
-                      }}
-                      className="mt-4 self-start flex items-center gap-2 text-[11px] font-cinzel tracking-[0.3em] text-primary uppercase hover:text-[hsl(var(--gold-light))] transition-colors"
-                    >
-                      {expanded.includes(key) ? t("ui.readLess") : t("ui.readMore")}
-                      <ChevronDown size={13} className={`transition-transform duration-300 ${expanded.includes(key) ? "rotate-180" : ""}`} />
-                    </button>
-                    <div className="mt-4 flex items-center gap-2 text-[10px] font-cinzel tracking-[0.35em] text-primary/70 uppercase opacity-70 group-hover:opacity-100 transition-opacity">
-                      <span className="h-px w-6 bg-primary/50" />
-                      {t("bio.dialog.hint")}
-                      <span aria-hidden="true">→</span>
+                    <div className="mt-5 flex flex-wrap items-center gap-3">
+                      <button
+                        type="button"
+                        aria-expanded={expanded.includes(key)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setExpanded((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
+                        }}
+                        className="inline-flex items-center gap-2 rounded-sm border border-primary/40 bg-primary/5 px-4 py-2 text-[11px] font-cinzel tracking-[0.28em] text-primary uppercase transition-all duration-300 hover:border-primary hover:bg-primary/15 hover:text-[hsl(var(--gold-light))] active:scale-[0.97] focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60"
+                      >
+                        {expanded.includes(key) ? t("ui.readLess") : t("ui.readMore")}
+                        <ChevronDown size={13} className={`transition-transform duration-300 ${expanded.includes(key) ? "rotate-180" : ""}`} />
+                      </button>
+                      <span
+                        className="inline-flex items-center gap-2 rounded-sm bg-gradient-to-r from-primary/80 to-[hsl(var(--gold-light))]/80 px-4 py-2 text-[11px] font-cinzel tracking-[0.28em] text-background uppercase shadow-[0_0_18px_hsl(var(--primary)/0.35)] transition-all duration-300 group-hover:shadow-[0_0_28px_hsl(var(--primary)/0.6)] group-hover:translate-x-0.5"
+                      >
+                        {t("bio.dialog.hint")}
+                        <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                      </span>
                     </div>
+
                   </div>
                   <span className="bio-sheen" aria-hidden="true" />
                   <span className="bio-index" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
