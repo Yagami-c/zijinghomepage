@@ -11,6 +11,7 @@ export default function MediaFolder() {
   const { slug } = useParams<{ slug: string }>();
   const folder = mediaFolders.find((f) => f.slug === slug);
   const [activeVideo, setActiveVideo] = useState(folder?.videos[0]?.id);
+  const [playing, setPlaying] = useState(false);
   const [lightbox, setLightbox] = useState<number | null>(null);
   const count = folder?.photos.length ?? 0;
   const touchStart = useRef<number | null>(null);
