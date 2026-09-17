@@ -26,9 +26,14 @@ export default function Home() {
           <CarouselContent className="h-full">
             {heroImages.map((image, index) => (
               <CarouselItem key={index} className="h-full">
-                <div
-                  className="w-full h-full bg-cover bg-center transition-all duration-2000 ease-in-out transform scale-105"
-                  style={{ backgroundImage: `url(${image})`, position: "absolute", top: 0, left: 0, right: 0, bottom: 0 }}
+                <img
+                  src={image}
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-2000 ease-in-out"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "low"}
+                  decoding="async"
                 />
               </CarouselItem>
             ))}
