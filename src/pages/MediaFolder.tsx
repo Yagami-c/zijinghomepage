@@ -95,7 +95,7 @@ export default function MediaFolder() {
                     {folder.videos.map((v, i) => (
                       <button
                         key={v.id}
-                        onClick={() => setActiveVideo(v.id)}
+                        onClick={() => { setActiveVideo(v.id); setPlaying(true); }}
                         className={`w-full flex items-center gap-3 p-3 rounded-sm text-left transition-all duration-300 border ${
                           activeVideo === v.id
                             ? "bg-primary/15 border-primary/50 shadow-[0_0_20px_-5px_hsl(var(--primary)/0.4)]"
