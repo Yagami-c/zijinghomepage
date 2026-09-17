@@ -53,15 +53,37 @@ export default function MediaFolder() {
               <Reveal>
                 <div className="aspect-video ornate-frame gothic-card rounded-sm overflow-hidden p-1">
                   <span className="corner-tr" /><span className="corner-bl" />
-                  <iframe
-                    key={activeVideo}
-                    className="w-full h-full rounded-sm"
-                    src={`https://www.youtube-nocookie.com/embed/${activeVideo}?autoplay=0`}
-                    title={t(folder.videos.find((v) => v.id === activeVideo)?.title || "")}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
+                  {playing ? (
+                    <iframe
+                      key={activeVideo}
+                      className="w-full h-full rounded-sm"
+                      src={`https://www.youtube-nocookie.com/embed/${activeVideo}?autoplay=1`}
+                      title={t(folder.videos.find((v) => v.id === activeVideo)?.title || "")}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => setPlaying(true)}
+                      className="group relative w-full h-full rounded-sm overflow-hidden"
+                      aria-label={t(folder.videos.find((v) => v.id === activeVideo)?.title || "")}
+                    >
+                      <img
+                        src={`https://i.ytimg.com/vi/${activeVideo}/hqdefault.jpg`}
+                        alt={t(folder.videos.find((v) => v.id === activeVideo)?.title || "")}
+                        className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                        loading="lazy" decoding="async"
+                      />
+                      <span className="absolute inset-0 bg-background/35 group-hover:bg-background/20 transition-colors" />
+                      <span className="absolute inset-0 flex items-center justify-center">
+                        <span className="p-5 rounded-full border border-primary/50 bg-background/70 backdrop-blur-md shadow-[0_0_28px_hsl(var(--primary)/0.35)] transition-transform duration-300 group-hover:scale-110">
+                          <Play size={26} className="text-primary" />
+                        </span>
+                      </span>
+                    </button>
+                  )}
                 </div>
               </Reveal>
               <Reveal delay={120}>
