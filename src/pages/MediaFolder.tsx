@@ -4,7 +4,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Play, ZoomIn } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { mediaFolders } from "@/lib/site-data";
+import { mediaFolders, thumb } from "@/lib/site-data";
 
 export default function MediaFolder() {
   const { t } = useLanguage();
