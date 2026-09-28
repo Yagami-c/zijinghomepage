@@ -90,3 +90,7 @@ export const mediaFolders: MediaFolder[] = [
 ];
 
 export const galleryImages = galleryAll;
+
+/** Small (≤640px) preview version of an uploaded photo for grids/covers. */
+export const thumb = (src: string) =>
+  src.startsWith("/lovable-uploads/") ? src.replace("/lovable-uploads/", "/lovable-uploads/thumbs/") : src;

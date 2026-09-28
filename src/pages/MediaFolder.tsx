@@ -4,7 +4,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Play, ZoomIn } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { mediaFolders } from "@/lib/site-data";
+import { mediaFolders, thumb } from "@/lib/site-data";
 
 export default function MediaFolder() {
   const { t } = useLanguage();
@@ -131,7 +131,7 @@ export default function MediaFolder() {
                 >
                   <span className="corner-tr" /><span className="corner-bl" />
                   <img
-                    src={image}
+                    src={thumb(image)}
                     alt={`${t(folder.captionKey)} — ${t(folder.titleKey)} ${index + 1}`}
                     className="w-full h-auto object-cover group-hover:scale-[1.06] transition-transform duration-[1200ms] ease-out"
                     loading="lazy" decoding="async"

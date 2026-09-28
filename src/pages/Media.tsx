@@ -2,7 +2,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { SectionTitle, Reveal } from "@/components/section-primitives";
 import { Link } from "react-router-dom";
 import { Folder, Film, Image as ImageIcon } from "lucide-react";
-import { mediaFolders } from "@/lib/site-data";
+import { mediaFolders, thumb } from "@/lib/site-data";
 
 export default function Media() {
   const { t } = useLanguage();
@@ -22,7 +22,7 @@ export default function Media() {
                 <span className="corner-tr" /><span className="corner-bl" />
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
-                    src={folder.cover}
+                    src={thumb(folder.cover)}
                     alt={t(folder.titleKey)}
                     className="w-full h-full object-cover group-hover:scale-[1.12] transition-transform duration-[1200ms] ease-out"
                     loading="lazy"
