@@ -6,9 +6,9 @@ import { useRef } from "react";
 import { Music, ArrowDown, Play } from "lucide-react";
 import { Link } from "react-router-dom";
 import { heroImages } from "@/lib/site-data";
-import pianoHandsImg from "@/assets/piano-hands.jpg";
-import concertHallImg from "@/assets/concert-hall.jpg";
-import pianistSilhouetteImg from "@/assets/pianist-silhouette.jpg";
+import pianoHandsImg from "@/assets/piano-hands.webp";
+import concertHallImg from "@/assets/concert-hall.webp";
+import pianistSilhouetteImg from "@/assets/pianist-silhouette.webp";
 
 export default function Home() {
   const { t } = useLanguage();
