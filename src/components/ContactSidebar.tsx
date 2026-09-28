@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/sheet";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { cn } from "@/lib/utils";
-import { Phone, MessageCircle, Send, Copy, Check, X } from "lucide-react";
+import { Phone, Copy, Check, X } from "lucide-react";
 
 export const OPEN_CONTACT_EVENT = "open-contact-sidebar";
 
@@ -38,7 +38,7 @@ const WhatsappGlyph = () => (
 
 const TelegramGlyph = () => (
   <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-    <path d="M9.78 15.6l-.39 4.1c.56 0 .8-.24 1.1-.53l2.63-2.5 5.45 3.99c1 .55 1.71.26 1.98-.92L24 4.7c.32-1.5-.54-2.08-1.52-1.72L1.1 11.2c-1.46.57-1.44 1.38-.25 1.75l5.47 1.7L19 6.7c.6-.4 1.14-.18.69.22" transform="scale(.86) translate(1.5 1.5)" />
+    <path d="M21.5 3.5L2.8 10.8c-1.2.5-1.2 1.2 0 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.5-1.4zM8.6 13.5l9.6-6c.5-.3.9-.1.5.2l-8 7.3-.3 3.3-1.8-4.8z" />
   </svg>
 );
 
@@ -58,12 +58,14 @@ const QuickAction = ({
   onClick,
   icon,
   active,
+  tile,
 }: {
   label: string;
   href?: string;
   onClick?: () => void;
   icon: React.ReactNode;
   active?: boolean;
+  tile: string;
 }) => {
   const className = cn(
     "group flex flex-col items-center justify-center gap-2 py-4 rounded-2xl border transition-all duration-300 select-none [touch-action:manipulation]",
@@ -74,7 +76,7 @@ const QuickAction = ({
 
   const inner = (
     <>
-      <span className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-110 transition-transform duration-300">
+      <span className={cn("brand-tile w-12 h-12 rounded-[14px] group-hover:scale-110 transition-transform duration-300", tile)}>
         {icon}
       </span>
       <span className="font-cinzel text-[10px] uppercase tracking-[0.16em] text-muted-foreground group-hover:text-primary transition-colors">
@@ -104,6 +106,7 @@ const ChannelRow = ({
   value,
   sub,
   icon,
+  tile,
   href,
   onCopy,
   copied,
@@ -114,6 +117,7 @@ const ChannelRow = ({
   value: string;
   sub?: string;
   icon: React.ReactNode;
+  tile: string;
   href?: string;
   onCopy: () => void;
   copied: boolean;
@@ -121,7 +125,7 @@ const ChannelRow = ({
   copiedLabel: string;
 }) => (
   <div className="group relative flex items-center gap-4 py-3.5 px-4 rounded-xl border border-border/60 bg-card/40 hover:bg-muted/60 hover:border-primary/40 transition-all duration-300">
-    <span className="w-11 h-11 shrink-0 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-105 transition-transform duration-300">
+    <span className={cn("brand-tile w-11 h-11 shrink-0 rounded-[12px] group-hover:scale-105 transition-transform duration-300", tile)}>
       {icon}
     </span>
     <div className="flex-1 min-w-0">
@@ -158,7 +162,9 @@ const SocialCard = ({
   href,
   glyph: Glyph,
   ariaLabel,
+  tile,
 }: {
+  tile: string;
   href: string;
   glyph: () => JSX.Element;
   ariaLabel: string;
@@ -174,7 +180,7 @@ const SocialCard = ({
       "hover:bg-muted/70 hover:border-primary/70 hover:shadow-[0_0_40px_-8px_hsl(var(--primary)/0.35)] hover:-translate-y-0.5 active:scale-[0.97]"
     )}
   >
-    <span className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-110 transition-transform duration-300">
+    <span className={cn("brand-tile w-10 h-10 rounded-[12px] group-hover:scale-110 transition-transform duration-300", tile)}>
       <Glyph />
     </span>
     <span className="font-cinzel text-[10px] uppercase tracking-[0.18em] text-muted-foreground group-hover:text-primary transition-colors">
@@ -256,9 +262,9 @@ export function ContactSidebar() {
             {t("contact.quick")}
           </span>
           <div className="grid grid-cols-3 gap-3 mb-8">
-            <QuickAction label={t("contact.call")} href={`tel:${PHONE_RAW}`} icon={<Phone size={18} />} />
-            <QuickAction label={t("contact.whatsapp")} href={`https://wa.me/${PHONE_RAW.replace("+", "")}`} icon={<WhatsappGlyph />} />
-            <QuickAction label={t("contact.telegram")} href={`https://t.me/${PHONE_RAW}`} icon={<Send size={18} />} />
+            <QuickAction label={t("contact.call")} href={`tel:${PHONE_RAW}`} icon={<PhoneGlyph />} tile="brand-phone" />
+            <QuickAction label={t("contact.whatsapp")} href={`https://wa.me/${PHONE_RAW.replace("+", "")}`} icon={<WhatsappGlyph />} tile="brand-whatsapp" />
+            <QuickAction label={t("contact.telegram")} href={`https://t.me/${PHONE_RAW}`} icon={<TelegramGlyph />} tile="brand-telegram" />
           </div>
 
           <div className="space-y-4">
@@ -266,7 +272,8 @@ export function ContactSidebar() {
               label={t("contact.direct_line")}
               value={PHONE}
               sub="WhatsApp · Telegram"
-              icon={<Phone size={18} />}
+              icon={<PhoneGlyph />}
+              tile="brand-phone"
               href={`tel:${PHONE_RAW}`}
               onCopy={() => copy("phone", PHONE_RAW)}
               copied={copiedKey === "phone"}
@@ -276,7 +283,8 @@ export function ContactSidebar() {
             <ChannelRow
               label={t("contact.wechat")}
               value={WECHAT}
-              icon={<MessageCircle size={18} />}
+              icon={<WechatGlyph />}
+              tile="brand-wechat"
               onCopy={() => copy("wechat", WECHAT)}
               copied={copiedKey === "wechat"}
               copyLabel={t("contact.copy")}
@@ -289,8 +297,8 @@ export function ContactSidebar() {
               {t("contact.social")}
             </span>
             <div className="grid grid-cols-2 gap-3">
-              <SocialCard href="https://www.instagram.com/zijing_zeng" glyph={InstagramGlyph} ariaLabel="Instagram" />
-              <SocialCard href="https://youtube.com/@zijingzeng997" glyph={YoutubeGlyph} ariaLabel="YouTube" />
+              <SocialCard href="https://www.instagram.com/zijing_zeng" glyph={InstagramGlyph} ariaLabel="Instagram" tile="brand-instagram" />
+              <SocialCard href="https://youtube.com/@zijingzeng997" glyph={YoutubeGlyph} ariaLabel="YouTube" tile="brand-youtube" />
             </div>
           </div>
         </div>
