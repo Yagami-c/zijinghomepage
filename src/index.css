@@ -1046,3 +1046,12 @@
   border-color: hsl(var(--primary) / 0.55);
   box-shadow: 0 0 0 1px hsl(var(--primary) / 0.25), 0 26px 60px -18px hsl(var(--primary) / 0.45);
 }
+
+/* Real brand app-icon tiles for contact panel */
+.brand-tile{display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 18px -8px rgba(0,0,0,.7)}
+.brand-phone{background:linear-gradient(180deg,#5BF675,#2BD24A)}
+.brand-whatsapp{background:linear-gradient(180deg,#5FFC7B,#25D366 60%,#1EBE57)}
+.brand-telegram{background:linear-gradient(180deg,#2AABEE,#229ED9)}
+.brand-wechat{background:linear-gradient(180deg,#2DC100,#07C160)}
+.brand-instagram{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.brand-youtube{background:#FF0000}

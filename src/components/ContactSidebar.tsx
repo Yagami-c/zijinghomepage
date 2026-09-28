@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/sheet";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { cn } from "@/lib/utils";
-import { Phone, MessageCircle, Send, Copy, Check, X } from "lucide-react";
+import { Phone, Copy, Check, X } from "lucide-react";
 
 export const OPEN_CONTACT_EVENT = "open-contact-sidebar";
 
@@ -17,25 +17,39 @@ const PHONE_RAW = "+79267170585";
 const WECHAT = "zzjdoremi";
 
 const InstagramGlyph = () => (
-  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
     <rect x="3" y="3" width="18" height="18" rx="5.5" />
     <circle cx="12" cy="12" r="4.2" />
-    <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
+    <circle cx="17.3" cy="6.7" r="1.2" fill="currentColor" stroke="none" />
   </svg>
 );
 
 const YoutubeGlyph = () => (
-  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true">
-    <rect x="2" y="5" width="20" height="14" rx="4.5" stroke="currentColor" strokeWidth="1.6" />
-    <path d="M10.2 9.2l4.8 2.8-4.8 2.8V9.2z" fill="currentColor" />
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+    <path d="M9.6 8.2v7.6l6.4-3.8-6.4-3.8z" />
   </svg>
 );
 
 const WhatsappGlyph = () => (
-  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-    <path d="M12.04 2.5a9.44 9.44 0 0 0-8.1 14.28L2.5 21.5l4.86-1.38A9.44 9.44 0 1 0 12.04 2.5zm0 1.8a7.64 7.64 0 1 1-3.9 14.2l-.3-.18-2.86.81.82-2.78-.19-.3A7.64 7.64 0 0 1 12.04 4.3zm4.3 9.62c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.11-.52.12-.15.23-.6.74-.73.9-.13.14-.27.16-.5.05a6.26 6.26 0 0 1-3.13-2.73c-.24-.4.23-.38.67-1.26.08-.15.04-.29-.02-.4-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.45c-.15 0-.4.06-.6.29-.21.23-.79.77-.79 1.88s.81 2.18.93 2.33c.11.15 1.6 2.44 3.87 3.42 1.44.62 2 .67 2.73.56.44-.06 1.36-.55 1.55-1.09.19-.54.19-1 .14-1.1-.06-.1-.21-.16-.44-.28z" />
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+    <path d="M12.04 2.5a9.44 9.44 0 0 0-8.1 14.28L2.5 21.5l4.86-1.38A9.44 9.44 0 1 0 12.04 2.5zm4.3 11.42c-.23-.12-1.36-.67-1.57-.75-.21-.08-.36-.11-.52.12-.15.23-.6.74-.73.9-.13.14-.27.16-.5.05a6.26 6.26 0 0 1-3.13-2.73c-.24-.4.23-.38.67-1.26.08-.15.04-.29-.02-.4-.06-.12-.52-1.25-.71-1.71-.19-.45-.38-.39-.52-.4h-.45c-.15 0-.4.06-.6.29-.21.23-.79.77-.79 1.88s.81 2.18.93 2.33c.11.15 1.6 2.44 3.87 3.42 1.44.62 2 .67 2.73.56.44-.06 1.36-.55 1.55-1.09.19-.54.19-1 .14-1.1-.06-.1-.21-.16-.44-.28z" />
   </svg>
 );
+
+const TelegramGlyph = () => (
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+    <path d="M21.5 3.5L2.8 10.8c-1.2.5-1.2 1.2 0 1.6l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1.5-1.4zM8.6 13.5l9.6-6c.5-.3.9-.1.5.2l-8 7.3-.3 3.3-1.8-4.8z" />
+  </svg>
+);
+
+const WechatGlyph = () => (
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+    <path d="M9 3.5C4.86 3.5 1.5 6.3 1.5 9.75c0 1.95 1.07 3.7 2.76 4.84l-.7 2.1 2.46-1.24c.9.25 1.97.4 2.98.4.2 0 .4 0 .6-.02a5.6 5.6 0 0 1-.23-1.58c0-3.3 3.13-5.97 7-5.97.2 0 .4 0 .6.02C16.34 5.6 13 3.5 9 3.5zM6.5 7.4a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9zm5 0a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9z" />
+    <path d="M22.5 14.25c0-2.9-2.87-5.25-6.37-5.25s-6.38 2.35-6.38 5.25 2.87 5.25 6.38 5.25c.72 0 1.46-.12 2.1-.3l1.9 1-.52-1.62c1.72-.95 2.89-2.52 2.89-4.33zm-8.4-.9a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6zm4.1 0a.8.8 0 1 1 0-1.6.8.8 0 0 1 0 1.6z" />
+  </svg>
+);
+
+const PhoneGlyph = () => <Phone size={20} fill="currentColor" strokeWidth={0} />;
 
 /** Small pill button used for quick actions */
 const QuickAction = ({
@@ -44,12 +58,14 @@ const QuickAction = ({
   onClick,
   icon,
   active,
+  tile,
 }: {
   label: string;
   href?: string;
   onClick?: () => void;
   icon: React.ReactNode;
   active?: boolean;
+  tile: string;
 }) => {
   const className = cn(
     "group flex flex-col items-center justify-center gap-2 py-4 rounded-2xl border transition-all duration-300 select-none [touch-action:manipulation]",
@@ -60,7 +76,7 @@ const QuickAction = ({
 
   const inner = (
     <>
-      <span className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-110 transition-transform duration-300">
+      <span className={cn("brand-tile w-12 h-12 rounded-[14px] group-hover:scale-110 transition-transform duration-300", tile)}>
         {icon}
       </span>
       <span className="font-cinzel text-[10px] uppercase tracking-[0.16em] text-muted-foreground group-hover:text-primary transition-colors">
@@ -90,6 +106,7 @@ const ChannelRow = ({
   value,
   sub,
   icon,
+  tile,
   href,
   onCopy,
   copied,
@@ -100,6 +117,7 @@ const ChannelRow = ({
   value: string;
   sub?: string;
   icon: React.ReactNode;
+  tile: string;
   href?: string;
   onCopy: () => void;
   copied: boolean;
@@ -107,7 +125,7 @@ const ChannelRow = ({
   copiedLabel: string;
 }) => (
   <div className="group relative flex items-center gap-4 py-3.5 px-4 rounded-xl border border-border/60 bg-card/40 hover:bg-muted/60 hover:border-primary/40 transition-all duration-300">
-    <span className="w-11 h-11 shrink-0 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-105 transition-transform duration-300">
+    <span className={cn("brand-tile w-11 h-11 shrink-0 rounded-[12px] group-hover:scale-105 transition-transform duration-300", tile)}>
       {icon}
     </span>
     <div className="flex-1 min-w-0">
@@ -144,7 +162,9 @@ const SocialCard = ({
   href,
   glyph: Glyph,
   ariaLabel,
+  tile,
 }: {
+  tile: string;
   href: string;
   glyph: () => JSX.Element;
   ariaLabel: string;
@@ -160,7 +180,7 @@ const SocialCard = ({
       "hover:bg-muted/70 hover:border-primary/70 hover:shadow-[0_0_40px_-8px_hsl(var(--primary)/0.35)] hover:-translate-y-0.5 active:scale-[0.97]"
     )}
   >
-    <span className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center text-primary border border-border shadow-inner group-hover:scale-110 transition-transform duration-300">
+    <span className={cn("brand-tile w-10 h-10 rounded-[12px] group-hover:scale-110 transition-transform duration-300", tile)}>
       <Glyph />
     </span>
     <span className="font-cinzel text-[10px] uppercase tracking-[0.18em] text-muted-foreground group-hover:text-primary transition-colors">
@@ -242,9 +262,9 @@ export function ContactSidebar() {
             {t("contact.quick")}
           </span>
           <div className="grid grid-cols-3 gap-3 mb-8">
-            <QuickAction label={t("contact.call")} href={`tel:${PHONE_RAW}`} icon={<Phone size={18} />} />
-            <QuickAction label={t("contact.whatsapp")} href={`https://wa.me/${PHONE_RAW.replace("+", "")}`} icon={<WhatsappGlyph />} />
-            <QuickAction label={t("contact.telegram")} href={`https://t.me/${PHONE_RAW}`} icon={<Send size={18} />} />
+            <QuickAction label={t("contact.call")} href={`tel:${PHONE_RAW}`} icon={<PhoneGlyph />} tile="brand-phone" />
+            <QuickAction label={t("contact.whatsapp")} href={`https://wa.me/${PHONE_RAW.replace("+", "")}`} icon={<WhatsappGlyph />} tile="brand-whatsapp" />
+            <QuickAction label={t("contact.telegram")} href={`https://t.me/${PHONE_RAW}`} icon={<TelegramGlyph />} tile="brand-telegram" />
           </div>
 
           <div className="space-y-4">
@@ -252,7 +272,8 @@ export function ContactSidebar() {
               label={t("contact.direct_line")}
               value={PHONE}
               sub="WhatsApp · Telegram"
-              icon={<Phone size={18} />}
+              icon={<PhoneGlyph />}
+              tile="brand-phone"
               href={`tel:${PHONE_RAW}`}
               onCopy={() => copy("phone", PHONE_RAW)}
               copied={copiedKey === "phone"}
@@ -262,7 +283,8 @@ export function ContactSidebar() {
             <ChannelRow
               label={t("contact.wechat")}
               value={WECHAT}
-              icon={<MessageCircle size={18} />}
+              icon={<WechatGlyph />}
+              tile="brand-wechat"
               onCopy={() => copy("wechat", WECHAT)}
               copied={copiedKey === "wechat"}
               copyLabel={t("contact.copy")}
@@ -275,8 +297,8 @@ export function ContactSidebar() {
               {t("contact.social")}
             </span>
             <div className="grid grid-cols-2 gap-3">
-              <SocialCard href="https://www.instagram.com/zijing_zeng" glyph={InstagramGlyph} ariaLabel="Instagram" />
-              <SocialCard href="https://youtube.com/@zijingzeng997" glyph={YoutubeGlyph} ariaLabel="YouTube" />
+              <SocialCard href="https://www.instagram.com/zijing_zeng" glyph={InstagramGlyph} ariaLabel="Instagram" tile="brand-instagram" />
+              <SocialCard href="https://youtube.com/@zijingzeng997" glyph={YoutubeGlyph} ariaLabel="YouTube" tile="brand-youtube" />
             </div>
           </div>
         </div>
