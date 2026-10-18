@@ -1,4 +1,5 @@
 export type Performance = {
+  isoDate: string;
   date: string;
   venue: string;
   program: string;
@@ -8,12 +9,12 @@ export type Performance = {
 };
 
 export const performances: Performance[] = [
-  { date: "performance9.date",  venue: "performance9.venue",  program: "performance9.title",  country: "country.australia", city: "city.sydney" },
-  { date: "performance10.date", venue: "performance10.venue", program: "performance10.title", country: "country.russia",    city: "city.saint_petersburg" },
-  { date: "performance11.date", venue: "performance11.venue", program: "performance11.title", country: "country.russia",    city: "city.moscow" },
-  { date: "performance6.date",  venue: "performance6.venue",  program: "performance6.title",  country: "country.russia",    city: "city.moscow_region" },
-  { date: "performance7.date",  venue: "performance7.venue",  program: "performance7.title",  country: "country.russia",    city: "city.moscow" },
-  { date: "performance8.date",  venue: "performance8.venue",  program: "performance8.title",  country: "country.russia",    city: "city.moscow_region" },
+  { isoDate: "2025-07-20T17:30:00+10:00", date: "performance9.date",  venue: "performance9.venue",  program: "performance9.title",  country: "country.australia", city: "city.sydney" },
+  { isoDate: "2025-07-28T19:00:00+03:00", date: "performance10.date", venue: "performance10.venue", program: "performance10.title", country: "country.russia",    city: "city.saint_petersburg" },
+  { isoDate: "2025-07-30T19:00:00+03:00", date: "performance11.date", venue: "performance11.venue", program: "performance11.title", country: "country.russia",    city: "city.moscow" },
+  { isoDate: "2026-01-31T14:00:00+03:00", date: "performance6.date",  venue: "performance6.venue",  program: "performance6.title",  country: "country.russia",    city: "city.moscow_region" },
+  { isoDate: "2026-02-14T17:00:00+03:00", date: "performance7.date",  venue: "performance7.venue",  program: "performance7.title",  country: "country.russia",    city: "city.moscow" },
+  { isoDate: "2026-03-28T14:00:00+03:00", date: "performance8.date",  venue: "performance8.venue",  program: "performance8.title",  country: "country.russia",    city: "city.moscow_region" },
 ];
 
 export const heroImages = [

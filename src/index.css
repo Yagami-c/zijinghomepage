@@ -1054,3 +1054,8 @@
 .brand-wechat{background:linear-gradient(180deg,#2DC100,#07C160)}
 .brand-instagram{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
 .brand-youtube{background:#FF0000}
+
+/* P0 portfolio: stage light and whitespace */
+.portfolio { font-size: 1rem; }
+.stage-light { background: radial-gradient(ellipse at 70% 15%, hsl(var(--primary) / 0.16), transparent 52%); }
+@media (prefers-reduced-motion: reduce) { .portfolio *, .portfolio *::before, .portfolio *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }

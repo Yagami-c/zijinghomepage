@@ -33,6 +33,7 @@ export default function About() {
       <div className="absolute top-12 right-12 text-primary/[0.04] text-[20rem] font-cinzel-decorative leading-none select-none pointer-events-none hidden lg:block">Z</div>
       <div className="container mx-auto px-4 relative z-10">
         <SectionTitle eyebrow="VITA">{t("about.title")}</SectionTitle>
+        <p className="mx-auto -mt-6 mb-12 max-w-3xl text-center font-cormorant text-xl leading-relaxed text-foreground md:text-2xl">{t("brand.positioning")}</p>
 
         <div className="max-w-6xl mx-auto">
           <div className="bio-stage relative">
