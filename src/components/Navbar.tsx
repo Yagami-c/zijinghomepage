@@ -22,6 +22,7 @@ export function Navbar() {
   const links = [
     { to: "/", label: t("nav.home"), end: true },
     { to: "/about", label: t("nav.about") },
+    { to: "/works", label: t("nav.works") },
     { to: "/schedule", label: t("nav.schedule") },
     { to: "/media", label: t("nav.media") },
   ];
@@ -33,9 +34,9 @@ export function Navbar() {
           <NavLink to="/" className="text-2xl font-cinzel-decorative tracking-[0.2em] text-primary gothic-glow">
             {t("hero.name")}
           </NavLink>
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-5">
             {links.map((l, i) => (
-              <div key={l.to} className="flex items-center gap-6">
+              <div key={l.to} className="flex items-center gap-5">
                 {i > 0 && <span className="text-primary/30">◆</span>}
                 <NavLink to={l.to} end={l.end} className={linkClass}>
                   {l.label}
@@ -51,7 +52,7 @@ export function Navbar() {
             </div>
           </div>
           <button
-            className="md:hidden text-foreground/70 hover:text-primary transition-colors"
+            className="lg:hidden min-h-11 min-w-11 flex items-center justify-center text-foreground/70 hover:text-primary transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={mobileOpen}
@@ -60,7 +61,7 @@ export function Navbar() {
           </button>
         </div>
         {mobileOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border pt-4 flex flex-col gap-4">
+          <div className="lg:hidden mt-4 pb-4 border-t border-border pt-4 flex flex-col gap-4">
             {links.map((l) => (
               <NavLink key={l.to} to={l.to} end={l.end} onClick={() => setMobileOpen(false)} className={linkClass}>
                 {l.label}

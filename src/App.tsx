@@ -12,6 +12,8 @@ const About = lazy(() => import("./pages/About"));
 const Schedule = lazy(() => import("./pages/Schedule"));
 const Media = lazy(() => import("./pages/Media"));
 const MediaFolder = lazy(() => import("./pages/MediaFolder"));
+const Works = lazy(() => import("./pages/Works"));
+const WorkDetail = lazy(() => import("./pages/WorkDetail"));
 
 const queryClient = new QueryClient();
 
@@ -38,6 +40,8 @@ const App = () => (
                 <Route path="/schedule" element={<Schedule />} />
                 <Route path="/media" element={<Media />} />
                 <Route path="/media/:slug" element={<MediaFolder />} />
+                <Route path="/works" element={<Works />} />
+                <Route path="/works/:slug" element={<WorkDetail />} />
               </Route>
             </Routes>
           </Suspense>
