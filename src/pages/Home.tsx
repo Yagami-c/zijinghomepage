@@ -16,21 +16,21 @@ export default function Home() {
 
   return (
     <div className="portfolio">
-      <section className="stage-light border-b border-border">
-        <div className="container mx-auto grid min-h-[calc(100svh-5rem)] items-center gap-10 px-4 py-12 lg:grid-cols-12 lg:py-16">
-          <div className="space-y-6 lg:col-span-5">
+      <section className="portfolio-hero relative overflow-hidden border-b border-border">
+        <img src={heroPhoto} alt={`${t("hero.name")} — ${t("media.photo.stage")}`} className="absolute inset-0 h-full w-full object-cover object-[65%_center]" fetchPriority="high" decoding="async" width={1600} height={1067} />
+        <div className="portfolio-hero-shade absolute inset-0" />
+        <div className="container relative mx-auto flex min-h-[660px] items-end px-4 py-12 md:min-h-[600px] md:items-center lg:py-16">
+          <div className="max-w-xl space-y-5">
             <Eyebrow>{t("home.eyebrow")}</Eyebrow>
             <h1 className="font-cormorant text-5xl leading-none text-foreground md:text-7xl">{t("hero.name")}</h1>
-            <p className="max-w-xl font-cormorant text-2xl leading-snug text-foreground md:text-3xl">{t("brand.positioning")}</p>
-            <div className="flex flex-col gap-3 pt-2 sm:flex-row">
+            <p className="max-w-lg font-cormorant text-xl leading-snug text-foreground md:text-3xl">{t("brand.positioning")}</p>
+            <p className="max-w-lg text-base text-foreground/90">{t("home.cred.1")}</p>
+            <div className="flex flex-wrap gap-3 pt-2">
               <Button asChild size="lg" className="min-h-12 rounded-full"><a href="#featured"><Play /> {t("home.listen")}</a></Button>
               <Button asChild size="lg" variant="outline" className="min-h-12 rounded-full border-primary/50 bg-transparent"><Link to="/schedule">{t("home.records")}</Link></Button>
               <Button size="lg" variant="ghost" className="min-h-12 rounded-full" onClick={openContact}><MessageCircle /> {t("home.contact")}</Button>
             </div>
           </div>
-          <figure className="lg:col-span-7">
-            <img src={heroPhoto} alt={`${t("hero.name")} — ${t("media.photo.stage")}`} className="aspect-[3/2] w-full rounded-sm object-cover shadow-2xl" fetchPriority="high" decoding="async" width={1600} height={1067} />
-          </figure>
         </div>
       </section>
 
@@ -41,7 +41,7 @@ export default function Home() {
             <p className="text-lg text-primary">{t(featuredWork.composerKey ?? "unknown")}</p>
             <p className="text-base text-muted-foreground">{t("home.featured.note")}</p>
             <Link to={`/works/${featuredWork.slug}`} className="inline-flex min-h-11 items-center gap-2 text-primary hover:underline">{t("works.open")} <ArrowRight size={16} /></Link></div>
-          <div className="lg:col-span-8"><VideoFacade videoId={featuredWork.videoId!} title={t(featuredWork.titleKey)} cover={featuredWork.cover} /></div>
+          <div className="lg:col-span-8">{featuredWork.videoId && <VideoFacade videoId={featuredWork.videoId} title={t(featuredWork.titleKey)} cover={featuredWork.cover} />}</div>
         </div>
       </section>
 
