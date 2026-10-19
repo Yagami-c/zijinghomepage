@@ -5,6 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { thumb } from "@/lib/site-data";
 import type { Work } from "@/lib/works";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export const Eyebrow = ({ children }: { children: React.ReactNode }) => (
   <p className="font-cinzel text-xs uppercase tracking-[0.28em] text-primary">{children}</p>
@@ -19,13 +20,13 @@ export function VideoFacade({ videoId, title, cover }: { videoId: string; title:
         <iframe className="h-full w-full" src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1`} title={title}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
       ) : (
-        <button type="button" onClick={() => setPlaying(true)} className="group relative h-full w-full text-left" aria-label={`${t("works.play")}: ${title}`}>
+        <Button type="button" variant="ghost" onClick={() => setPlaying(true)} className="group relative block h-full w-full overflow-hidden rounded-none p-0 text-left" aria-label={`${t("works.play")}: ${title}`}>
           <img src={thumb(cover)} alt="" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] motion-reduce:transition-none" loading="lazy" decoding="async" />
           <span className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/25 to-transparent" />
           <span className="absolute bottom-5 left-5 inline-flex min-h-11 items-center gap-3 rounded-full bg-primary px-5 font-cinzel text-xs uppercase tracking-[0.18em] text-primary-foreground shadow-lg">
             <Play size={15} fill="currentColor" /> {t("works.play")}
           </span>
-        </button>
+        </Button>
       )}
     </div>
   );
@@ -51,11 +52,11 @@ export function FilterGroup({ label, value, options, onChange }: { label: string
   return (
     <fieldset className="space-y-3"><legend className="font-cinzel text-xs uppercase tracking-[0.2em] text-muted-foreground">{label}</legend>
       <div className="flex flex-wrap gap-2">{["all", ...options].map((o) => (
-        <button key={o} type="button" aria-pressed={value === o} onClick={() => onChange(o)}
-          className={cn("min-h-11 rounded-full border px-4 text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        <Button key={o} type="button" variant="outline" aria-pressed={value === o} onClick={() => onChange(o)}
+          className={cn("h-auto min-h-11 whitespace-normal rounded-full border px-4 text-base transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
             value === o ? "border-primary bg-primary text-primary-foreground" : "border-border text-foreground hover:border-primary/60")}>
           {o === "all" ? t("filter.all") : t(o)}
-        </button>))}</div>
+        </Button>))}</div>
     </fieldset>
   );
 }

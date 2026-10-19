@@ -1,125 +1,74 @@
-import { useLanguage } from "@/contexts/LanguageContext";
-import { Reveal } from "@/components/section-primitives";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
-import { Music, ArrowDown, Play } from "lucide-react";
 import { Link } from "react-router-dom";
-import { heroImages } from "@/lib/site-data";
-import pianoHandsImg from "@/assets/piano-hands.webp";
-import concertHallImg from "@/assets/concert-hall.webp";
-import pianistSilhouetteImg from "@/assets/pianist-silhouette.webp";
+import { ArrowRight, MessageCircle, Play } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { Button } from "@/components/ui/button";
+import { Eyebrow, VideoFacade, WorkCard } from "@/components/portfolio";
+import { OPEN_CONTACT_EVENT } from "@/components/ContactSidebar";
+import { featuredWork, performanceGroups, selectedWorks } from "@/lib/works";
+
+const heroPhoto = "/lovable-uploads/63e7d9f7-239d-4eca-8d13-c2193a349da1.webp";
+const openContact = () => window.dispatchEvent(new CustomEvent(OPEN_CONTACT_EVENT));
 
 export default function Home() {
   const { t } = useLanguage();
-  const autoplayRef = useRef(Autoplay({ delay: 5000, stopOnInteraction: false }));
+  const { upcoming, past } = performanceGroups();
+  const records = (upcoming.length ? upcoming : past).slice(0, 3);
 
   return (
-    <>
-      {/* Hero */}
-      <section className="min-h-[calc(100vh-5rem)] relative overflow-hidden vignette grain -mt-20 pt-20">
-        <Carousel
-          className="w-full h-screen"
-          opts={{ loop: true, duration: 2000, watchDrag: true, dragFree: false }}
-          plugins={[autoplayRef.current]}
-        >
-          <CarouselContent className="h-full">
-            {heroImages.map((image, index) => (
-              <CarouselItem key={index} className="h-full">
-                <img
-                  src={image}
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute inset-0 w-full h-full object-cover scale-105 transition-all duration-2000 ease-in-out"
-                  loading={index === 0 ? "eager" : "lazy"}
-                  fetchPriority={index === 0 ? "high" : "low"}
-                  decoding="async"
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/35 to-background flex items-center justify-center">
-          <div className="hidden md:block absolute top-24 right-8 lg:right-16 max-w-xs z-20 animate-quote-reveal">
-            <div className="relative ornate-frame gothic-card rounded-sm p-5 backdrop-blur-md bg-background/50">
-              <span className="corner-tr" /><span className="corner-bl" />
-              <span className="absolute -top-3 -left-2 text-primary/50 text-4xl font-cinzel-decorative leading-none">"</span>
-              <p className="text-sm md:text-base font-cormorant italic text-foreground/85 leading-relaxed pl-3">{t("quote.text")}</p>
-              <p className="text-right text-xs font-cinzel tracking-[0.2em] text-primary/70 mt-3">{t("quote.author")}</p>
-              <span className="absolute -bottom-3 -right-2 text-primary/50 text-4xl font-cinzel-decorative leading-none rotate-180">"</span>
-            </div>
-          </div>
-
-          <div className="container mx-auto px-4 text-center">
-            <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full px-4">
-              <div className="flex justify-center mb-6"><span className="text-primary/50 text-2xl tracking-[1em]">— ✦ —</span></div>
-              <h1 className="text-5xl md:text-8xl font-cinzel-decorative tracking-[0.15em] text-foreground gothic-glow mb-4 drop-shadow-2xl">
-                {t("hero.name")}
-              </h1>
-              <p className="text-xl md:text-2xl font-cormorant italic tracking-[0.3em] text-primary/80 drop-shadow-lg">{t("hero.title")}</p>
-              <div className="flex justify-center mt-6"><span className="text-primary/50 text-2xl tracking-[1em]">— ✦ —</span></div>
-
-              <div className="mt-12 max-w-4xl mx-auto">
-                <div className="grid grid-cols-3 gap-4 md:gap-8 items-center">
-                  {[
-                    { src: pianoHandsImg, alt: "Piano hands in concert", cls: "md:-rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0", ken: "animate-kenburns-1", d: "0s" },
-                    { src: concertHallImg, alt: "Grand piano in ornate concert hall", cls: "md:scale-110 md:-translate-y-4 hover:scale-[1.15]", ken: "animate-kenburns-2", d: "1s" },
-                    { src: pianistSilhouetteImg, alt: "Pianist silhouette on stage", cls: "md:rotate-3 md:translate-y-6 hover:rotate-0 hover:translate-y-0", ken: "animate-kenburns-3", d: "2s" },
-                  ].map((im, i) => (
-                    <div key={i} className={`relative ornate-frame gothic-card overflow-hidden rounded-sm p-1 transform ${im.cls} transition-transform duration-700 shadow-2xl animate-gothic-float`} style={{ animationDelay: im.d }}>
-                      <span className="corner-tr" /><span className="corner-bl" />
-                      <div className="aspect-[3/4] overflow-hidden rounded-sm">
-                        <img src={im.src} alt={im.alt} className={`w-full h-full object-cover ${im.ken}`} loading="lazy" width={896} height={1200} />
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-background/20 pointer-events-none" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+    <div className="portfolio">
+      <section className="portfolio-hero relative overflow-hidden border-b border-border">
+        <img src={heroPhoto} alt={`${t("hero.name")} — ${t("media.photo.stage")}`} className="absolute inset-0 h-full w-full object-cover object-[65%_center]" fetchPriority="high" decoding="async" width={1600} height={1067} />
+        <div className="portfolio-hero-shade absolute inset-0" />
+        <div className="container relative mx-auto flex min-h-[660px] items-end px-4 py-12 md:min-h-[600px] md:items-center lg:py-16">
+          <div className="max-w-xl space-y-5">
+            <Eyebrow>{t("home.eyebrow")}</Eyebrow>
+            <h1 className="font-cormorant text-5xl leading-none text-foreground md:text-7xl">{t("hero.name")}</h1>
+            <p className="max-w-lg font-cormorant text-xl leading-snug text-foreground md:text-3xl">{t("brand.positioning")}</p>
+            <p className="max-w-lg text-base text-foreground/90">{t("home.cred.1")}</p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Button asChild size="lg" className="min-h-12 rounded-full"><a href="#featured"><Play /> {t("home.listen")}</a></Button>
+              <Button asChild size="lg" variant="outline" className="min-h-12 rounded-full border-primary/50 bg-transparent"><Link to="/schedule">{t("home.records")}</Link></Button>
+              <Button size="lg" variant="ghost" className="min-h-12 rounded-full" onClick={openContact}><MessageCircle /> {t("home.contact")}</Button>
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
-      {/* Invitation */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
-        <div className="absolute inset-0 gothic-pattern opacity-50" />
-        <div className="container mx-auto px-4 relative z-10">
-          <Reveal>
-            <div className="max-w-4xl mx-auto">
-              <div className="ornate-frame rounded-sm p-1">
-                <span className="corner-tr" /><span className="corner-bl" />
-                <div className="gothic-card rounded-sm p-8 md:p-16 text-center space-y-8">
-                  <div className="section-ornament"><span>✦</span><span>✦</span><span>✦</span></div>
-                  <div className="flex justify-center">
-                    <div className="p-4 rounded-full border border-primary/30 bg-primary/5 animate-gothic-float">
-                      <Music className="w-8 h-8 text-primary/70" />
-                    </div>
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-cinzel-decorative tracking-[0.12em] text-foreground gothic-glow">{t("invitation.greeting")}</h2>
-                  <p className="text-lg md:text-xl font-cinzel tracking-[0.2em] text-primary/70 uppercase">{t("invitation.subtitle")}</p>
-
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-                    <Link to="/schedule" className="btn-imperial w-full sm:w-auto">
-                      {t("cta.viewSchedule")}
-                      <ArrowDown size={14} className="animate-gothic-float" />
-                    </Link>
-                    <Link to="/media/recordings" className="btn-outline-imperial w-full sm:w-auto">
-                      {t("cta.listen")}
-                      <Play size={12} />
-                    </Link>
-                  </div>
-
-                  <p className="prose-warm font-cormorant italic max-w-2xl mx-auto">{t("invitation.text")}</p>
-                  <p className="text-xl md:text-2xl font-cinzel-decorative gold-shimmer-text tracking-[0.1em]">{t("invitation.signature")}</p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+      <section id="featured" className="container mx-auto scroll-mt-24 px-4 py-16 md:py-24">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div className="space-y-4 lg:col-span-4"><Eyebrow>{t("home.featured.eyebrow")}</Eyebrow>
+            <h2 className="font-cormorant text-4xl md:text-5xl">{t(featuredWork.titleKey)}</h2>
+            <p className="text-lg text-primary">{t(featuredWork.composerKey ?? "unknown")}</p>
+            <p className="text-base text-muted-foreground">{t("home.featured.note")}</p>
+            <Link to={`/works/${featuredWork.slug}`} className="inline-flex min-h-11 items-center gap-2 text-primary hover:underline">{t("works.open")} <ArrowRight size={16} /></Link></div>
+          <div className="lg:col-span-8">{featuredWork.videoId && <VideoFacade videoId={featuredWork.videoId} title={t(featuredWork.titleKey)} cover={featuredWork.cover} />}</div>
         </div>
       </section>
-    </>
+
+      <section className="border-y border-border bg-card/30 py-16 md:py-24"><div className="container mx-auto px-4">
+        <div className="mb-10 flex flex-col justify-between gap-4 md:flex-row md:items-end"><div className="space-y-3"><h2 className="font-cormorant text-4xl md:text-5xl">{t("home.works.title")}</h2><p className="text-lg text-muted-foreground">{t("home.works.intro")}</p></div>
+          <Link to="/works" className="inline-flex min-h-11 items-center gap-2 text-primary hover:underline">{t("home.works.all")} <ArrowRight size={16} /></Link></div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{selectedWorks.map((w) => <WorkCard key={w.slug} work={w} />)}</div>
+      </div></section>
+
+      <section className="container mx-auto grid gap-12 px-4 py-16 md:py-24 lg:grid-cols-12">
+        <div className="lg:col-span-7"><h2 className="mb-8 font-cormorant text-4xl md:text-5xl">{t("home.records.title")}</h2>
+          <ul className="divide-y divide-border border-y border-border">{records.map((p) => (
+            <li key={p.isoDate} className="grid gap-2 py-5 sm:grid-cols-[150px_1fr]">
+              <div><p className="text-sm uppercase tracking-[0.14em] text-primary">{upcoming.length ? t("home.records.upcoming") : t("home.records.past")}</p><p className="text-base text-muted-foreground">{t(p.date)}</p></div>
+              <div><p className="font-cormorant text-2xl">{t(p.program)}</p><p className="text-base text-muted-foreground">{t(p.city)} · {t(p.venue)}</p></div>
+            </li>))}</ul>
+          {!upcoming.length && <p className="mt-4 text-base text-muted-foreground">{t("home.records.empty")}</p>}
+          <Link to="/schedule" className="mt-4 inline-flex min-h-11 items-center gap-2 text-primary hover:underline">{t("home.records.all")} <ArrowRight size={16} /></Link></div>
+        <div className="space-y-8 lg:col-span-5"><h2 className="font-cormorant text-4xl md:text-5xl">{t("home.recognition.title")}</h2>
+          <ul className="space-y-3 text-lg">{[1, 2, 3, 4].map((n) => <li key={n} className="border-l-2 border-primary/60 pl-4">{t(`home.cred.${n}`)}</li>)}</ul>
+          <blockquote className="rounded-sm border border-border bg-card/60 p-6"><p className="font-cormorant text-xl italic leading-relaxed">“{t("bio.quote.text")}”</p><footer className="mt-4 text-primary">{t("bio.quote.author")}</footer></blockquote></div>
+      </section>
+
+      <section className="border-t border-border py-16"><div className="container mx-auto flex flex-col items-start justify-between gap-6 px-4 md:flex-row md:items-center">
+        <div><h2 className="font-cormorant text-4xl">{t("home.contact.title")}</h2><p className="mt-2 text-lg text-muted-foreground">{t("home.contact.text")}</p></div>
+        <Button size="lg" className="min-h-12 rounded-full" onClick={openContact}>{t("home.contact.cta")}</Button>
+      </div></section>
+    </div>
   );
 }
