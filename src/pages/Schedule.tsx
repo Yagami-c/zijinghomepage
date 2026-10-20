@@ -1,9 +1,10 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { SectionTitle, Reveal, parseConcertDate } from "@/components/section-primitives";
-import { MapPin, Clock } from "lucide-react";
+import { MapPin, Clock, MessageCircle } from "lucide-react";
 import { useMemo, useState } from "react";
 import { performances } from "@/lib/site-data";
 import { OPEN_CONTACT_EVENT } from "@/components/ContactSidebar";
+import { Button } from "@/components/ui/button";
 
 export default function Schedule() {
   const { t } = useLanguage();
@@ -95,35 +96,20 @@ export default function Schedule() {
                       <div className="mt-2 h-px w-8 bg-primary/40" />
                       <div className="mt-2 flex items-center gap-1 text-[11px] font-cinzel tracking-[0.25em] text-foreground/60"><Clock size={10} className="text-primary/50" />{time}</div>
                     </div>
-                    <div className="p-6 md:p-7 flex flex-col justify-center relative">
+                    <div className="min-w-0 p-4 sm:p-6 md:p-7 flex flex-col justify-center relative">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-primary/50 text-xs">◆</span>
-                        <div className="font-cinzel text-[11px] tracking-[0.3em] text-primary/70 uppercase">{t(p.date)}</div>
+                        <div className="font-cinzel text-xs text-primary/70 uppercase">{t(p.date)}</div>
                       </div>
-                      <h3 className="text-xl md:text-2xl font-cinzel-decorative text-foreground tracking-wide leading-snug mb-3 group-hover:gothic-glow transition-all duration-500">{t(p.program)}</h3>
+                      <h3 className="break-words text-xl md:text-2xl font-cinzel-decorative text-foreground leading-snug mb-3 group-hover:gothic-glow transition-all duration-500">{t(p.program)}</h3>
                       <div className="flex items-start gap-2">
                         <MapPin size={14} className="text-primary/60 mt-1.5 flex-shrink-0" />
                         <p className="prose-warm font-cormorant italic">{t(p.venue)}</p>
                       </div>
                       <div className="mt-5">
-                        {p.ticketUrl ? (
-                          <a
-                            href={p.ticketUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn-outline-imperial w-full sm:w-auto"
-                          >
-                            {t("schedule.buyTickets")} <span aria-hidden="true">→</span>
-                          </a>
-                        ) : (
-                          <button
-                            type="button"
-                            onClick={() => window.dispatchEvent(new Event(OPEN_CONTACT_EVENT))}
-                            className="btn-outline-imperial w-full sm:w-auto"
-                          >
-                            {t("schedule.buyTickets")} <span aria-hidden="true">→</span>
-                          </button>
-                        )}
+                        <Button type="button" variant="outline" onClick={() => window.dispatchEvent(new Event(OPEN_CONTACT_EVENT))} className="min-h-11 w-full sm:w-auto whitespace-normal border-primary/45 text-primary">
+                          <MessageCircle /> {t("schedule.contact")} <span aria-hidden="true">→</span>
+                        </Button>
                       </div>
                     </div>
                   </div>

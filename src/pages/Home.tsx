@@ -17,9 +17,9 @@ export default function Home() {
   return (
     <div className="portfolio">
       <section className="portfolio-hero relative overflow-hidden border-b border-border">
-        <img src={heroPhoto} alt={`${t("hero.name")} — ${t("media.photo.stage")}`} className="absolute inset-0 h-full w-full object-cover object-[65%_center]" fetchPriority="high" decoding="async" width={1600} height={1067} />
+        <img src={heroPhoto} srcSet={`${heroPhoto.replace('/lovable-uploads/', '/lovable-uploads/thumbs/')} 640w, ${heroPhoto} 1600w`} sizes="100vw" alt={`${t("hero.name")} — ${t("media.photo.stage")}`} className="absolute inset-0 h-full w-full object-cover object-[65%_center]" fetchPriority="high" decoding="async" width={1600} height={1067} />
         <div className="portfolio-hero-shade absolute inset-0" />
-        <div className="container relative mx-auto flex min-h-[660px] items-end px-4 py-12 md:min-h-[600px] md:items-center lg:py-16">
+        <div className="portfolio-hero-content container relative mx-auto flex items-end px-4 py-10 md:items-center lg:py-12">
           <div className="max-w-xl space-y-5">
             <Eyebrow>{t("home.eyebrow")}</Eyebrow>
             <h1 className="font-cormorant text-5xl leading-none text-foreground md:text-7xl">{t("hero.name")}</h1>

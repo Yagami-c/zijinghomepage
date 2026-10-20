@@ -1057,6 +1057,12 @@
 
 /* P0 portfolio: stage light and whitespace */
 .portfolio { font-size: 1rem; }
+.portfolio-hero-content { min-height: clamp(480px, calc(100svh - 180px), 600px); }
+@media (max-width: 767px) {
+  body { background-attachment: scroll; }
+  .portfolio-hero-content { min-height: 540px; }
+  .schedule-date-block { padding-inline: 0.75rem; min-width: 88px; }
+}
 .stage-light { background: radial-gradient(ellipse at 70% 15%, hsl(var(--primary) / 0.16), transparent 52%); }
 .portfolio-hero-shade { background: linear-gradient(90deg, hsl(var(--background) / 0.97) 0%, hsl(var(--background) / 0.82) 36%, hsl(var(--background) / 0.08) 75%), linear-gradient(0deg, hsl(var(--background)), transparent 30%); }
 @media (max-width: 767px) { .portfolio-hero-shade { background: linear-gradient(0deg, hsl(var(--background)) 0%, hsl(var(--background) / 0.86) 42%, hsl(var(--background) / 0.1) 100%); } .portfolio-hero > img { object-position: 62% center; } }
