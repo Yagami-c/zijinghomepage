@@ -4,7 +4,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight, Play, ZoomIn } from "lucide-react";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { mediaFolders, thumb } from "@/lib/site-data";
+import { mediaFolders, thumb, previewSize } from "@/lib/site-data";
 
 export default function MediaFolder() {
   const { t } = useLanguage();
@@ -103,7 +103,7 @@ export default function MediaFolder() {
                         }`}
                       >
                         <div className={`relative w-16 h-10 rounded-sm overflow-hidden bg-black flex-shrink-0 flex items-center justify-center ${activeVideo === v.id ? "ring-1 ring-primary/60" : ""}`}>
-                          <img src={`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`} alt={t(v.title)} loading="lazy" className="w-full h-full object-cover" />
+                          <img src={`https://i.ytimg.com/vi/${v.id}/mqdefault.jpg`} alt={t(v.title)} width={320} height={180} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                           <Play size={14} className="absolute text-primary drop-shadow-lg" />
                         </div>
                         <div className="flex-1 min-w-0">
@@ -132,6 +132,7 @@ export default function MediaFolder() {
                   <span className="corner-tr" /><span className="corner-bl" />
                   <img
                     src={thumb(image)}
+                    {...previewSize(image)}
                     alt={`${t(folder.captionKey)} — ${t(folder.titleKey)} ${index + 1}`}
                     className="w-full h-auto object-cover group-hover:scale-[1.06] transition-transform duration-[1200ms] ease-out"
                     loading="lazy" decoding="async"
@@ -167,6 +168,7 @@ export default function MediaFolder() {
               >
                 <img
                   src={folder.photos[lightbox]}
+                  decoding="async"
                   alt={`${t(folder.captionKey)} — ${t(folder.titleKey)} ${lightbox + 1}`}
                   className="max-h-[70vh] w-auto max-w-full object-contain rounded-sm pointer-events-none"
                   draggable={false}

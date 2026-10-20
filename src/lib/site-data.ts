@@ -95,3 +95,19 @@ export const galleryImages = galleryAll;
 /** Small (≤640px) preview version of an uploaded photo for grids/covers. */
 export const thumb = (src: string) =>
   src.startsWith("/lovable-uploads/") ? src.replace("/lovable-uploads/", "/lovable-uploads/thumbs/") : src;
+
+/** Actual preview dimensions reserve space without cropping the archive photos. */
+const previewSizes: Record<string, { width: number; height: number }> = {
+  "683074c7-a228-4ef4-ad70-98f8c1714f41.webp": { width: 640, height: 359 },
+  "68f603fe-d849-4139-b866-49f1855e65bb.webp": { width: 640, height: 427 },
+  "b5917c0d-ba60-41ba-80ea-e27527047d37.webp": { width: 640, height: 533 },
+  "e1bdb18f-0413-4526-8d79-89df46cf7324.webp": { width: 640, height: 427 },
+  "edac1f3a-3582-4009-986d-8f2fae0b122b.webp": { width: 640, height: 301 },
+  "37eaa083-ff23-4f40-a282-12a62b7324c6.webp": { width: 640, height: 340 },
+  "63e7d9f7-239d-4eca-8d13-c2193a349da1.webp": { width: 640, height: 427 },
+  "46024a5d-f559-4bdf-9cdb-2cb41a136575.webp": { width: 640, height: 426 },
+  "95569425-9a71-4642-b604-f990fdd5e3f3.webp": { width: 427, height: 640 },
+  "c620aa9e-12ff-42c9-a1f3-3af5a9be601f.webp": { width: 640, height: 426 },
+  "83fc3260-63e3-49e9-b4b9-741748acb556.webp": { width: 640, height: 359 },
+};
+export const previewSize = (src: string) => previewSizes[src.split("/").pop() ?? ""];
