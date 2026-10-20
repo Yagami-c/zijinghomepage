@@ -5,3 +5,8 @@
 - [x] Verify rules, desktop/mobile flows, translations, loading and reduced motion; record delivery and remaining source gaps.
 
 P1/P2 require separate approval and are not part of this execution.
+
+# Approved performance, sizing and publishing
+- [ ] Optimize initial image loading and small-screen page sizing without redesigning content.
+- [ ] Verify navigation, media, works and contact across screen sizes and languages.
+- [ ] Check security and request publication of the verified version.
