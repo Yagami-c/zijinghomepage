@@ -5,3 +5,9 @@
 - [x] Verify rules, desktop/mobile flows, translations, loading and reduced motion; record delivery and remaining source gaps.
 
 P1/P2 require separate approval and are not part of this execution.
+
+# Approved performance, sizing and publishing
+- [x] Optimize initial image loading and small-screen page sizing without redesigning content.
+- [x] Replace schedule ticket actions with contact actions in all three languages.
+- [x] Verify navigation, media, works and contact across screen sizes and languages.
+- [x] Check security and request publication of the verified version.

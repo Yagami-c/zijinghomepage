@@ -110,7 +110,9 @@ const translations = {
     "cta.listen": "Listen to Music",
     "ui.readMore": "Read More",
     "ui.readLess": "Read Less",
-    "schedule.buyTickets": "Buy Tickets",
+    "schedule.contact": "Contact",
+    "nav.openMenu": "Open navigation menu",
+    "nav.closeMenu": "Close navigation menu",
 
     "video.title": "Performance Videos",
     "invitation.greeting": "Welcome to My World",
@@ -294,7 +296,9 @@ const translations = {
     "cta.listen": "Слушать музыку",
     "ui.readMore": "Читать далее",
     "ui.readLess": "Свернуть",
-    "schedule.buyTickets": "Купить билеты",
+    "schedule.contact": "Связаться",
+    "nav.openMenu": "Открыть меню",
+    "nav.closeMenu": "Закрыть меню",
 
     "video.title": "Видео выступлений",
     "invitation.greeting": "Добро пожаловать в мой мир",
@@ -478,7 +482,9 @@ const translations = {
     "cta.listen": "聆听音乐",
     "ui.readMore": "阅读更多",
     "ui.readLess": "收起",
-    "schedule.buyTickets": "购买门票",
+    "schedule.contact": "联系",
+    "nav.openMenu": "打开导航菜单",
+    "nav.closeMenu": "关闭导航菜单",
 
     "video.title": "演出视频",
     "invitation.greeting": "欢迎来到我的世界",
