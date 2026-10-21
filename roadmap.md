@@ -10,9 +10,9 @@ P1/P2 require separate approval and are not part of this execution.
 - [x] Optimize initial image loading and small-screen page sizing without redesigning content.
 - [x] Replace schedule ticket actions with contact actions in all three languages.
 - [x] Verify navigation, media, works and contact across screen sizes and languages.
-- [ ] Check security and request publication of the verified version; previous request was cancelled before execution.
+- [x] Check security and request publication of the verified version; previous request was cancelled before execution.
 
 # Approved visible navigation and further loading optimization
-- [ ] Keep menu links visible without an expand button on every screen size.
-- [ ] Reduce homepage rendering work and preserve navigation while other pages load.
-- [ ] Verify the updated pages and publish after checks.
+- [x] Keep menu links visible without an expand button on every screen size.
+- [x] Reduce homepage rendering work and preserve navigation while other pages load.
+- [x] Verify the updated pages and request publishing after checks.
