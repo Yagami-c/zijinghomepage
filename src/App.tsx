@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { lazy } from "react";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import AppLayout from "./components/layout/AppLayout";
 import Home from "./pages/Home";
@@ -17,14 +17,6 @@ const WorkDetail = lazy(() => import("./pages/WorkDetail"));
 
 const queryClient = new QueryClient();
 
-const PageFallback = () => (
-  <div className="py-32 flex items-center justify-center">
-    <span className="font-cinzel text-[11px] tracking-[0.4em] text-primary/60 uppercase animate-pulse">
-      ✦ Loading ✦
-    </span>
-  </div>
-);
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
@@ -32,7 +24,6 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Suspense fallback={<PageFallback />}>
             <Routes>
               <Route element={<AppLayout />}>
                 <Route path="/" element={<Home />} />
@@ -44,7 +35,6 @@ const App = () => (
                 <Route path="/works/:slug" element={<WorkDetail />} />
               </Route>
             </Routes>
-          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>

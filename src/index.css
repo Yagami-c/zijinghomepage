@@ -1057,6 +1057,7 @@
 
 /* P0 portfolio: stage light and whitespace */
 .portfolio { font-size: 1rem; }
+.portfolio > section:not(:first-child) { content-visibility: auto; contain-intrinsic-size: auto 600px; }
 .portfolio-hero-content { min-height: clamp(480px, calc(100svh - 180px), 600px); }
 @media (max-width: 767px) {
   body { background-attachment: scroll; }
