@@ -2,14 +2,17 @@ import { Outlet } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";
 import { ContactSidebar } from "@/components/ContactSidebar";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Suspense } from "react";
 
 export default function AppLayout() {
   const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Navbar />
-      <main className="flex-1 pt-20">
-        <Outlet />
+      <main className="flex-1">
+        <Suspense fallback={<div className="min-h-[480px] flex items-center justify-center" role="status"><span className="h-6 w-6 animate-spin rounded-full border-2 border-border border-t-primary" /></div>}>
+          <Outlet />
+        </Suspense>
       </main>
       <ContactSidebar />
       <footer className="py-10 border-t border-border relative">
